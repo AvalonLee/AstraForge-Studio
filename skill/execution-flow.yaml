@@ -5,6 +5,7 @@ execution:
     - character_intelligence
     - character_dna_lock
     - commercial_director
+    - cast_resolution          # 单角色 -> character_dna / 多角色 -> cast
     - genre_selection
     - theme_engine
     - variation_engine
@@ -45,6 +46,27 @@ execution:
     visual_impact: 10
     commercial_value: 10
     art_direction: 5
+
+  cast_resolution:
+    single: core/character-dna/dna-schema.yaml
+    multi: core/multi-character/cast-schema.yaml
+    max_cast_size: 4
+    composer_by_mode:
+      single: director/pv-composer.md
+      duo: director/multi-character-composer.md
+      trio: director/multi-character-composer.md
+      event: director/event-director.md
+    gates:
+      contrast_requirement: 任意两成员至少 2 维强对比，否则拒绝
+      weight_rule: sum(screen_weight)==70 且 lead>=second*1.5
+      action_amplification: effective_level = base + (in_frame - 1)
+    stability_cap_by_cast_size: { 1: 35, 2: 32, 3: 28, 4: 24 }
+
+  event_pv:
+    types: [anniversary, collaboration, seasonal]
+    cta_required: true
+    cta_must_include: [活动名称, 时间信息]
+    director: director/event-director.md
 
   risk_budget_gate:
     position: after_theme_and_genre_selection, before_composer

@@ -144,11 +144,87 @@ components:
     transition: [particle_reveal, title_reveal]
     risk: medium
 
-roadmap_v1_1:
+  # ---- 活动 PV 主题 ----
+  # 与角色 PV 的根本差异：卖点不是「认识一个新角色」，
+  # 而是「参与一个限时事件」。因此结构、情绪曲线、CTA 均不同。
+
+  - id: theme.anniversary.celebration.v1
+    slug: anniversary-celebration
+    name: Anniversary Celebration
+    category: event_pv
+    event_type: anniversary
+    purpose: celebrate milestone and reactivate lapsed players
+    commercial_goal: player_return
+    emotion_arc: 回顾 → 感谢 → 展望
+    visual_keywords: [golden, confetti, milestone number, ensemble, warm light]
+    cast_oriented: true
+    recommended_cast_size: 3
+    structure:
+      opening: 里程碑数字 / 周年标识
+      middle: 阵容轮换（老角色回归感）
+      climax: 全阵容列队
+      ending: 周年标题 + 活动时间
+    recommended_camera: [duo-formation, beauty-showcase, final-pose]
+    recommended_action: [signature-pose, head-turn]
+    recommended_expression: [sweet-smile, elegant-smile, composed-gaze]
+    recommended_transition: [particle-reveal, title-reveal]
+    palette_note: 暖金为主，区别于角色 PV 的冷峻或甜辣
+    cta_required: true
+    risk: high
+    note: 阵容规模大，须遵守 cast-risk-rules 的稳定性封顶
+
+  - id: theme.collaboration.event.v1
+    slug: collaboration-event
+    name: Collaboration Event
+    category: event_pv
+    event_type: collaboration
+    purpose: cross-IP limited event
+    commercial_goal: cross_audience_acquisition
+    emotion_arc: 意外 → 融合 → 期待
+    visual_keywords: [dual identity, crossover motif, limited seal, split composition]
+    cast_oriented: true
+    recommended_cast_size: 2
+    structure:
+      opening: 双方视觉符号碰撞
+      middle: 各自阵营角色分镜
+      climax: 跨阵营同框
+      ending: 联动标题 + 限时标识
+    recommended_camera: [split-frame-duo, duo-standoff, final-pose]
+    recommended_action: [signature-pose, hand-gesture]
+    recommended_expression: [confident-smirk, composed-gaze]
+    recommended_transition: [flash-cut, ui-card, title-reveal]
+    ip_safety: >
+      本系统仅产出原创设计描述。联动 PV 中的对方 IP 元素
+      须由用户自行提供授权素材，Prompt 中不得描述现有 IP 具体角色。
+    cta_required: true
+    risk: high
+
+  - id: theme.seasonal.event.v1
+    slug: seasonal-event
+    name: Seasonal Event
+    category: event_pv
+    event_type: seasonal
+    purpose: seasonal limited banner or costume event
+    commercial_goal: cosmetic_conversion
+    emotion_arc: 氛围 → 惊喜 → 号召
+    visual_keywords: [season motif, festive props, limited costume, ambient color]
+    cast_oriented: true
+    recommended_cast_size: 2
+    structure:
+      opening: 季节氛围建立（环境优先，是唯一允许弱化角色开场的类型）
+      middle: 限定造型展示
+      climax: 角色互动 / 节日动作
+      ending: 活动标题 + 限时标识
+    recommended_camera: [environment-reveal, beauty-showcase, shoulder-to-shoulder]
+    recommended_action: [hand-gesture, signature-pose]
+    recommended_expression: [sweet-smile, playful-wink, idol-bright]
+    recommended_transition: [particle-reveal, graphic-panel, title-reveal]
+    seasonal_variants: [spring_bloom, summer_beach, autumn_harvest, winter_holiday]
+    cta_required: true
+    risk: medium
+
+roadmap_v1_2:
   planned:
     - male-character-release
     - female-idol-release
     - villain-release
-    - collaboration-event
-    - anniversary-character
-    - seasonal-event

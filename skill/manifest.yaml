@@ -8,6 +8,8 @@ skill:
     - game_PV
     - character_trailer
   capabilities:
+    - multi_character_direction
+    - event_pv_direction
     - genre_selection
     - prompt_structure_10_section
     - h3_format_conversion
@@ -28,6 +30,15 @@ skill:
     - FL2VA
     - L2VA
     - Ref2VA
+  cast_modes:
+    - single
+    - duo
+    - trio
+    - squad
+  event_types:
+    - anniversary
+    - collaboration
+    - seasonal
   supported_pv_modes:
     - 5s_advertisement
     - 15s_character_release

@@ -117,6 +117,7 @@ Base Style + Premium Layer + Special Layer
 | [templates/genre-action-15s.md](templates/genre-action-15s.md) | 打斗 15s 完整可替换 Prompt |
 | [templates/genre-daily-15s.md](templates/genre-daily-15s.md) | 日常文戏 15s 完整可替换 Prompt |
 | [templates/genre-magic-15s.md](templates/genre-magic-15s.md) | 魔法幻想 15s 完整可替换 Prompt |
+| [templates/cast-duo-15s.md](templates/cast-duo-15s.md) | 双人 15s 完整可替换 Prompt |
 | [director/storyboard-4shot.md](director/storyboard-4shot.md) | 4 镜头连贯分镜脚本 |
 | [director/character-card-template.md](director/character-card-template.md) | 角色设定卡 + 出图 Prompt |
 | [director/prompt-audit.md](director/prompt-audit.md) | 已有 Prompt 诊断 |
@@ -184,7 +185,42 @@ Genre × Theme × Variation × Style = Final PV Direction
 
 ---
 
-## 8. 工作流执行框架
+## 8. Cast：多角色与活动 PV
+
+### 多角色 PV
+
+> 多角色 PV 不是「多个角色各自出场」，而是**用关系做卖点**。
+
+| 阵容 | 权重分配 | 稳定性上限 | 推荐 |
+|---|---|---|---|
+| duo 双人 | 45 / 25 | 32 | ✅ 首选 |
+| trio 三人 | 35 / 20 / 15 | 28 | 活动 PV |
+| squad 四人 | 30 / 18 / 11×2 | 24 | 仅 30s |
+
+三条硬规则：
+
+1. **contrast 校验** — 任意两成员至少在 2 个维度强对比，不通过直接拒绝
+2. **权重规则** — 成员权重和 = 70，且 `lead >= second × 1.5`
+3. **动作等级放大** — 同框有效等级 = 组件等级 + (同框人数 − 1)
+
+关系类型 → 镜头映射见 [director/multi-character-composer.md](director/multi-character-composer.md)，
+可直接使用的双人模板见 [templates/cast-duo-15s.md](templates/cast-duo-15s.md)。
+
+### 活动 PV
+
+| 类型 | 情绪曲线 | 建议阵容 | CTA |
+|---|---|---|---|
+| 周年 anniversary | 回顾 → 感谢 → 展望 | 3 | 必须 |
+| 联动 collaboration | 意外 → 融合 → 期待 | 2 | 必须 |
+| 季节 seasonal | 氛围 → 惊喜 → 号召 | 2 | 必须 |
+
+**活动 PV 结尾必须包含活动名称与时间信息**，缺时间信息即为无效商业素材。
+
+详见 [director/event-director.md](director/event-director.md)。
+
+---
+
+## 9. 工作流执行框架
 
 ```
 USER REQUEST
@@ -198,6 +234,8 @@ CHARACTER ANALYZER     角色理解（信息不足先补全）
 CHARACTER DNA LOCK     身份锁定
     ↓
 COMMERCIAL DIRECTOR    商业定位
+    ↓
+CAST RESOLUTION        单角色 DNA / 多角色 Cast
     ↓
 GENRE SELECTOR         内容类型（打斗/文戏/魔法）
     ↓
@@ -238,7 +276,7 @@ OUTPUT PACKAGE         最终制作文档
 
 ---
 
-## 9. 输出内容
+## 10. 输出内容
 
 | 产物 | 说明 |
 |---|---|
@@ -251,7 +289,7 @@ OUTPUT PACKAGE         最终制作文档
 
 ---
 
-## 10. 使用原则
+## 11. 使用原则
 
 1. **Character First** — 角色永远优先。
 2. **Commercial Before Complexity** — 商业表达优先于复杂动作。
@@ -261,7 +299,7 @@ OUTPUT PACKAGE         最终制作文档
 
 ---
 
-## 11. 定位总结
+## 12. 定位总结
 
 AstraForge Studio：
 

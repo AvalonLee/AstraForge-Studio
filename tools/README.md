@@ -34,7 +34,7 @@ python tools/check_naming.py
 python tools/validate_templates.py
 ```
 
-校验 `templates/genre-*.md` 是否达到可生产状态：
+校验 `templates/genre-*.md`（单角色）与 `templates/cast-*.md`（多角色）是否达到可生产状态：
 
 1. 存在 `完整可替换模板` 代码块
 2. 10 段结构齐全

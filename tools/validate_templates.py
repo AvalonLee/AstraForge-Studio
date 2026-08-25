@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Validate that genre prompt templates are production-ready.
+"""Validate that prompt templates are production-ready.
+
+Covers templates/genre-*.md (single character) and templates/cast-*.md
+(multi character).
 
 Enforces the rules stated in core/prompt-structure.md, which are easy to
 violate by hand:
@@ -19,7 +22,7 @@ import re
 import sys
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
-TEMPLATE_GLOB = "genre-*.md"
+TEMPLATE_GLOBS = ("genre-*.md", "cast-*.md")
 
 BLOCK = re.compile(r"## 完整可替换模板\s*```\s*(.*?)```", re.DOTALL)
 SEGMENT = re.compile(r"^(\d+(?:\.\d+)?)-(\d+(?:\.\d+)?)s：(.*)$")
@@ -42,9 +45,13 @@ def main() -> int:
     problems: list[str] = []
     checked = 0
 
-    templates = sorted((REPO / "templates").glob(TEMPLATE_GLOB))
+    templates = sorted(
+        path
+        for pattern in TEMPLATE_GLOBS
+        for path in (REPO / "templates").glob(pattern)
+    )
     if not templates:
-        print("no genre templates found")
+        print("no prompt templates found")
         return 1
 
     for path in templates:
@@ -108,7 +115,7 @@ def main() -> int:
         print(f"TEMPLATE FAIL {item}")
 
     print(
-        f"\nvalidated {checked} genre template(s); {len(problems)} problem(s) found"
+        f"\nvalidated {checked} prompt template(s); {len(problems)} problem(s) found"
     )
     return 1 if problems else 0
 

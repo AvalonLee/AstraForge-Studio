@@ -87,8 +87,42 @@ v1.0.0 起以 AstraForge Studio 名义重新起版，定位为 Production Founda
 - 组件短名从 id 反推不可靠（`hero-low_angle` vs 实际引用 `hero-low-angle`）→ 改用显式 slug
 - 全仓库行尾归一化为 LF（`.gitattributes` + renormalize）
 
+### Added (第四批 — 多角色与活动 PV)
+
+补齐两类真实功能缺口。二者都不是「加组件」能解决的，
+因为它们与既有单角色假设存在结构性冲突，需先建模冲突本身。
+
+- **Cast Engine（多角色）** — `core/multi-character/`
+  - `cast-schema.yaml` — 阵容定义（成员 / 关系 / 权重 / 构图锚位）
+  - `weight-rules.yaml` — 画面权重分配：`sum==70` 且 `lead >= second×1.5`
+  - `cast-risk-rules.yaml` — 多角色专属风险建模
+- **Event Engine（活动 PV）**
+  - `theme.anniversary-celebration` / `collaboration-event` / `seasonal-event`
+  - `director/event-director.md` — CTA 强制、活动专属情绪曲线
+- **导演器**
+  - `director/multi-character-composer.md` — duo / trio 结构，关系→镜头映射
+- **`templates/cast-duo-15s.md`** — 双人 15s 完整可替换 Prompt
+  （含关系→构图替换表、5s/30s 适配、7 项风险自检）
+- **新增 6 个多角色镜头组件**
+  - `duo-standoff` / `back-to-back` / `shoulder-to-shoulder`
+  - `split-frame-duo` / `duo-formation` / `mirrored-pose`
+  - 均带 `negative_addon` 显式禁止角色特征互换
+- **Benchmark**
+  - BM-07 Duo Rival（首个多角色，90 PASS）
+  - BM-08 Anniversary Trio（首个活动 PV，84 GOOD）
+  - 校验器新增 cast 权重 / contrast / 稳定性封顶 / 活动 CTA 断言
+  - 覆盖度 90 → 93
+
+### Changed
+
+- `group battle` 由笼统的 level_4 forbidden 细分为：
+  无序混战仍禁止；结构化多角色展示（各成员独占 Shot + 低动作等级同框）可控
+- 稳定性评分按阵容规模封顶 `{1:35, 2:32, 3:28, 4:24}`，
+  避免多角色方案获得虚高分数掩盖真实风险
+- DNA Lock 新增 `costume_variant_exception`，受控放行季节/联动限定造型
+
 ### Known Limitations
 
-- Benchmark 已覆盖男性角色（BM-04），但仍缺多角色 / 群像 / 活动 PV 用例
-- Theme 库仍在扩展中（男性角色上线、联动活动、周年 PV、季节活动）
+- 多角色仅验证 duo / trio；squad（4 人）已定义规则但无用例
+- 活动 PV 仅验证周年；联动 / 季节已定义 Theme 但无用例
 - 男性角色仅有表情组件，尚无专属 Theme

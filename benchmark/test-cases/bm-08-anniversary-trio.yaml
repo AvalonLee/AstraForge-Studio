@@ -1,0 +1,116 @@
+benchmark:
+  id: BM-08
+  name: Anniversary Trio Celebration
+  dimension: event
+  cast_size: 3
+  status: PASS
+
+purpose: >
+  首个活动 PV 用例。验证 Event Director 的 CTA 强制要求、
+  周年情绪曲线、3 人阵容的稳定性封顶与同框动作等级限制。
+
+input:
+  request: 三周年庆典PV。三位人气角色回归，暖金庆典氛围。15秒。
+  session_spec:
+    duration: 15s
+    aspect_ratio: "16:9"
+
+expected_routing:
+  task: CREATE_PV
+  cast_mode: trio
+  event_type: anniversary
+  genre: daily
+  theme: anniversary-celebration
+  composer: event-director
+  style_stack:
+    base: modern-cel
+    premium: mobile-game-premium
+    special: fantasy-anime
+
+event_assertions:
+  emotion_arc: [回顾, 感谢, 展望]
+  cta_required: true
+  cta_present: true
+  cta_content: 周年标题 + 活动开启时间
+  palette_note: 暖金主色，区别于角色 PV
+
+cast:
+  size: 3
+  formation: trio
+  relationship:
+    type: ally
+    tension: low
+    visual_expression: 并肩列队
+  members:
+    - role: lead
+      screen_weight: 35
+      intro_order: 1
+      anchor_side: center
+    - role: second
+      screen_weight: 20
+      intro_order: 2
+      anchor_side: left
+    - role: support
+      screen_weight: 15
+      intro_order: 3
+      anchor_side: right
+
+contrast_check:
+  dimensions_differing: [hair_color, costume_color, silhouette]
+  count: 3
+  required: 2
+  result: PASS
+
+weight_check:
+  member_sum: 70
+  lead_vs_second_ratio: 1.75
+  rule_lead_gte_1_5x: PASS
+  each_member_has_solo_shot: true
+
+structure:
+  - { time: 0-2s,   beat: MILESTONE, detail: 里程碑数字与周年标识 }
+  - { time: 2-5s,   beat: LEAD,      detail: 主打角色单人 }
+  - { time: 5-9s,   beat: ROTATION,  detail: 阵容轮换，各成员独占 }
+  - { time: 9-12s,  beat: ENSEMBLE,  detail: 三人列队同框，action_level 1 }
+  - { time: 12-15s, beat: CTA,       detail: 周年标题 + 活动时间 }
+
+expected_components:
+  camera: [beauty-showcase, duo-formation, final-pose]
+  action: [head-turn, signature-pose]
+  expression: [sweet-smile, elegant-smile, composed-gaze]
+  transition: [particle-reveal, title-reveal]
+
+cast_risk_assertions:
+  identity_bleed: high
+  stability_cap: 28
+  ensemble_shot:
+    component: signature-pose
+    base_action_level: 1
+    characters_in_frame: 3
+    effective_level: 3
+    budget_after_uplift: 3
+    verdict: >
+      同框 3 人使有效等级达 3。genre=daily 基线为 2，
+      因此 ENSEMBLE 段必须为静态列队定格（无位移动作），
+      以 action_level 1 的 signature-pose 承载。
+
+risk_budget:
+  max_action_level: 2
+  max_effect_level: 1
+  max_camera_transition: 4
+
+scores:
+  generation_stability: 26
+  character_consistency: 21
+  shot_feasibility: 13
+  visual_impact: 10
+  commercial_value: 10
+  art_direction: 4
+  final_score: 84
+  decision: GOOD
+
+notes:
+  - 84 分属 GOOD (75-89) 而非 PASS(>=90)，如实反映 3 人阵容的真实风险
+  - stability 上限 28（cast_size 3），实得 26
+  - 活动 PV 商业价值满分：CTA 完整，含活动时间
+  - 若需提升至 PASS，应降为 duo 阵容或改用 30s
