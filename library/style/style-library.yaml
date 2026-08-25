@@ -4,6 +4,7 @@
 
 components:
   - id: style.modern.cel.v1
+    slug: modern-cel
     name: Modern Anime Cel Style
     layer: base
     category: animation_style
@@ -22,6 +23,8 @@ components:
     risk: low
 
   - id: style.mobile.game.premium.v1
+
+    slug: mobile-game-premium
     name: Mobile Game Premium
     layer: premium
     description: 高级手游 PV 质感（米哈游式）
@@ -34,6 +37,8 @@ components:
     risk: low
 
   - id: style.retro.cel.v1
+
+    slug: retro-cel
     name: Retro Cel Style
     layer: base
     description: 90 年代赛璐璐动画风
@@ -49,6 +54,8 @@ components:
     risk: low
 
   - id: style.y2k.graphic.v1
+
+    slug: y2k-graphic
     name: Y2K Graphic Style
     layer: special
     description: Y2K 潮流图形风
@@ -63,6 +70,8 @@ components:
     risk: low
 
   - id: style.fantasy.anime.v1
+
+    slug: fantasy-anime
     name: Fantasy Anime Style
     layer: special
     description: 幻想动画风
@@ -75,6 +84,8 @@ components:
     risk: low
 
   - id: style.dark.cinematic.cel.v1
+
+    slug: dark-cinematic-cel
     name: Dark Cinematic Cel
     layer: special
     description: 暗黑电影感赛璐璐

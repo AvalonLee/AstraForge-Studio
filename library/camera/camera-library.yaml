@@ -3,6 +3,7 @@
 
 components:
   - id: camera.reveal.closeup.v1
+    slug: reveal-closeup
     name: Character Reveal Close-up
     category: camera
     purpose: opening hook
@@ -24,6 +25,8 @@ components:
     impact_score: 8
 
   - id: camera.eye.reveal.v1
+
+    slug: eye-reveal
     name: Eye Reveal Shot
     category: camera
     purpose: instant character recognition
@@ -41,6 +44,8 @@ components:
     impact_score: 9
 
   - id: camera.beauty.showcase.v1
+
+    slug: beauty-showcase
     name: Character Beauty Showcase
     category: camera
     purpose: show character design
@@ -59,6 +64,8 @@ components:
     impact_score: 9
 
   - id: camera.detail.macro.v1
+
+    slug: detail-macro
     name: Signature Detail Macro
     category: camera
     purpose: highlight character asset
@@ -75,6 +82,8 @@ components:
     impact_score: 7
 
   - id: camera.hand.camera.v1
+
+    slug: hand-to-camera
     name: Hand To Camera Perspective
     category: camera
     purpose: create viewer interaction
@@ -93,6 +102,8 @@ components:
     note: 同一 Shot 不可与 hair-flip 叠加，易出现手部异常
 
   - id: camera.hero.low_angle.v1
+
+    slug: hero-low-angle
     name: Hero Low Angle
     category: camera
     purpose: final power shot
@@ -111,6 +122,8 @@ components:
     impact_score: 9
 
   - id: camera.action.tracking.v1
+
+    slug: action-tracking
     name: Action Tracking Shot
     category: camera
     purpose: ability showcase
@@ -128,6 +141,8 @@ components:
     impact_score: 9
 
   - id: camera.final.pose.v1
+
+    slug: final-pose
     name: Final Character Card Shot
     category: camera
     purpose: commercial ending
@@ -143,3 +158,30 @@ components:
     risk: low
     stability_score: 10
     impact_score: 8
+
+  # 由 benchmark 校验暴露的库缺口：
+  # story-director.md / variation-library.yaml / examples 均引用此组件，此前未定义。
+  - id: camera.environment.reveal.v1
+    slug: environment-reveal
+    name: Environment Reveal
+    category: camera
+    purpose: world and mood establishment
+    commercial_value: medium
+    best_for: [story PV, 30s narrative, legendary character, mystery opening]
+    shot: wide establishing
+    focus: [environment, character silhouette]
+    camera_motion: slow pull-back or slow lateral parallax
+    composition: character small in frame, environment dominant
+    emotion: [mysterious, atmospheric]
+    prompt_block: >
+      anime wide establishing shot,
+      character silhouette within stylized environment,
+      slow camera pull-back,
+      atmospheric mood, flat cel background
+    compatible_action: [head_turn]
+    risk: low
+    stability_score: 10
+    impact_score: 7
+    note: >
+      30s 剧情 PV 的 Act 1 常用开场。角色占比低，
+      因此不适用于 15s 角色上线 PV（违反角色优先原则）。

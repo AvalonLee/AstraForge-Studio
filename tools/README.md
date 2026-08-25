@@ -28,6 +28,24 @@ python tools/check_naming.py
 防止历史项目名 `AnimePV-H3` 回流。`CHANGELOG.md` 与 `docs/DEVELOPER_GUIDE.md`
 因需记录更名历史而在允许清单中。
 
+## validate_benchmarks.py
+
+```bash
+python tools/validate_benchmarks.py
+```
+
+校验 `benchmark/test-cases/*.yaml` 与组件库的一致性：
+
+1. 必填字段齐全（`input` / `expected_routing` / `scores` 等）
+2. 引用的 genre / variation / template 存在
+3. 引用的组件 **slug** 在 `library/` 中存在
+4. 声明的风险预算不超过「min(genre 上限, 时长上限) + uplift」
+5. 六维评分之和等于 `final_score`
+6. 覆盖度断言：三个 Genre 必须各有用例
+
+> 组件引用一律使用显式 `slug` 字段，而非从 `id` 反推。
+> 因为 id 分段不可逆（`camera.hero.low_angle.v1` 在全项目被引用为 `hero-low-angle`）。
+
 ## check_links.py
 
 ```bash

@@ -2,6 +2,7 @@
 
 components:
   - id: transition.flash.cut.v1
+    slug: flash-cut
     name: Anime Flash Cut
     category: transition
     purpose: fast scene change
@@ -17,6 +18,8 @@ components:
     impact_score: 7
 
   - id: transition.anime.impact.v1
+
+    slug: anime-impact
     name: Graphic Impact Transition
     category: transition
     purpose: increase energy
@@ -31,6 +34,8 @@ components:
     impact_score: 8
 
   - id: transition.graphic.panel.v1
+
+    slug: graphic-panel
     name: Comic Panel Transition
     category: transition
     purpose: stylized anime editing
@@ -45,6 +50,8 @@ components:
     impact_score: 8
 
   - id: transition.ui.card.v1
+
+    slug: ui-card
     name: Character UI Card Reveal
     category: transition
     purpose: game identity reveal
@@ -59,6 +66,8 @@ components:
     impact_score: 9
 
   - id: transition.glitch.data.v1
+
+    slug: glitch-data
     name: Digital Glitch Transition
     category: transition
     purpose: cyber / future style
@@ -73,6 +82,8 @@ components:
     impact_score: 8
 
   - id: transition.particle.reveal.v1
+
+    slug: particle-reveal
     name: Particle Character Reveal
     category: transition
     purpose: premium fantasy entrance
@@ -87,6 +98,8 @@ components:
     impact_score: 9
 
   - id: transition.title.reveal.v1
+
+    slug: title-reveal
     name: Character Title Reveal
     category: transition
     purpose: final commercial ending
@@ -101,6 +114,8 @@ components:
     impact_score: 9
 
   - id: transition.character.freeze.v1
+
+    slug: character-freeze
     name: Character Freeze Frame
     category: transition
     purpose: create memorable ending image

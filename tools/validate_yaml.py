@@ -19,7 +19,7 @@ import yaml
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 SKIP_DIRS = {".git", ".github", "node_modules"}
-REQUIRED_COMPONENT_FIELDS = ("id", "risk")
+REQUIRED_COMPONENT_FIELDS = ("id", "slug", "risk")
 REQUIRED_SCORE_FIELDS = ("stability_score", "impact_score")
 SCORED_LIBRARIES = ("camera", "action", "expression", "transition")
 
@@ -44,6 +44,7 @@ def main() -> int:
     checked = 0
     components_seen = 0
     ids: dict[str, str] = {}
+    slugs: dict[str, str] = {}
 
     for path in yaml_files():
         rel = path.relative_to(REPO).as_posix()
@@ -89,6 +90,16 @@ def main() -> int:
                     else:
                         ids[component_id] = rel
 
+                slug = component.get("slug")
+                if isinstance(slug, str):
+                    if slug in slugs:
+                        schema_errors.append(
+                            f"{rel}: duplicate slug '{slug}' "
+                            f"(also in {slugs[slug]})"
+                        )
+                    else:
+                        slugs[slug] = rel
+
     for line in parse_errors:
         print(f"PARSE FAIL  {line}")
     for line in schema_errors:
@@ -97,7 +108,8 @@ def main() -> int:
     total = len(parse_errors) + len(schema_errors)
     print(
         f"\nvalidated {checked} YAML file(s), "
-        f"{components_seen} component(s); {total} problem(s) found"
+        f"{components_seen} component(s), {len(slugs)} slug(s); "
+        f"{total} problem(s) found"
     )
     return 1 if total else 0
 

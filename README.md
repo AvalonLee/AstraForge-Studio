@@ -231,9 +231,9 @@ AstraForge 的评分权重刻意把「能不能稳定生成」放在第一位：
 
 ## 🧩 Component Ecosystem
 
-- **Camera** — Eye Reveal / Beauty Showcase / Hero Low Angle / Detail Macro / Hand To Camera
-- **Action** — Hair Flip / Weapon Reveal / Ability Release / Signature Pose
-- **Expression** — Cool Gaze / Sweet Smile / Elegant Smile / Playful Wink
+- **Camera** — Eye Reveal / Beauty Showcase / Hero Low Angle / Detail Macro / Hand To Camera / Environment Reveal
+- **Action** — Hair Flip / Weapon Reveal / Ability Preparation / Ability Release / Signature Pose
+- **Expression** — Cool Gaze / Sweet Smile / Elegant Smile / Playful Wink / Composed Gaze / Battle Resolve / Detached Stare
 - **Transition** — Title Reveal / UI Card / Particle Reveal / Character Freeze
 - **Theme** — Character Release / Gacha Legendary / Dark Witch / Sweet Y2K / Cool Warrior
 - **Style** — Modern Cel / Mobile Game Premium / Fantasy Anime / Y2K Graphic / Dark Cinematic Cel
@@ -288,7 +288,18 @@ astraforge-studio/
 Skill Update → Benchmark → Quality Check → Regression Test → Release
 ```
 
-当前基准用例：Sweet Y2K ✅ · Cool Warrior ✅ · Dark Witch ✅
+| # | 用例 | 维度 | Genre | 状态 |
+|---:|---|---|---|---|
+| 01 | Sweet Y2K Girl | Theme | daily | ✅ 98 |
+| 02 | Cool Warrior | Theme | action | ✅ 96 |
+| 03 | Dark Witch | Theme | magic | ✅ 94 |
+| 04 | Male Knight Combat | Genre + 性别 | action | ✅ 91 |
+| 05 | Academy Tsundere Daily | Genre | daily | ✅ 98 |
+| 06 | Magic Girl Transform | Genre | magic | ✅ 92 |
+
+覆盖 3 Genre × 4 Theme × 2 性别维度，当前 **90 / 100**。
+用例以机器可校验 YAML 存放于 [benchmark/test-cases/](benchmark/test-cases/)，
+由 `tools/validate_benchmarks.py` 在 CI 中强制校验组件引用、风险预算与评分自洽。
 
 ---
 

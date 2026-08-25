@@ -60,7 +60,35 @@ v1.0.0 起以 AstraForge Studio 名义重新起版，定位为 Production Founda
   - `references/cases/proven-cel-baseline.yaml` — 赛璐璐三套可量化参数基线
   - `references/extracted-rules.md` — 从实证案例提取的 11 类规则
 
+### Added (第三批 — Benchmark 扩展与一致性加固)
+
+- **Benchmark 用例实体化** — 此前 3 个用例仅存在于 README 表格，现落为机器可校验 YAML
+  - `benchmark/test-cases/bm-01..03` — 回填既有 Theme 维度用例
+  - `benchmark/test-cases/bm-04-male-knight-action.yaml` — **首个男性角色** + Genre=action
+  - `benchmark/test-cases/bm-05-academy-daily.yaml` — Genre=daily
+  - `benchmark/test-cases/bm-06-magic-girl-transform.yaml` — Genre=magic + 风险预算压测
+  - 覆盖度：3 Genre × 4 Theme × 2 性别，评分 85 → 90
+- **组件 slug 规范** — 全部 52 个组件新增显式 `slug` 字段作为唯一规范短名
+- **新增组件**
+  - `camera.environment.reveal.v1` / `action.ability.preparation.v1`（此前被引用但未定义）
+  - `expression.composed.gaze.v1` / `battle.resolve.v1` / `detached.stare.v1`（男性向）
+  - 8 个表情组件新增 `gender_neutral_prompt_block`
+- **Risk Budget Gate** — `core/quality-engine/risk-budget-gate.yaml`
+  - Theme 推荐仅为候选，须经 `min(genre 上限, 时长上限) + uplift` 过滤
+  - `genre_ceiling_uplift`：magic+30s+SSR 与 action+30s 可提升至 action_level 3
+  - 组件降级替换表
+- **DNA Lock transformation_exception** — 变身与 costume_change 禁令的受控例外
+- **tools/validate_benchmarks.py** — 校验用例与库的一致性，已接入 CI
+
+### Fixed
+
+- `daily` genre 动作等级上限由 1 修正为 2（此前与自身模板 `confident-walk` 矛盾）
+- `magic` genre 上限使 `transformation` 准入条件不可达 → 引入 uplift 机制
+- 组件短名从 id 反推不可靠（`hero-low_angle` vs 实际引用 `hero-low-angle`）→ 改用显式 slug
+- 全仓库行尾归一化为 LF（`.gitattributes` + renormalize）
+
 ### Known Limitations
 
-- Benchmark 覆盖偏女性角色，缺少男性角色 / 多角色 / 群像 PV 用例
+- Benchmark 已覆盖男性角色（BM-04），但仍缺多角色 / 群像 / 活动 PV 用例
 - Theme 库仍在扩展中（男性角色上线、联动活动、周年 PV、季节活动）
+- 男性角色仅有表情组件，尚无专属 Theme

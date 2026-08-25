@@ -3,6 +3,7 @@
 
 components:
   - id: theme.character.release.v1
+    slug: character-release
     name: Mobile Game Character Release
     category: mobile_character_pv
     purpose: new character launch
@@ -21,6 +22,8 @@ components:
     risk: low
 
   - id: theme.gacha.legendary.v1
+
+    slug: gacha-legendary
     name: Legendary Character Reveal
     purpose: create rarity feeling
     commercial_goal: increase collection desire
@@ -37,6 +40,8 @@ components:
     risk: medium
 
   - id: theme.cool.female.jrpg.v1
+
+    slug: cool-female-jrpg
     name: Cool Female JRPG Hero
     character_type: cool_female
     commercial_position: [power, elegance, confidence]
@@ -53,6 +58,8 @@ components:
     risk: low
 
   - id: theme.sweet.y2k.v1
+
+    slug: sweet-y2k-girl
     name: Sweet Y2K Character
     character_type: cute_fashion
     commercial_position: [charm, fashion, personality]
@@ -70,6 +77,8 @@ components:
     risk: low
 
   - id: theme.academy.character.v1
+
+    slug: academy-character
     name: Academy Character Introduction
     commercial_position: [personality, emotion, daily charm]
     visual_keywords: [school, character profile, youth]
@@ -85,6 +94,8 @@ components:
     risk: low
 
   - id: theme.magic.girl.v1
+
+    slug: magic-girl
     name: Magic Girl Release
     commercial_position: [fantasy, wonder, special ability]
     visual_keywords: [magical energy, transformation, particles]
@@ -100,6 +111,8 @@ components:
     risk: medium
 
   - id: theme.cyberpunk.girl.v1
+
+    slug: cyberpunk-girl
     name: Cyberpunk Female Character
     commercial_position: [technology, coolness, future identity]
     visual_keywords: [neon, hacker, digital]
@@ -115,6 +128,8 @@ components:
     risk: medium
 
   - id: theme.dark.witch.release.v1
+
+    slug: dark-witch-release
     name: Dark Witch Release
     commercial_position: [mystery, fantasy appeal, elegance]
     visual_keywords: [black, purple, crimson, ancient magic]

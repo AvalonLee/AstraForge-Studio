@@ -20,8 +20,12 @@ Genre × Theme × Variation × Style = Final PV Direction
 | 动态表达 | 肢体挤压拉伸、速度线、残影 | 微表情、发丝微动、轻柔 | 块状分层手绘光效、粒子 |
 | 音乐 BPM | 140-160 | 100-120 | 120-140 |
 | 音乐风格 | 战斗摇滚 / Electro Metal | City Pop / Lo-Fi Hip Hop | 幻想电子 / Orchestral Electro |
-| 最大动作等级 | 2（15s）/ 3（30s） | 1 | 2 |
-| 最大特效等级 | 2 | 1 | 2（传说 3） |
+| 最大动作等级 | 2（15s）/ 3（30s） | 2 | 2（30s+SSR 可至 3） |
+| 最大特效等级 | 2 | 1 | 2（SSR 3） |
+
+> **动作等级上限为基线**，实际预算 = `min(genre 上限, 时长上限)`，
+> 并可被 `genre_ceiling_uplift` 提升（如 magic + 30s + SSR 可至 3，用于变身演出）。
+> 详见 [core/quality-engine/risk-budget-gate.yaml](../../core/quality-engine/risk-budget-gate.yaml)。
 
 ---
 

@@ -9,6 +9,7 @@ execution:
     - theme_engine
     - variation_engine
     - style_stack
+    - risk_budget_gate
     - composer
     - library_matching
     - shot_planning
@@ -45,6 +46,12 @@ execution:
     commercial_value: 10
     art_direction: 5
 
+  risk_budget_gate:
+    position: after_theme_and_genre_selection, before_composer
+    principle: theme recommendations are candidates, not decisions
+    formula: min(genre_limit, duration_limit)
+    spec: core/quality-engine/risk-budget-gate.yaml
+
   risk_limits:
     max_action_level_5s: 1
     max_action_level_15s: 2
@@ -52,6 +59,14 @@ execution:
     max_effect_level_15s: 2
     max_effect_level_legendary: 3
     max_camera_transition_15s: 4
+
+  genre_action_limits:
+    action: 2
+    daily: 2
+    magic: 2
+  genre_ceiling_uplift:
+    - { genre: magic,  when: { duration: 30s, rarity: SSR }, action_limit: 3 }
+    - { genre: action, when: { duration: 30s },              action_limit: 3 }
 
   genre_params:
     action:

@@ -3,6 +3,7 @@
 
 components:
   - id: action.hair.flip.v1
+    slug: hair-flip
     name: Hair Flip
     category: character_action
     purpose: increase charm
@@ -20,6 +21,8 @@ components:
     impact_score: 8
 
   - id: action.head.turn.v1
+
+    slug: head-turn
     name: Slow Head Turn
     category: character_action
     purpose: character reveal
@@ -36,6 +39,8 @@ components:
     impact_score: 7
 
   - id: action.confident.walk.v1
+
+    slug: confident-walk
     name: Confident Walk
     category: character_action
     purpose: attitude display
@@ -53,6 +58,8 @@ components:
     impact_score: 8
 
   - id: action.hand.gesture.v1
+
+    slug: hand-gesture
     name: Signature Hand Gesture
     category: character_action
     purpose: personality expression
@@ -68,6 +75,8 @@ components:
     impact_score: 8
 
   - id: action.weapon.reveal.v1
+
+    slug: weapon-reveal
     name: Weapon Reveal
     category: character_action
     purpose: show signature asset
@@ -85,6 +94,8 @@ components:
     dna_rule: 武器必须与 character_dna.signature_assets.weapon 一致，禁止自动替换
 
   - id: action.ability.release.v1
+
+    slug: ability-release
     name: Ability Release
     category: character_action
     purpose: power demonstration
@@ -103,6 +114,8 @@ components:
     note: 禁止升级为 level 4 环境毁灭
 
   - id: action.transformation.v1
+
+    slug: transformation
     name: Transformation
     category: character_action
     purpose: magical reveal
@@ -120,6 +133,8 @@ components:
     dna_rule: 变身前后核心 DNA（脸/发色/眼色）必须一致
 
   - id: action.signature.pose.v1
+
+    slug: signature-pose
     name: Signature Pose
     category: character_action
     purpose: memory frame
@@ -133,3 +148,33 @@ components:
     risk: low
     stability_score: 10
     impact_score: 9
+
+  # 由 benchmark 校验暴露的库缺口：
+  # theme.dark-witch-release 与 examples/dark-witch 均引用此组件，此前未定义。
+  # 它是 ability-release 的低风险前置动作，用于蓄力段。
+  - id: action.ability.preparation.v1
+    slug: ability-preparation
+    name: Ability Preparation
+    category: character_action
+    purpose: charge-up before the burst
+    motion: character gathers energy, stance settles, effect builds
+    emotion: [solemn, focused]
+    best_for: [magic girl, dark witch, legendary character, 30s story]
+    prompt_block: >
+      anime character gathering energy before casting,
+      solemn focused expression,
+      layered flat light effect building around hands,
+      stylized 2D animation
+    gender_neutral_prompt_block: >
+      anime character gathering energy before casting,
+      solemn focused expression,
+      layered flat light effect building
+    action_level: 1
+    effect_level: 1
+    risk: low
+    stability_score: 9
+    impact_score: 8
+    pairs_with: action.ability.release.v1
+    note: >
+      蓄力段使用本组件而非直接 ability-release，
+      可在不提高动作等级的前提下建立节奏对比（见 Genre=magic 快慢结合）。
