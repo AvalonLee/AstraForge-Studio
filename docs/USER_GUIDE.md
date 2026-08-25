@@ -1,12 +1,12 @@
-# AstraForge Studio User Guide
+# AstraForge Studio · 星铸工坊 使用指南
 
-Version: 1.0.0
+Version: 1.1.0 — Character Universe Expansion
 
 ---
 
-## 1. 什么是 AstraForge Studio
+## 1. 什么是星铸工坊
 
-AstraForge Studio 是一个 AI 驱动的二次元游戏角色 PV 导演系统。
+AstraForge Studio（星铸工坊）是一个 AI 驱动的二次元游戏角色 PV 智能导演系统。
 
 它帮助创作者把：
 

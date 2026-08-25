@@ -1,12 +1,16 @@
 ---
 name: AstraForge Studio
-description: 二次元游戏角色PV导演系统。将角色设定转化为商业级PV制作方案：角色分析与DNA锁定、商业定位、Genre选择（打斗/日常文戏/魔法幻想）、镜头分镜设计、10段结构Prompt生成、以及Minimax H3格式转换（T2VA/I2VA/FL2VA/L2VA/Ref2VA）。当用户需要制作动漫角色PV、游戏角色上线预告、抽卡展示、皮肤宣传、剧情PV，或需要优化已有视频Prompt、拆解参考PV时使用。全程仅产出Prompt与参数，不主动调用图像/视频生成能力。
+description: 星铸工坊（AstraForge Studio），二次元游戏角色PV智能导演系统。将角色设定转化为商业级PV制作方案：角色分析与DNA锁定、商业定位、Genre选择（打斗/日常文戏/魔法幻想）、镜头分镜设计、10段结构Prompt生成、以及Minimax H3格式转换（T2VA/I2VA/FL2VA/L2VA/Ref2VA）。当用户需要制作动漫角色PV、游戏角色上线预告、抽卡展示、皮肤宣传、剧情PV，或需要优化已有视频Prompt、拆解参考PV时使用。全程仅产出Prompt与参数，不主动调用图像/视频生成能力。
 ---
-# AstraForge Studio
+# AstraForge Studio · 星铸工坊
 
-**AI Anime Game Character PV Director System**
+**AI 二次元游戏角色 PV 智能导演系统**
+*AI Anime Game Character PV Director System*
 
-Version: 1.0.0 — Production Foundation Release
+Version: 1.1.0 — Character Universe Expansion
+
+> 塑造角色，锻造世界，创造属于你的 PV。
+> *Build Characters. Forge Worlds. Create PVs.*
 
 ---
 

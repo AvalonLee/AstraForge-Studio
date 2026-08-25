@@ -2,114 +2,217 @@
 
 # ✨ AstraForge Studio
 
-### AI Anime Game Character PV Director System
+## 星铸工坊
 
-**Transform Character Concepts into Commercial Anime PV Production Pipelines**
+### AI 二次元游戏角色 PV 智能导演系统
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+**塑造角色，锻造世界，创造属于你的 PV**
+
+*Build Characters. Forge Worlds. Create PVs.*
+
+![Version](https://img.shields.io/badge/version-1.1.0-blue)
+![Codename](https://img.shields.io/badge/codename-Character%20Universe%20Expansion-8957e5)
 ![AI Skill](https://img.shields.io/badge/AI-Skill-purple)
 ![Domain](https://img.shields.io/badge/domain-Anime%20PV-red)
 ![Status](https://img.shields.io/badge/status-production-green)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 [🚀 Quick Start](docs/INSTALLATION.md) ·
-[📖 Documentation](docs/USER_GUIDE.md) ·
-[🏗 Architecture](docs/ARCHITECTURE.md) ·
-[🧩 Components](library/) ·
+[📖 使用指南](docs/USER_GUIDE.md) ·
+[🏗 系统架构](docs/ARCHITECTURE.md) ·
+[🧩 组件库](library/) ·
 [🧪 Benchmark](benchmark/)
 
 </div>
 
 ---
 
-## 🌌 Overview
+## 1. Skill 简介
 
-AstraForge Studio 是一个 AI 驱动的二次元游戏角色 PV 导演系统。
+星铸工坊是一套面向**二次元游戏、动画角色、AI 视频创作**场景的智能 PV 导演 Skill。
 
-它不是一个 Prompt 生成器，而是把完整的动画 PV 制作流程结构化：
+它把角色侧的输入：
 
-```
-Character Concept
-      ↓
-Commercial Direction
-      ↓
-Visual Design
-      ↓
-Shot Planning
-      ↓
-AI Video Generation Workflow
-```
-
-面向用户：
-
-- 二次元手游开发者
-- 角色设计师
-- AI 视频创作者
-- 动画工作室与创意团队
-
----
-
-## 🎬 它解决什么问题
-
-| 典型痛点 | AstraForge 的解法 |
+| 输入 | |
 |---|---|
-| 有角色设定，但不知道怎么做 PV | Character Intelligence 自动分析角色类型、商业卖点、视觉记忆点 |
-| AI 视频生成容易角色崩坏 | Character DNA Lock 锁定脸 / 发型 / 服装 / 配色 / 标志物 |
-| 镜头缺乏手游商业感 | 内置商业 PV 导演规则：Hook / Beauty Showcase / Signature / Hero Ending |
-| Prompt 很长但效果不好 | Composer 拆分 Shot / Camera / Action / Expression / Style，降低生成风险 |
-| 多角色风格不统一 | Style Stack 三层结构 + 冲突检测自动收敛视觉语言 |
+| 角色设定 | 人物背景 |
+| 外观设计 | 技能设定 |
+| 世界观信息 | |
 
----
+转化为可直接投入制作的输出：
 
-## ✨ Core Systems
-
-| System | Function |
+| 输出 | |
 |---|---|
-| 🧬 Character DNA Lock | 保护角色身份，跨镜头零漂移 |
-| 🎬 PV Director | 生成商业 PV 结构（5s / 15s / 30s） |
-| 🎞 Genre Engine | 打斗 / 日常文戏 / 魔法幻想，含可量化运镜参数 |
-| 👥 Cast Engine | 多角色 PV：画面权重、关系锚定、同框风险建模 |
-| 🎉 Event Engine | 周年 / 联动 / 季节活动 PV，强制 CTA |
-| 🔄 Variation Engine | 同一角色生成多个营销版本 |
-| 🎨 Style Stack | 分层控制视觉语言并检测冲突 |
-| 📝 Prompt Engine | 10 段结构规范 + H3 格式转换（Base / Ref2VA） |
-| 🧪 Quality Engine | 稳定性优先的自动评分与返修 |
-| 📚 Component Library | 可复用的镜头 / 动作 / 表情 / 转场组件 |
+| 商业角色 PV 方案 | 分镜脚本 |
+| 镜头设计 | 动作规划 |
+| 表情设计 | 视觉风格方案 |
+| AI 生成提示词 | 质量评估报告 |
 
 ---
 
-## 🎥 支持的 PV 模式
+## 2. Skill 解决的问题
 
-### 5s Advertisement PV
+### ① 角色不稳定
 
-快速抓取注意力，用于广告投放与短视频平台。
+同一个角色多次生成，会出现脸变化、发型变化、服装变化、武器变化。
 
-```
-Hook → Memory Frame
-```
-
-### 15s Character Release PV（主力模式）
-
-手游新角色上线、Gacha Banner、新英雄公告。
+星铸工坊通过 **Character DNA Lock**（角色 DNA 锁定系统）保证：
 
 ```
-0-3s    HOOK        角色第一印象
-3-6s    IDENTITY    脸 / 发型 / 服装
-6-10s   PERSONALITY 情绪与性格
-10-13s  SIGNATURE   技能 / 武器 / 标志特征
-13-15s  TITLE       最终记忆画面
+角色身份 → 视觉特征 → 核心资产 → 持续一致
 ```
 
-### 30s Story Character PV
+### ② 缺少商业 PV 导演能力
 
-五星角色、剧情角色、周年预告。
+普通生成只有两步：
 
 ```
-Mystery → Reveal → Conflict → Power → Emotion
+Prompt → Image
 ```
+
+星铸工坊走完整导演链路：
+
+```
+角色定位 → 商业目标 → PV 结构 → 镜头语言 → 视觉输出
+```
+
+### ③ 缺少游戏商业思维
+
+星铸工坊不是单纯生成画面，而是同时模拟**游戏 PV 导演**、**动画演出导演**、**宣发策划**三种角色，
+思考的核心问题是：
+
+> 如何让玩家记住这个角色。
 
 ---
 
+## 3. 支持内容类型
+
+### 角色上线 PV — 15 秒
+
+适用：五星角色发布、新角色预告、抽卡宣传
+
+```
+身份建立 → 魅力展示 → 技能释放 → 终极记忆点
+```
+
+### 剧情 PV — 30 秒
+
+适用：主线剧情、角色故事、世界观宣传
+
+```
+悬念 → 冲突 → 情绪高潮 → 剧情钩子
+```
+
+### 商业广告 PV — 5 秒
+
+适用：游戏广告、社媒短视频
+
+重点：第一眼吸引、强视觉冲击、快速记忆
+
+### 多角色 PV — 15 / 30 秒
+
+适用：双人对手戏、组合角色、阵容展示
+
+用**关系**做卖点，而非多个角色各自出场。详见 [👥 多角色 PV](#-多角色-pv)。
+
+### 活动 PV — 15 / 30 秒
+
+适用：周年庆典、联动活动、季节限定
+
+结尾**必须**包含活动名称与时间信息。详见 [🎉 活动 PV](#-活动-pv)。
+
+---
+
+## 4. 核心工作流程
+
+```
+用户需求
+   ↓
+角色分析
+   ↓
+Character DNA 锁定
+   ↓
+商业定位分析
+   ↓
+主题选择
+   ↓
+视觉风格匹配
+   ↓
+镜头 Composer 生成
+   ↓
+质量检测
+   ↓
+输出制作方案
+```
+
+完整 13 段流水线见 [🏗 Production Workflow](#-production-workflow)。
+
+---
+
+## 5. 核心模块
+
+| 模块 | 职责 |
+|---|---|
+| 🧠 **Character Intelligence**<br>角色智能系统 | 角色分析、人设提炼、视觉关键词 |
+| 🧬 **Character DNA Lock**<br>DNA 锁定系统 | 锁定脸部、发型、服装、武器、标志元素 |
+| 🎬 **PV Director**<br>导演系统 | 商业节奏、镜头设计、情绪控制 |
+| 🎞 **PV Composer**<br>Composer 系统 | 生成 Shot List / Camera / Action / Expression / Transition |
+| 👥 **Cast Engine**<br>多角色引擎 | 画面权重、关系锚定、同框风险建模 |
+| 🎉 **Event Engine**<br>活动引擎 | 周年 / 联动 / 季节 PV，强制 CTA |
+| 📚 **Component Library**<br>组件库 | Camera / Action / Expression / Transition / Theme / Style |
+| 🧪 **Quality Engine**<br>质量引擎 | 角色稳定性、风格一致性、商业冲击力、镜头可执行性 |
+
+---
+
+## 6. 用户最佳使用方式
+
+推荐输入格式：
+
+```
+角色名称：
+角色定位：
+性格：
+外观：
+技能：
+世界观：
+目标：
+PV 类型：
+视觉风格：
+```
+
+示例：
+
+```
+创建一个 15 秒五星冰系女性角色上线 PV。
+定位：高稀有度手游角色
+风格：高级二次元商业 PV
+要求：突出角色优雅与力量
+```
+
+系统会在生成前锚定时长与比例（`SESSION_SPEC`），信息不足时先给出补全建议，
+**不会**在信息不充分时直接产出结果。
+
+---
+
+## 7. 适用人群
+
+| 人群 | 场景 |
+|---|---|
+| **游戏团队** | 角色 PV 策划、宣发团队、美术团队 |
+| **AI 创作者** | AI 视频制作、Prompt 工程、角色设计 |
+| **独立开发者** | 游戏 Demo 宣传、角色展示 |
+
+---
+
+## 8. Skill 定位总结
+
+> **AstraForge Studio（星铸工坊）是一名 AI 驱动的二次元游戏 PV 导演，
+> 将角色设定转化为商业级角色宣传内容。**
+
+它不是：❌ Prompt 生成器 ❌ 视频模板库
+它是：✅ AI 角色 PV 导演 ✅ 二次元游戏宣发制作系统 ✅ 商业动画视觉规划工具
+
+---
 ## 🎞 Genre × Theme
 
 Genre 决定**内容类型与镜头节奏**，Theme 决定**商业定位**，两者正交组合。
@@ -397,9 +500,11 @@ cd AstraForge-Studio
 
 ## 📦 Current Release
 
-**AstraForge Studio v1.0.0** — 🟢 Production Foundation Release
+**AstraForge Studio v1.1.0** — 🟢 Character Universe Expansion
 
 包含：Character DNA System · PV Director Framework · Genre Engine · **Cast Engine（多角色）** · **Event Engine（活动 PV）** · Variation Engine · Style Engine · Prompt Engine（10 段规范 + H3 转换）· Quality Engine · Benchmark Suite · Visual Component Library
+
+v1.1 新增：多角色 PV（duo / trio）、活动 PV（周年 / 联动 / 季节）、6 个同框镜头组件、双人 Prompt 模板
 
 ---
 
@@ -425,8 +530,12 @@ MIT License
 
 <div align="center">
 
-**AstraForge Studio**
+**AstraForge Studio · 星铸工坊**
+
+AI 二次元游戏角色 PV 智能导演系统
 
 *Build Characters. Forge Worlds. Create PVs.*
+
+**塑造角色，锻造世界，创造属于你的 PV。**
 
 </div>

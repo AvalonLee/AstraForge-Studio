@@ -1,6 +1,6 @@
 # Architecture
 
-**AstraForge Studio v1.0.0 — 系统架构文档**
+**AstraForge Studio · 星铸工坊 v1.1.0 — 系统架构文档**
 
 ---
 

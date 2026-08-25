@@ -28,6 +28,16 @@ python tools/check_naming.py
 防止历史项目名 `AnimePV-H3` 回流。`CHANGELOG.md` 与 `docs/DEVELOPER_GUIDE.md`
 因需记录更名历史而在允许清单中。
 
+## check_version.py
+
+```bash
+python tools/check_version.py
+```
+
+以 `skill/manifest.yaml` 的 `version` 为准，校验版本号与中文品牌名在
+4 个声明处一致：skill manifest、release manifest、`SKILL.md` 头部、`README.md` 徽章。
+同时校验 `git_tag` 与版本号匹配。
+
 ## validate_templates.py
 
 ```bash

@@ -2,7 +2,13 @@
 
 ---
 
-## v1.x — Foundation
+## v1.1 — Character Universe Expansion ✅ 已发布
+
+多角色 PV（duo / trio）、活动 PV（周年 / 联动 / 季节）、中文品牌名星铸工坊、五校验器体系。
+
+---
+
+## v1.2 — Coverage Completion
 
 当前阶段。重点在补齐广度与验证深度。
 

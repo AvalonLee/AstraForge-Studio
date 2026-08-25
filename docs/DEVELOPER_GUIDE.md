@@ -1,6 +1,6 @@
 # Developer Guide
 
-**AstraForge Studio v1.0.0**
+**AstraForge Studio · 星铸工坊 v1.1.0**
 
 ---
 
@@ -141,7 +141,7 @@ GitHub Actions
     ↓
 Release Candidate
     ↓
-Tag v1.0.0
+Tag v1.1.0
     ↓
 GitHub Release
     ↓
@@ -155,6 +155,7 @@ Archive Package
 | Tag | 含义 |
 |---|---|
 | `v1.0.0` | Initial Production Release |
+| `v1.1.0` | Character Universe Expansion（多角色 + 活动 PV） |
 | `v1.1.0` | 新增组件 |
 | `v1.2.0` | 新增 PV 模板 |
 | `v2.0.0` | 重大架构升级 |

@@ -1,6 +1,50 @@
 # Changelog
 
-All notable changes to AstraForge Studio are documented in this file.
+All notable changes to AstraForge Studio（星铸工坊）are documented in this file.
+
+---
+
+## v1.1.0 — Character Universe Expansion
+
+角色宇宙扩展。核心是把系统从「单角色 PV 导演」扩展为「角色宇宙导演」，
+同时补齐可生产性（frontmatter / 模板缺陷 / 校验体系）。
+
+### Added
+
+- **中文品牌名**：星铸工坊。定位语「AI 二次元游戏角色 PV 智能导演系统」
+- **Cast Engine（多角色 PV）** — `core/multi-character/`
+  - duo / trio / squad 阵容，画面权重 `sum==70` 且 `lead >= second × 1.5`
+  - identity_bleed 风险建模、contrast 准入闸门、同框动作等级放大
+  - 稳定性按阵容规模封顶 `{1:35, 2:32, 3:28, 4:24}`
+  - `templates/cast-duo-15s.md` 双人完整 Prompt 模板
+  - 6 个同框镜头组件，均带 `negative_addon` 禁止特征互换
+- **Event Engine（活动 PV）**
+  - 周年 / 联动 / 季节三类 Theme，CTA 强制且须含活动时间
+  - `director/event-director.md`
+  - `costume_variant_exception` 受控放行限定造型
+- **可生产性修复**
+  - `SKILL.md` 补 frontmatter（此前缺失导致 skill 无法被发现与触发）
+  - 三个 genre 模板末段补齐机位标注（继承自前身 skill 的缺陷）
+  - `examples/walkthrough-frostblade/` 端到端实测样例
+- **校验体系**
+  - `tools/validate_templates.py`、`tools/validate_benchmarks.py`、`tools/check_links.py`
+  - 全部接入 CI，共 5 个校验器
+- **工程规范**
+  - `docs/BRANCH_POLICY.md`：禁止直接推送 main，经 dev + PR
+  - `.githooks/pre-push` 本地守卫 + GitHub Branch Protection 双层强制
+
+### Changed
+
+- `group battle` 由笼统 `level_4 forbidden` 细分：无序混战仍禁止，结构化多角色可控
+- Genre 动作等级上限修正（`daily` 1→2）并引入 `genre_ceiling_uplift`
+- 全部 61 个组件增加显式 `slug` 字段
+- Benchmark 覆盖度 85 → 93（8 例，含首个男性角色 / 多角色 / 活动 PV）
+
+### Known Limitations
+
+- squad（4 人）规则已定义但无用例
+- 联动 / 季节 Theme 已定义但无用例
+- 男性角色仅有表情组件，尚无专属 Theme
 
 ---
 
@@ -30,7 +74,7 @@ v1.0.0 起以 AstraForge Studio 名义重新起版，定位为 Production Founda
 - `composer/` → `director/`，`output-schema/` → `schema/`
 - 质量评分权重由「视觉冲击优先」调整为「生成稳定性优先」
 
-### Added (第二批 — 从原始 skill 与实证案例回填)
+### Added (Prompt 生产资产回填)
 
 从 `animepv-h3` 原始 skill 与三份已验证成片案例中提炼补齐，
 让项目从「架构规范」变为「可直接产出 Prompt 的生产系统」：
@@ -60,69 +104,7 @@ v1.0.0 起以 AstraForge Studio 名义重新起版，定位为 Production Founda
   - `references/cases/proven-cel-baseline.yaml` — 赛璐璐三套可量化参数基线
   - `references/extracted-rules.md` — 从实证案例提取的 11 类规则
 
-### Added (第三批 — Benchmark 扩展与一致性加固)
+### Known Limitations (v1.0.0 当时)
 
-- **Benchmark 用例实体化** — 此前 3 个用例仅存在于 README 表格，现落为机器可校验 YAML
-  - `benchmark/test-cases/bm-01..03` — 回填既有 Theme 维度用例
-  - `benchmark/test-cases/bm-04-male-knight-action.yaml` — **首个男性角色** + Genre=action
-  - `benchmark/test-cases/bm-05-academy-daily.yaml` — Genre=daily
-  - `benchmark/test-cases/bm-06-magic-girl-transform.yaml` — Genre=magic + 风险预算压测
-  - 覆盖度：3 Genre × 4 Theme × 2 性别，评分 85 → 90
-- **组件 slug 规范** — 全部 52 个组件新增显式 `slug` 字段作为唯一规范短名
-- **新增组件**
-  - `camera.environment.reveal.v1` / `action.ability.preparation.v1`（此前被引用但未定义）
-  - `expression.composed.gaze.v1` / `battle.resolve.v1` / `detached.stare.v1`（男性向）
-  - 8 个表情组件新增 `gender_neutral_prompt_block`
-- **Risk Budget Gate** — `core/quality-engine/risk-budget-gate.yaml`
-  - Theme 推荐仅为候选，须经 `min(genre 上限, 时长上限) + uplift` 过滤
-  - `genre_ceiling_uplift`：magic+30s+SSR 与 action+30s 可提升至 action_level 3
-  - 组件降级替换表
-- **DNA Lock transformation_exception** — 变身与 costume_change 禁令的受控例外
-- **tools/validate_benchmarks.py** — 校验用例与库的一致性，已接入 CI
-
-### Fixed
-
-- `daily` genre 动作等级上限由 1 修正为 2（此前与自身模板 `confident-walk` 矛盾）
-- `magic` genre 上限使 `transformation` 准入条件不可达 → 引入 uplift 机制
-- 组件短名从 id 反推不可靠（`hero-low_angle` vs 实际引用 `hero-low-angle`）→ 改用显式 slug
-- 全仓库行尾归一化为 LF（`.gitattributes` + renormalize）
-
-### Added (第四批 — 多角色与活动 PV)
-
-补齐两类真实功能缺口。二者都不是「加组件」能解决的，
-因为它们与既有单角色假设存在结构性冲突，需先建模冲突本身。
-
-- **Cast Engine（多角色）** — `core/multi-character/`
-  - `cast-schema.yaml` — 阵容定义（成员 / 关系 / 权重 / 构图锚位）
-  - `weight-rules.yaml` — 画面权重分配：`sum==70` 且 `lead >= second×1.5`
-  - `cast-risk-rules.yaml` — 多角色专属风险建模
-- **Event Engine（活动 PV）**
-  - `theme.anniversary-celebration` / `collaboration-event` / `seasonal-event`
-  - `director/event-director.md` — CTA 强制、活动专属情绪曲线
-- **导演器**
-  - `director/multi-character-composer.md` — duo / trio 结构，关系→镜头映射
-- **`templates/cast-duo-15s.md`** — 双人 15s 完整可替换 Prompt
-  （含关系→构图替换表、5s/30s 适配、7 项风险自检）
-- **新增 6 个多角色镜头组件**
-  - `duo-standoff` / `back-to-back` / `shoulder-to-shoulder`
-  - `split-frame-duo` / `duo-formation` / `mirrored-pose`
-  - 均带 `negative_addon` 显式禁止角色特征互换
-- **Benchmark**
-  - BM-07 Duo Rival（首个多角色，90 PASS）
-  - BM-08 Anniversary Trio（首个活动 PV，84 GOOD）
-  - 校验器新增 cast 权重 / contrast / 稳定性封顶 / 活动 CTA 断言
-  - 覆盖度 90 → 93
-
-### Changed
-
-- `group battle` 由笼统的 level_4 forbidden 细分为：
-  无序混战仍禁止；结构化多角色展示（各成员独占 Shot + 低动作等级同框）可控
-- 稳定性评分按阵容规模封顶 `{1:35, 2:32, 3:28, 4:24}`，
-  避免多角色方案获得虚高分数掩盖真实风险
-- DNA Lock 新增 `costume_variant_exception`，受控放行季节/联动限定造型
-
-### Known Limitations
-
-- 多角色仅验证 duo / trio；squad（4 人）已定义规则但无用例
-- 活动 PV 仅验证周年；联动 / 季节已定义 Theme 但无用例
-- 男性角色仅有表情组件，尚无专属 Theme
+- Benchmark 覆盖偏女性角色，缺少多角色 / 群像 / 活动 PV 用例
+- Theme 库仍在扩展中

@@ -1,6 +1,6 @@
 # Configuration Guide
 
-**AstraForge Studio v1.0.0**
+**AstraForge Studio · 星铸工坊 v1.1.0**
 
 AstraForge 使用基于 YAML 的配置。
 
@@ -23,7 +23,8 @@ config/
 ```yaml
 project:
   name: AstraForge Studio
-  version: 1.0.0
+  name_zh: 星铸工坊
+  version: 1.1.0
 ```
 
 ---
