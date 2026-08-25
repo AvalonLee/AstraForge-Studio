@@ -1,0 +1,5 @@
+execution:
+  pipeline:
+    - analysis
+    - composition
+    - quality_check
