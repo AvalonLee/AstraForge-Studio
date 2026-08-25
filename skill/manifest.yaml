@@ -8,6 +8,9 @@ skill:
     - game_PV
     - character_trailer
   capabilities:
+    - genre_selection
+    - prompt_structure_10_section
+    - h3_format_conversion
     - character_analysis
     - character_dna_lock
     - pv_director
@@ -15,6 +18,16 @@ skill:
     - style_stack
     - quality_engine
     - benchmark_suite
+  genres:
+    - action
+    - daily
+    - magic
+  h3_modes:
+    - T2VA
+    - I2VA
+    - FL2VA
+    - L2VA
+    - Ref2VA
   supported_pv_modes:
     - 5s_advertisement
     - 15s_character_release

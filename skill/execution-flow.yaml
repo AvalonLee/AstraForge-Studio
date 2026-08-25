@@ -1,24 +1,42 @@
 execution:
   pipeline:
+    - step0_session_spec
     - task_orchestration
     - character_intelligence
     - character_dna_lock
     - commercial_director
+    - genre_selection
     - theme_engine
     - variation_engine
     - style_stack
     - composer
     - library_matching
     - shot_planning
+    - prompt_structure_validation
     - h3_prompt_engine
     - quality_check
     - auto_revision
+    - generation_gate
     - output_package
+
+  session_spec:
+    required_before_generation: true
+    fields:
+      - duration
+      - aspect_ratio
+
+  generation_gate:
+    require_explicit_user_confirmation: true
+    note: system outputs prompts and parameters only, never invokes generation
+
   fallback:
     missing_style: modern-cel
     missing_duration: 15s
     missing_pv_mode: 15s_release
+    missing_genre: daily
     style_conflict_resolution: remove_conflicting_style
+    insufficient_character_info: request_clarification
+
   quality_first:
     generation_stability: 35
     character_consistency: 25
@@ -26,9 +44,52 @@ execution:
     visual_impact: 10
     commercial_value: 10
     art_direction: 5
+
   risk_limits:
+    max_action_level_5s: 1
     max_action_level_15s: 2
     max_action_level_30s: 3
     max_effect_level_15s: 2
     max_effect_level_legendary: 3
     max_camera_transition_15s: 4
+
+  genre_params:
+    action:
+      shot_duration: 0.3-0.8s
+      push_speed: 0.4/s
+      shake: 8-12px / 0.2-0.5s on hit only
+      bpm: 140-160
+    daily:
+      shot_duration: 1-2.5s
+      push_speed: 0.2/s
+      pan_speed: "<=0.25deg/s"
+      shake: none
+      bpm: 100-120
+    magic:
+      charge_duration: 1.5-2.5s
+      burst_duration: 0.3-0.8s
+      orbit_angle: 30-45deg
+      burst_shake: 5-8px
+      bpm: 120-140
+
+  h3_output:
+    base_modes: [T2VA, I2VA, FL2VA, L2VA]
+    base_fields:
+      - integrated_multimodal_description
+      - overall_soundscape
+      - non_diegetic_music
+    ref2va_fields:
+      - subject_definitions
+      - summary
+      - retention_analysis
+      - detailed_description
+      - overall_soundscape
+      - non_diegetic_music
+    shot_elements:
+      - composition
+      - subjects
+      - environment
+      - actions
+      - camera
+      - sound
+    language: english for rewrite sections, preserve original for dialogue and on-screen text

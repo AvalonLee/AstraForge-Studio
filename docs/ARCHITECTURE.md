@@ -19,6 +19,8 @@ Commercial Direction Layer
  ↓
 Creative Planning Layer
  ↓
+Prompt Engineering Layer
+ ↓
 Generation Layer
  ↓
 Quality Layer
@@ -240,6 +242,22 @@ Theme → Variation → Style Stack → Composer
 - Rule 02 — Variation 必须符合角色（如「黑暗魔女 + 甜偶像皮肤 PV」→ compatibility LOW，自动调整）
 - Rule 03 — 商业目标一致（抽卡转化不能输出纯剧情慢镜头）
 
+### Genre Engine
+
+Genre 与 Theme 正交：Genre 决定**内容类型与镜头节奏**，Theme 决定**商业定位**。
+
+```
+Genre × Theme × Variation × Style = Final PV Direction
+```
+
+| Genre | 单镜头 | 推镜速度 | 震动 | BPM |
+|---|---|---|---|---|
+| 打斗 | 0.3-0.8s | 0.4/s | 8-12px / 0.2-0.5s（仅命中） | 140-160 |
+| 日常文戏 | 1-2.5s | 0.2/s | 无 | 100-120 |
+| 魔法幻想 | 蓄力 1.5-2.5s / 爆发 0.3-0.8s | 匀速环绕 30-45° | 5-8px（爆发） | 120-140 |
+
+**不可混用镜头节奏**。详见 `library/genre/genre-library.md`。
+
 ### Style Stack
 
 Style 不是单层选择，而是三层结构：
@@ -323,6 +341,34 @@ Component Score = Character Fit + Theme Match + Commercial Value - Risk
 ```
 Composer → Shot Plan → Quality Check → Risk Analyzer → Revision → Final Shot Plan
 ```
+
+---
+
+## Layer 5.5 — Prompt Engineering
+
+Composer 产出 Shot Plan 后，进入 Prompt 工程层。
+
+### 10 段结构规范
+
+生成任何 Prompt 前**必读** `core/prompt-structure.md`。缺段会导致视频输出失控。
+
+```
+1 开头总述   2 角色设定   3 主题设定   4 音乐        5 画面风格
+6 动态与转场 7 分时间段镜头设计（最核心） 8 表演要求  9 避免项  10 核心目标
+```
+
+### 风格锚定
+
+`core/style-anchor.md` 提供赛璐璐锚定语（中英双版），必须贯穿所有镜头。
+
+### H3 输出格式
+
+| 模式 | 字段数 | 规范 |
+|---|---|---|
+| T2VA / I2VA / FL2VA / L2VA | 3（integrated_multimodal_description / overall_soundscape / non_diegetic_music） | `schema/h3-base.md` |
+| Ref2VA | 6（+ subject_definitions / summary / retention_analysis） | `schema/h3-ref2va.md` |
+
+每个镜头必须包含六要素：composition / subjects / environment / actions / camera / sound
 
 ---
 
@@ -460,13 +506,13 @@ Character Identity > Commercial Goal > Visual Effect > Complex Action
 |---|---|
 | `docs/` | 项目文档 |
 | `skill/` | AI Skill 加载层 |
-| `core/` | 核心规则（DNA / Style / Quality / Variation） |
+| `core/` | 核心规则（DNA / Style / Quality / Variation / Prompt 结构 / 风格锚定 / 会话协议） |
 | `workflow/` | 任务调度 |
 | `director/` | 导演系统 |
-| `library/` | 视觉组件 |
+| `library/` | 视觉组件（含 genre 内容类型层） |
 | `templates/` | 商业模板 |
 | `references/` | 案例库 |
 | `benchmark/` | 回归测试 |
-| `schema/` | 数据协议 |
+| `schema/` | 数据协议 + H3 输出格式规范 |
 | `examples/` | 示例输出 |
 | `release/` | 发布信息 |

@@ -27,3 +27,11 @@ python tools/check_naming.py
 
 防止历史项目名 `AnimePV-H3` 回流。`CHANGELOG.md` 与 `docs/DEVELOPER_GUIDE.md`
 因需记录更名历史而在允许清单中。
+
+## check_links.py
+
+```bash
+python tools/check_links.py
+```
+
+校验所有 Markdown 相对链接指向真实存在的文件。跳过外链、锚点与 mailto。

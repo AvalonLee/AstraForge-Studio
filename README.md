@@ -67,8 +67,10 @@ AI Video Generation Workflow
 |---|---|
 | 🧬 Character DNA Lock | 保护角色身份，跨镜头零漂移 |
 | 🎬 PV Director | 生成商业 PV 结构（5s / 15s / 30s） |
+| 🎞 Genre Engine | 打斗 / 日常文戏 / 魔法幻想，含可量化运镜参数 |
 | 🔄 Variation Engine | 同一角色生成多个营销版本 |
 | 🎨 Style Stack | 分层控制视觉语言并检测冲突 |
+| 📝 Prompt Engine | 10 段结构规范 + H3 格式转换（Base / Ref2VA） |
 | 🧪 Quality Engine | 稳定性优先的自动评分与返修 |
 | 📚 Component Library | 可复用的镜头 / 动作 / 表情 / 转场组件 |
 
@@ -103,6 +105,40 @@ Hook → Memory Frame
 ```
 Mystery → Reveal → Conflict → Power → Emotion
 ```
+
+---
+
+## 🎞 Genre × Theme
+
+Genre 决定**内容类型与镜头节奏**，Theme 决定**商业定位**，两者正交组合。
+
+| Genre | 节奏 | 单镜头 | 推镜 | BPM | 参考风格 |
+|---|---|---|---|---|---|
+| 打斗 Action | 快切顿挫 | 0.3-0.8s | 0.4/s | 140-160 | 龙珠Z / 咒术回战 |
+| 日常文戏 Daily | 舒缓静谧 | 1-2.5s | 0.2/s | 100-120 | 魔卡少女樱 / 堀与宫村 |
+| 魔法幻想 Magic | 快慢结合 | 蓄力 1.5-2.5s / 爆发 0.3-0.8s | 环绕 30-45° | 120-140 | 美少女战士 |
+
+每个 Genre 都提供**完整可替换的 15s Prompt 模板**，以及 5s / 10s 适配方案。
+
+---
+
+## 📝 Prompt Engineering
+
+10 段结构规范确保输出不失控：
+
+```
+1 开头总述   2 角色设定   3 主题设定   4 音乐        5 画面风格
+6 动态与转场 7 分时间段镜头设计（最核心） 8 表演要求  9 避免项  10 核心目标
+```
+
+H3 格式转换：
+
+| 模式 | 输入 | 字段数 |
+|---|---|---|
+| T2VA / I2VA / FL2VA / L2VA | 文本 / 首帧 / 首末帧 / 末帧 | 3 |
+| Ref2VA | 多参考素材（图/视频/音频） | 6 |
+
+每个镜头包含六要素：`composition` / `subjects` / `environment` / `actions` / `camera` / `sound`
 
 ---
 
@@ -201,6 +237,8 @@ AstraForge 的评分权重刻意把「能不能稳定生成」放在第一位：
 - **Transition** — Title Reveal / UI Card / Particle Reveal / Character Freeze
 - **Theme** — Character Release / Gacha Legendary / Dark Witch / Sweet Y2K / Cool Warrior
 - **Style** — Modern Cel / Mobile Game Premium / Fantasy Anime / Y2K Graphic / Dark Cinematic Cel
+- **Genre** — 打斗 Action / 日常文戏 Daily / 魔法幻想 Magic（可量化参数）
+- **Persona** — 性感 / 可爱 / 帅气 / 冷酷 / 热血 / 呆萌（叠加于 Genre 之上）
 
 ---
 
@@ -217,7 +255,7 @@ astraforge-studio/
 │   └── variation-engine/
 ├── workflow/             任务调度
 ├── director/             导演系统
-├── library/              视觉组件
+├── library/              视觉组件 + genre
 ├── templates/            商业模板
 ├── references/           案例库
 ├── benchmark/            回归测试
@@ -264,6 +302,10 @@ Skill Update → Benchmark → Quality Check → Regression Test → Release
 | [Installation](docs/INSTALLATION.md) | 安装部署 |
 | [Configuration](docs/CONFIGURATION.md) | 配置说明 |
 | [Contributing](docs/CONTRIBUTING.md) | 贡献指南 |
+| [Prompt Structure](core/prompt-structure.md) | 10 段结构规范（生成前必读） |
+| [Genre Library](library/genre/genre-library.md) | 三类内容 Genre 参数 |
+| [H3 Base](schema/h3-base.md) / [H3 Ref2VA](schema/h3-ref2va.md) | H3 输出格式规范 |
+| [Extracted Rules](references/extracted-rules.md) | 从实证案例提取的规则 |
 | [Changelog](CHANGELOG.md) | 版本记录 |
 | [Roadmap](ROADMAP.md) | 路线规划 |
 
@@ -284,7 +326,7 @@ cd AstraForge-Studio
 
 **AstraForge Studio v1.0.0** — 🟢 Production Foundation Release
 
-包含：Character DNA System · PV Director Framework · Variation Engine · Style Engine · Quality Engine · Benchmark Suite · Visual Component Library
+包含：Character DNA System · PV Director Framework · Genre Engine · Variation Engine · Style Engine · Prompt Engine（10 段规范 + H3 转换）· Quality Engine · Benchmark Suite · Visual Component Library
 
 ---
 

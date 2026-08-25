@@ -38,7 +38,33 @@ Style Stack 分三层控制：Base Style + Premium Layer + Character Style。
 
 ---
 
-## 3. 核心能力
+## 3. 交互协议
+
+AstraForge 采用**交互式生产流程**，不假设用户意图。
+
+### Step0 — 锚定 SESSION_SPEC
+
+每次新会话首先确认时长与比例，记为 `SESSION_SPEC`，后续步骤直接引用：
+
+```yaml
+SESSION_SPEC:
+  duration: 15s
+  aspect_ratio: "16:9"
+```
+
+### 信息充分性校验
+
+输入过少时**先给结构化完善建议**，引导补充后再继续，绝不直接产出脏结果。
+
+### Generation Gate
+
+所有图片/视频生成必须经用户**显式二次确认**。
+本系统全程仅产出 Prompt 与参数，不调用任何生成能力。
+
+详见 [core/session-spec.md](core/session-spec.md)。
+
+---
+## 4. 核心能力
 
 ### Character Intelligence
 
@@ -67,7 +93,7 @@ Base Style + Premium Layer + Special Layer
 
 ---
 
-## 4. 内置知识系统
+## 5. 内置知识系统
 
 - **Camera Library** — Eye Reveal / Beauty Showcase / Hero Low Angle / Detail Macro / Hand To Camera / Action Tracking / Final Pose
 - **Action Library** — Hair Flip / Head Turn / Confident Walk / Hand Gesture / Weapon Reveal / Ability Release / Transformation / Signature Pose
@@ -75,10 +101,26 @@ Base Style + Premium Layer + Special Layer
 - **Transition Library** — Flash Cut / Anime Impact / Graphic Panel / UI Card / Glitch Data / Particle Reveal / Title Reveal / Character Freeze
 - **Theme Library** — Character Release / Gacha Legendary / Cool Female JRPG / Sweet Y2K / Academy / Magic Girl / Cyberpunk
 - **Style Library** — Modern Cel / Retro Cel / Y2K Graphic / Fantasy Anime / Mobile Game Premium / Dark Cinematic Cel
+- **Genre Library** — 打斗 / 日常文戏 / 魔法幻想（含可量化帧率、运镜、转场、动态参数）
+- **Persona Tags** — 性感 / 可爱 / 帅气 / 冷酷 / 热血 / 呆萌（叠加于 Genre 之上）
+
+### 可直接使用的生产资产
+
+| 资产 | 说明 |
+|---|---|
+| [core/prompt-structure.md](core/prompt-structure.md) | 10 段结构规范 + 输出前自检清单（生成前必读） |
+| [core/style-anchor.md](core/style-anchor.md) | 赛璐璐风格锚定语（中英双版） |
+| [templates/genre-action-15s.md](templates/genre-action-15s.md) | 打斗 15s 完整可替换 Prompt |
+| [templates/genre-daily-15s.md](templates/genre-daily-15s.md) | 日常文戏 15s 完整可替换 Prompt |
+| [templates/genre-magic-15s.md](templates/genre-magic-15s.md) | 魔法幻想 15s 完整可替换 Prompt |
+| [director/storyboard-4shot.md](director/storyboard-4shot.md) | 4 镜头连贯分镜脚本 |
+| [director/character-card-template.md](director/character-card-template.md) | 角色设定卡 + 出图 Prompt |
+| [director/prompt-audit.md](director/prompt-audit.md) | 已有 Prompt 诊断 |
+| [references/extracted-rules.md](references/extracted-rules.md) | 从实证案例提取的 11 类规则 |
 
 ---
 
-## 5. 用户最佳使用方式
+## 6. 用户最佳使用方式
 
 ### 方法 1：直接创建角色 PV
 
@@ -117,18 +159,43 @@ Base Style + Premium Layer + Special Layer
 
 ---
 
-## 6. 工作流执行框架
+## 7. Genre：内容类型层
+
+Genre 与 Theme 正交。Genre 决定**内容类型与镜头节奏**，Theme 决定**商业定位**。
+
+```
+Genre × Theme × Variation × Style = Final PV Direction
+```
+
+| Genre | 节奏 | 单镜头 | BPM | 模板 |
+|---|---|---|---|---|
+| 打斗 Action | 快切顿挫 | 0.3-0.8s | 140-160 | [genre-action-15s.md](templates/genre-action-15s.md) |
+| 日常文戏 Daily | 舒缓静谧 | 1-2.5s | 100-120 | [genre-daily-15s.md](templates/genre-daily-15s.md) |
+| 魔法幻想 Magic | 快慢结合 | 蓄力 1.5-2.5s / 爆发 0.3-0.8s | 120-140 | [genre-magic-15s.md](templates/genre-magic-15s.md) |
+
+**不可混用镜头节奏**。详见 [library/genre/genre-library.md](library/genre/genre-library.md)。
+
+叠加 Persona 风格标签（性感 / 可爱 / 帅气 / 冷酷 / 热血 / 呆萌）微调表情、光影、肢体语言，
+详见 [library/style/persona-tags.md](library/style/persona-tags.md)。
+
+---
+
+## 8. 工作流执行框架
 
 ```
 USER REQUEST
     ↓
+STEP0 SESSION_SPEC     锚定时长 + 比例
+    ↓
 TASK ORCHESTRATOR      任务判断
     ↓
-CHARACTER ANALYZER     角色理解
+CHARACTER ANALYZER     角色理解（信息不足先补全）
     ↓
 CHARACTER DNA LOCK     身份锁定
     ↓
 COMMERCIAL DIRECTOR    商业定位
+    ↓
+GENRE SELECTOR         内容类型（打斗/文戏/魔法）
     ↓
 THEME ENGINE           选择 PV 方向
     ↓
@@ -142,18 +209,32 @@ LIBRARY MATCHER        调用组件
     ↓
 SHOT PLANNER           生成分镜
     ↓
-H3 PROMPT ENGINE       生成视频 Prompt
+PROMPT STRUCTURE       10 段结构规范（必读）
+    ↓
+H3 PROMPT ENGINE       转 Base 3 字段 / Ref2VA 6 字段
     ↓
 QUALITY CHECK          稳定性评估
     ↓
 AUTO REVISION          自动优化
     ↓
+[GENERATION GATE]      等待用户显式二次确认
+    ↓
 OUTPUT PACKAGE         最终制作文档
 ```
 
+### H3 输出模式
+
+| 模式 | 输入 | 字段数 | 规范 |
+|---|---|---|---|
+| T2VA | 纯文本 | 3 | [schema/h3-base.md](schema/h3-base.md) |
+| I2VA | 首帧图 | 3 | 同上 |
+| FL2VA | 首帧 + 末帧 | 3 | 同上 |
+| L2VA | 末帧 | 3 | 同上 |
+| Ref2VA | 多参考素材 | 6 | [schema/h3-ref2va.md](schema/h3-ref2va.md) |
+
 ---
 
-## 7. 输出内容
+## 9. 输出内容
 
 | 产物 | 说明 |
 |---|---|
@@ -166,7 +247,7 @@ OUTPUT PACKAGE         最终制作文档
 
 ---
 
-## 8. 使用原则
+## 10. 使用原则
 
 1. **Character First** — 角色永远优先。
 2. **Commercial Before Complexity** — 商业表达优先于复杂动作。
@@ -176,7 +257,7 @@ OUTPUT PACKAGE         最终制作文档
 
 ---
 
-## 9. 定位总结
+## 11. 定位总结
 
 AstraForge Studio：
 
@@ -191,3 +272,4 @@ AstraForge Studio：
 > AstraForge Studio 是一个面向二次元游戏与动画行业的 AI 角色 PV 导演系统，
 > 通过角色智能分析、商业 PV 导演流程、组件化视觉库和自动质量控制，
 > 将角色设定转化为可生产的视频方案。
+
