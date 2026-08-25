@@ -278,6 +278,10 @@ astraforge-studio/
 
 详见 [examples/](examples/)。
 
+**端到端实测样例**：[examples/walkthrough-frostblade/](examples/walkthrough-frostblade/)
+完整走通 Step0 → Quality Report 的真实产出（冷艳冰系女剑士 / 打斗 / 15s），
+含 Character DNA、Shot List、成品 Prompt 与质量报告。
+
 ---
 
 ## 🧪 Benchmark System
