@@ -28,6 +28,21 @@ python tools/check_naming.py
 防止历史项目名 `AnimePV-H3` 回流。`CHANGELOG.md` 与 `docs/DEVELOPER_GUIDE.md`
 因需记录更名历史而在允许清单中。
 
+## validate_templates.py
+
+```bash
+python tools/validate_templates.py
+```
+
+校验 `templates/genre-*.md` 是否达到可生产状态：
+
+1. 存在 `完整可替换模板` 代码块
+2. 10 段结构齐全
+3. **每个时间分段都有 `机位：` 标注**（原始 skill 三个模板的末段均遗漏）
+4. 时间轴连续无缝隙，覆盖完整时长
+5. 相邻镜头不复用同一机位
+6. 占位符为 `<...>` 形式，可机械替换
+
 ## validate_benchmarks.py
 
 ```bash
