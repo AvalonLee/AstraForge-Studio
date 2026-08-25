@@ -5,6 +5,9 @@ Template ID: `template.cast.duo.15s.v1`
 
 > 生成前必须先读 [core/prompt-structure.md](../core/prompt-structure.md) 与
 > [director/multi-character-composer.md](../director/multi-character-composer.md)。
+>
+> 默认 Base Style：`modern-cel`。如需厚涂 / 水彩国风 / 矢量潮流 / 韩漫 / 美漫，
+> 将下方赛璐璐锚定与禁止项替换为 [core/style-anchor.md](../core/style-anchor.md) 中对应锚定。
 
 ---
 

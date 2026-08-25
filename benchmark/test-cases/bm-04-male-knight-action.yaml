@@ -20,7 +20,7 @@ expected_routing:
   character_type: male_cool
   persona_tag: 冷酷
   genre: action
-  theme: character-release
+  theme: male-knight-release
   variation: combat.showcase.v1
   template: genre-action-15s
   style_stack:
@@ -38,7 +38,7 @@ genre_params_asserted:
 expected_components:
   camera: [eye-reveal, action-tracking, hero-low-angle, final-pose]
   action: [confident-walk, weapon-reveal, ability-release, signature-pose]
-  expression: [cool-gaze, confident-smirk]
+  expression: [composed-gaze, battle-resolve]
   transition: [flash-cut, anime-impact, title-reveal]
 
 risk_budget:
@@ -55,6 +55,9 @@ scores:
   art_direction: 4
   final_score: 91
   decision: PASS
+
+notes:
+  - 路由升级为 male-knight-release，与 v1.2 男性 Theme 对齐
 
 issues_found:
   - id: Issue-03

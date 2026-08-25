@@ -2,8 +2,8 @@ skill:
   name: AstraForge Studio
   name_zh: 星铸工坊
   tagline_zh: AI 二次元游戏角色 PV 智能导演系统
-  version: 1.1.0
-  release: Character Universe Expansion
+  version: 1.2.0
+  release: 2D Style Expansion
   type: director
   domain: 
     - anime
@@ -26,6 +26,14 @@ skill:
     - action
     - daily
     - magic
+  base_2d_styles:
+    - modern-cel
+    - retro-cel
+    - painterly-anime
+    - watercolor-ink
+    - vector-flat
+    - korean-manhwa
+    - western-comic
   h3_modes:
     - T2VA
     - I2VA

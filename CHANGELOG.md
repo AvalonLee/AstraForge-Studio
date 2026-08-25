@@ -4,6 +4,43 @@ All notable changes to AstraForge Studio（星铸工坊）are documented in this
 
 ---
 
+## v1.2.0 — 2D Style Expansion
+
+视觉风格扩展：从单一赛璐璐扩展为 7 套 2D base style，同时补齐男性角色主题与角色图 Prompt Gate。
+
+### Added
+
+- **2D 多画风体系**
+  - 7 个 base style：`modern-cel` / `retro-cel` / `painterly-anime` / `watercolor-ink` / `vector-flat` / `korean-manhwa` / `western-comic`
+  - `core/style-anchor.md` 重写为 2D 风格锚定语模板库，每个 base 含中英锚定与专属禁止项
+  - `library/style/style-library.yaml` 新增 5 个 base 组件与 `motion-comic` 呈现层
+  - `core/style-engine/style-conflict-rules.yaml` 新增 conflict.004-007，防 2D base 中途互切与跨形态混搭
+  - `core/style-engine/style-priority-rules.md` 增加 Base Style 选择规则（按角色美术语言）
+  - H3 schema 与 `core/h3-generation-rules.md` 由「赛璐璐硬编码」改为「所选 base 锚定贯穿」
+  - PV 模板与角色卡模板参数化：默认 `modern-cel`，可替换为其他 2D base
+- **男性角色主题**
+  - `library/theme/theme-library.yaml` 新增 `male-suit-release` / `male-samurai-release` / `male-knight-release`
+  - 角色路由新增 `male_cool` / `male_hotblooded` / `male_mature`
+  - 表情组件 `composed-gaze` / `battle-resolve` / `detached-stare`
+  - Benchmark BM-09（Male Suit Elegance 97）、BM-10（Male Samurai Combat 93），BM-04 升级为骑士主题
+- **角色图 Prompt Gate**
+  - 交互协议 Step0-2 重构：先确认角色与风格、输出角色设定图 Prompt，再锚定 `SESSION_SPEC`
+  - `director/character-card-template.md` 支持按 base style 参数化
+
+### Changed
+
+- 默认 `modern-cel` 不变，未指定其他 base 时行为向后兼容
+- `core/prompt-structure.md` 与模板的默认禁止项补充欧美卡通反向排除（base = western-comic 时反转）
+- `docs/ARCHITECTURE.md`、`docs/USER_GUIDE.md`、`docs/CONFIGURATION.md` 同步多画风说明
+
+### Known Limitations
+
+- 尚未提供 2D 多画风专项 Benchmark 用例
+- 3D 形态（三渲二 / 写实 CG / 实拍 VFX）仅列入 roadmap，未进入 P0
+- 2D 内 planned 美术细节（fantasy-luxury / sci-fi-anime / urban-neon / historical-anime 等）待后续版本
+
+---
+
 ## v1.1.0 — Character Universe Expansion
 
 角色宇宙扩展。核心是把系统从「单角色 PV 导演」扩展为「角色宇宙导演」，
@@ -108,3 +145,7 @@ v1.0.0 起以 AstraForge Studio 名义重新起版，定位为 Production Founda
 
 - Benchmark 覆盖偏女性角色，缺少多角色 / 群像 / 活动 PV 用例
 - Theme 库仍在扩展中
+
+
+
+

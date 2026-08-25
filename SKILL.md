@@ -1,13 +1,13 @@
 ---
 name: AstraForge Studio
-description: 星铸工坊（AstraForge Studio），二次元游戏角色PV智能导演系统。将角色设定转化为商业级PV制作方案：角色分析与DNA锁定、商业定位、Genre选择（打斗/日常文戏/魔法幻想）、镜头分镜设计、10段结构Prompt生成、以及Minimax H3格式转换（T2VA/I2VA/FL2VA/L2VA/Ref2VA）。当用户需要制作动漫角色PV、游戏角色上线预告、抽卡展示、皮肤宣传、剧情PV，或需要优化已有视频Prompt、拆解参考PV时使用。全程仅产出Prompt与参数，不主动调用图像/视频生成能力。
+description: 星铸工坊（AstraForge Studio），二次元游戏角色PV智能导演系统。将角色设定转化为商业级PV制作方案：角色分析与DNA锁定、商业定位、Genre选择（打斗/日常文戏/魔法幻想）、2D多画风风格选择（赛璐璐/厚涂/水彩国风/矢量潮流/韩漫/美漫）、镜头分镜设计、10段结构Prompt生成、以及Minimax H3格式转换（T2VA/I2VA/FL2VA/L2VA/Ref2VA）。当用户需要制作动漫角色PV、游戏角色上线预告、抽卡展示、皮肤宣传、剧情PV，或需要优化已有视频Prompt、拆解参考PV时使用。全程仅产出Prompt与参数，不主动调用图像/视频生成能力。
 ---
 # AstraForge Studio · 星铸工坊
 
 **AI 二次元游戏角色 PV 智能导演系统**
 *AI Anime Game Character PV Director System*
 
-Version: 1.1.0 — Character Universe Expansion
+Version: 1.2.0 — 2D Style Expansion
 
 > 塑造角色，锻造世界，创造属于你的 PV。
 > *Build Characters. Forge Worlds. Create PVs.*
@@ -50,9 +50,19 @@ Style Stack 分三层控制：Base Style + Premium Layer + Character Style。
 
 AstraForge 采用**交互式生产流程**，不假设用户意图。
 
-### Step0 — 锚定 SESSION_SPEC
+### Step0 — 角色需求与风格分析
 
-每次新会话首先确认时长与比例，记为 `SESSION_SPEC`，后续步骤直接引用：
+每次新会话先完成角色信息充分性校验、Character DNA 提取与角色风格方向确认。
+视频时长和视频画幅此时只可作为 provisional 信息，不提前锁定 `SESSION_SPEC`。
+
+### Step1 — 角色设定与角色图 Prompt
+
+角色设定、Persona 与 Style 确认后，必须立即输出角色设定图 Prompt，供用户检查角色视觉方向。
+角色图 Prompt 不依赖视频时长、视频画幅或 PV Genre；使用独立的角色设定图比例建议。
+
+### Step2 — 锚定 SESSION_SPEC
+
+角色设定与风格完成、角色图 Prompt 已输出后，再确认视频时长与比例，记为 `SESSION_SPEC`：
 
 ```yaml
 SESSION_SPEC:
@@ -99,16 +109,20 @@ Base Style + Premium Layer + Special Layer
 
 例：`Modern Cel + Mobile Game Premium + Dark Cinematic Cel`
 
+Base 可选 7 套 2D 画风：`modern-cel` / `retro-cel` / `painterly-anime` /
+`watercolor-ink` / `vector-flat` / `korean-manhwa` / `western-comic`，
+一经选定全片锁定；锚定与专属禁止项见 [core/style-anchor.md](core/style-anchor.md)。
+
 ---
 
 ## 5. 内置知识系统
 
 - **Camera Library** — Eye Reveal / Beauty Showcase / Hero Low Angle / Detail Macro / Hand To Camera / Action Tracking / Final Pose
 - **Action Library** — Hair Flip / Head Turn / Confident Walk / Hand Gesture / Weapon Reveal / Ability Release / Transformation / Signature Pose
-- **Expression Library** — Cool Gaze / Confident Smirk / Sweet Smile / Playful Wink / Shy Expression / Elegant Smile / Idol Bright / Villain Pressure
+- **Expression Library** — Cool Gaze / Confident Smirk / Sweet Smile / Playful Wink / Shy Expression / Elegant Smile / Idol Bright / Villain Pressure / Composed Gaze / Battle Resolve / Detached Stare
 - **Transition Library** — Flash Cut / Anime Impact / Graphic Panel / UI Card / Glitch Data / Particle Reveal / Title Reveal / Character Freeze
-- **Theme Library** — Character Release / Gacha Legendary / Cool Female JRPG / Sweet Y2K / Academy / Magic Girl / Cyberpunk
-- **Style Library** — Modern Cel / Retro Cel / Y2K Graphic / Fantasy Anime / Mobile Game Premium / Dark Cinematic Cel
+- **Theme Library** — Character Release / Gacha Legendary / Cool Female JRPG / Sweet Y2K / Academy / Magic Girl / Cyberpunk / Male Suit / Male Samurai / Male Knight
+- **Style Library** — 7 个 2D base style：Modern Cel / Retro Cel / Painterly Anime / Watercolor Ink / Vector Flat / Korean Manhwa / Western Comic；Premium：Mobile Game Premium；Special：Y2K Graphic / Fantasy Anime / Dark Cinematic Cel 等
 - **Genre Library** — 打斗 / 日常文戏 / 魔法幻想（含可量化帧率、运镜、转场、动态参数）
 - **Persona Tags** — 性感 / 可爱 / 帅气 / 冷酷 / 热血 / 呆萌（叠加于 Genre 之上）
 
@@ -117,7 +131,7 @@ Base Style + Premium Layer + Special Layer
 | 资产 | 说明 |
 |---|---|
 | [core/prompt-structure.md](core/prompt-structure.md) | 10 段结构规范 + 输出前自检清单（生成前必读） |
-| [core/style-anchor.md](core/style-anchor.md) | 赛璐璐风格锚定语（中英双版） |
+| [core/style-anchor.md](core/style-anchor.md) | 2D 风格锚定语模板库：7 个 base style（中英双版） |
 | [templates/genre-action-15s.md](templates/genre-action-15s.md) | 打斗 15s 完整可替换 Prompt |
 | [templates/genre-daily-15s.md](templates/genre-daily-15s.md) | 日常文戏 15s 完整可替换 Prompt |
 | [templates/genre-magic-15s.md](templates/genre-magic-15s.md) | 魔法幻想 15s 完整可替换 Prompt |
@@ -142,7 +156,13 @@ Base Style + Premium Layer + Special Layer
 视觉特点：
 武器/能力：
 目标：
+```
+
+角色风格确认并输出角色设定图 Prompt 后，再补充视频参数：
+
+```
 时长：
+比例：
 ```
 
 示例：
@@ -229,13 +249,17 @@ Genre × Theme × Variation × Style = Final PV Direction
 ```
 USER REQUEST
     ↓
-STEP0 SESSION_SPEC     锚定时长 + 比例
-    ↓
 TASK ORCHESTRATOR      任务判断
     ↓
 CHARACTER ANALYZER     角色理解（信息不足先补全）
     ↓
 CHARACTER DNA LOCK     身份锁定
+    ↓
+STYLE DIRECTION        角色风格确认（日系动画 / 日系 JRPG 约束）
+    ↓
+CHARACTER IMAGE PROMPT 立即输出角色设定图 Prompt
+    ↓
+STEP2 SESSION_SPEC     确认视频时长 + 比例
     ↓
 COMMERCIAL DIRECTOR    商业定位
     ↓
@@ -312,10 +336,13 @@ AstraForge Studio：
 - ✅ 是 AI 角色 PV 导演
 - ✅ 是二次元游戏宣传制作系统
 - ✅ 是商业动画视觉规划工具
+- ✅ 是 2D 多画风 PV 制作系统（赛璐璐 / 厚涂 / 水彩国风 / 矢量潮流 / 韩漫 / 美漫）
 
 一句话：
 
 > AstraForge Studio 是一个面向二次元游戏与动画行业的 AI 角色 PV 导演系统，
 > 通过角色智能分析、商业 PV 导演流程、组件化视觉库和自动质量控制，
 > 将角色设定转化为可生产的视频方案。
+
+
 

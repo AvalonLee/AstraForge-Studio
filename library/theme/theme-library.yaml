@@ -144,6 +144,74 @@ components:
     transition: [particle_reveal, title_reveal]
     risk: medium
 
+  # ---- 男性角色 Theme ----
+  # 由 v1.2 引入：补足男性角色的专属商业身份。
+  # 三类覆盖「西装 / 武士 / 骑士」，与男性 Persona 标签及
+  # composed-gaze / battle-resolve / detached-stare 表情组件配合使用。
+
+  - id: theme.male.suit.release.v1
+    slug: male-suit-release
+    name: Male Suit Character Release
+    category: mobile_character_pv
+    purpose: mature male character launch
+    commercial_goal: character_acquisition
+    character_type: male_mature
+    commercial_position: [mature, refined, restrained power]
+    visual_keywords: [black suit, tie, pocket square, tailored silhouette, sharp jawline]
+    structure:
+      opening: 领带 / 袖扣 / 胸针细节切入
+      middle: 西装轮廓与侧身回眸
+      climax: 松领带 / 整理袖口招牌动作
+      ending: 角色标题 + 最终定格
+    recommended_camera: [detail-macro, beauty-showcase, hero-low-angle, final-pose]
+    recommended_action: [head-turn, confident-walk, hand-gesture, signature-pose]
+    recommended_expression: [composed-gaze, detached-stare]
+    recommended_transition: [graphic-panel, ui-card, title-reveal]
+    style_hint: 深色电影感布光，克制光影，突出剪裁轮廓
+    risk: low
+
+  - id: theme.male.samurai.release.v1
+    slug: male-samurai-release
+    name: Male Samurai Release
+    category: mobile_character_pv
+    purpose: male samurai launch
+    commercial_goal: power_demonstration
+    character_type: male_hotblooded
+    commercial_position: [honor, discipline, burning will]
+    visual_keywords: [katana, hakama, haori, topknot, scar]
+    structure:
+      opening: 刀镡 / 眼睛特写
+      middle: 拔刀与鞘身细节
+      climax: 居合斩
+      ending: 刀收鞘 + 角色标题
+    recommended_camera: [eye-reveal, detail-macro, action-tracking, hero-low-angle, final-pose]
+    recommended_action: [weapon-reveal, ability-release, signature-pose]
+    recommended_expression: [composed-gaze, battle-resolve]
+    recommended_transition: [flash-cut, anime-impact, title-reveal]
+    style_hint: 高对比赛璐璐，暖色高光与冷色阴影并存，刀光用速度线
+    risk: medium
+
+  - id: theme.male.knight.release.v1
+    slug: male-knight-release
+    name: Male Knight Release
+    category: mobile_character_pv
+    purpose: male knight launch
+    commercial_goal: power_demonstration
+    character_type: male_cool
+    commercial_position: [duty, strength, composure]
+    visual_keywords: [full plate armor, greatsword, cape, heraldry]
+    structure:
+      opening: 头盔 / 剑尖特写
+      middle: 重甲全身与披风
+      climax: 双手大剑挥击
+      ending: 骑士立像 + 角色标题
+    recommended_camera: [eye-reveal, detail-macro, action-tracking, hero-low-angle, final-pose]
+    recommended_action: [confident-walk, weapon-reveal, ability-release, signature-pose]
+    recommended_expression: [composed-gaze, battle-resolve]
+    recommended_transition: [flash-cut, anime-impact, title-reveal]
+    style_hint: 电影感重甲质感，轮廓光强化，保持赛璐璐硬边
+    risk: medium
+
   # ---- 活动 PV 主题 ----
   # 与角色 PV 的根本差异：卖点不是「认识一个新角色」，
   # 而是「参与一个限时事件」。因此结构、情绪曲线、CTA 均不同。
@@ -224,7 +292,10 @@ components:
     risk: medium
 
 roadmap_v1_2:
+  completed:
+    - male-suit-release
+    - male-samurai-release
+    - male-knight-release
   planned:
-    - male-character-release
     - female-idol-release
     - villain-release

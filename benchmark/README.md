@@ -21,7 +21,9 @@ benchmark/test-cases/
 ├── bm-05-academy-daily.yaml            ← Genre=daily
 ├── bm-06-magic-girl-transform.yaml     ← Genre=magic + 风险预算压测
 ├── bm-07-duo-rival.yaml                ← 首个多角色（duo）
-└── bm-08-anniversary-trio.yaml         ← 首个活动 PV（trio + 周年）
+├── bm-08-anniversary-trio.yaml         ← 首个活动 PV（trio + 周年）
+├── bm-09-male-suit.yaml                ← 男性西装 Theme
+└── bm-10-male-samurai.yaml             ← 男性武士 Theme
 ```
 
 字段约定：
@@ -70,6 +72,8 @@ Task Orchestrator → Character Analyzer → Reference Retrieval
 | 06 | Magic Girl Transform | **Genre** | magic | 魔法 / 变身 | ✅ PASS | 92 | Transform 超限 -> Risk Budget Gate 已修复 |
 | 07 | Duo Rival Showcase | **Cast** | action | 双人 / 宿敌 | ✅ PASS | 90 | 同框动作等级放大 |
 | 08 | Anniversary Trio | **Event** | daily | 三人 / 周年 | ✅ GOOD | 84 | 3 人同框逼近上限 |
+| 09 | Male Suit Elegance | Theme | daily | 男装 / 成熟 | ✅ PASS | 97 | 男性 Theme 覆盖 |
+| 10 | Male Samurai Combat | Theme | action | 武士 / 热血 | ✅ PASS | 93 | 男性 Theme 覆盖 |
 
 > 加入生成稳定性权重后，战斗与魔法角色分数下调 —— 视觉强但生成风险更高。
 
@@ -80,17 +84,20 @@ Task Orchestrator → Character Analyzer → Reference Retrieval
 | 方向 | 覆盖用例 | 状态 |
 |---|---|---|
 | **Genre 维度** | | |
-| 打斗 Action | BM-02, BM-04 | ✅ |
-| 日常文戏 Daily | BM-01, BM-05 | ✅ |
+| 打斗 Action | BM-02, BM-04, BM-10 | ✅ |
+| 日常文戏 Daily | BM-01, BM-05, BM-09 | ✅ |
 | 魔法幻想 Magic | BM-03, BM-06 | ✅ |
 | **Theme 维度** | | |
 | 甜系 | BM-01 | ✅ |
 | 冷艳 | BM-02 | ✅ |
 | 幻想 | BM-03 | ✅ |
 | 学院 | BM-05 | ✅ |
+| 男装 | BM-09 | ✅ |
+| 武士 | BM-10 | ✅ |
+| 骑士 | BM-04 | ✅ |
 | **性别维度** | | |
 | 女性 | BM-01, BM-02, BM-03, BM-05, BM-06 | ✅ |
-| 男性 | BM-04 | ✅ |
+| 男性 | BM-04, BM-09, BM-10 | ✅ |
 | **阵容维度** | | |
 | 单角色 | BM-01..06 | ✅ |
 | 双人 duo | BM-07 | ✅ |
@@ -100,10 +107,9 @@ Task Orchestrator → Character Analyzer → Reference Retrieval
 | 周年 anniversary | BM-08 | ✅ |
 | 联动 collaboration | — | ⬜ v1.2 |
 | 季节 seasonal | — | ⬜ v1.2 |
-| **待补** | | |
-| 男角色 Theme 覆盖 | — | ⬜ v1.2 |
 
-当前评分：**93 / 100**（8 例覆盖 3 Genre × 4 Theme × 2 性别 × 3 阵容 × 1 活动类型）
+当前评分：**93 / 100**（10 例覆盖 3 Genre × 2 性别 × 3 阵容 × 1 活动类型，
+含男性西装 / 武士 / 骑士 Theme）
 
 ---
 
@@ -217,4 +223,3 @@ DNA Lock 将 costume_change 列为 critical 禁止项，变身动作本质是换
 | Art Direction | 5% |
 
 判定：`>=90 PASS` / `75-89 GOOD` / `60-74 REVISION` / `<60 REBUILD`
-

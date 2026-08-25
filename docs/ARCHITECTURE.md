@@ -1,6 +1,6 @@
 # Architecture
 
-**AstraForge Studio · 星铸工坊 v1.1.0 — 系统架构文档**
+**AstraForge Studio · 星铸工坊 v1.2.0 — 系统架构文档**
 
 ---
 
@@ -88,6 +88,9 @@ confidence: 0.92
 | academy_female | 学园 / 学生 / 制服 / 青春 / 傲娇 |
 | fantasy_female | 魔法 / 贵族 / 精灵 / 圣女 |
 | cyber_female | 赛博 / 科技 / 黑客 / neon |
+| male_cool | 冷酷 / 骑士 / 剑士 / 刺客 / 高冷 / 军装 |
+| male_hotblooded | 热血 / 武士 / 战士 / 燃系 / 少年 |
+| male_mature | 成熟 / 绅士 / 西装 / 型男 / 干部 |
 | boss | Boss / 反派 / 敌人 |
 
 **混合标签规则**：计算权重，选择主类型 + 辅助 Style，不强制二选一。
@@ -116,7 +119,7 @@ Character Description → Prompt → Video
 升级为：
 
 ```
-Character Input → Character DNA Extraction → DNA Lock → Theme → Style → Composer → H3 Prompt
+Character Input → Character DNA Extraction → DNA Lock → Style Direction → Character Image Prompt → SESSION_SPEC → Theme → Composer → H3 Prompt
 ```
 
 #### 稳定优先级
@@ -241,6 +244,24 @@ environment: 10%
 
 ## Layer 4 — Creative Engine
 
+### Character Image Prompt Gate
+
+角色 DNA 与视觉风格确认后，系统必须先输出角色设定图 Prompt。
+该 Prompt 使用独立的 `CHARACTER_IMAGE_SPEC`，不依赖视频时长、视频比例或 Genre。
+只有角色图 Prompt 输出后，才进入视频专用 `SESSION_SPEC` 确认。
+
+角色图与视频 Prompt 共用所选 base style 锚定（默认 `modern-cel` 日系赛璐璐；
+厚涂 / 水彩国风 / 矢量 / 韩漫 / 美漫见 [core/style-anchor.md](../core/style-anchor.md)），但角色图必须额外强化：
+
+- Japanese anime character design
+- Japanese mobile / console JRPG character concept art
+- Japanese anime facial proportions and expressive anime eyes
+- NO western cartoon / American animation / Disney-like / Pixar-like / DreamWorks-like
+- NO western comic-book anatomy / thick vector cartoon outlines / 3D CGI
+
+以上强化与禁止项适用于默认日系 base；base = `western-comic` 等非日系风格时，
+按 core/style-anchor.md 对应锚定反转。
+
 ### Theme Engine
 
 决定 PV 商业方向。Theme 定义包含结构、推荐 Camera / Action / Expression / Transition 与风险等级。
@@ -322,6 +343,14 @@ style_stack:
 ```yaml
 style_composition:
   default_base: modern-cel
+  supported_base_2d:
+    - modern-cel
+    - retro-cel
+    - painterly-anime
+    - watercolor-ink
+    - vector-flat
+    - korean-manhwa
+    - western-comic
   commercial_upgrade:
     character_release:    add mobile-game-premium
     legendary_character:  add cinematic-lighting
@@ -336,6 +365,10 @@ style_composition:
 | 001 | y2k-graphic × dark-cinematic-cel | C | 保留角色身份，移除 y2k，加 fantasy-anime |
 | 002 | retro-cel × mobile-game-premium | B | 依目标二选一（怀旧 vs 商业精致） |
 | 003 | sweet-y2k × heavy-battle | B | 降低战斗强度，保留角色魅力 |
+| 004 | western-comic × 日韩系 base | C | 保留角色身份，按角色美术语言（欧美 vs 日系 vs 韩系）单选 base |
+| 005 | painterly-anime × modern/retro-cel | C | 保留角色身份，按目标渲染语言（电影质感 vs TV 动画）单选 |
+| 006 | vector-flat × korean-manhwa | B | 依目标二选一（潮流海报 vs 韩漫柔光） |
+| 007 | western-comic × mobile-game-premium | B | 依目标二选一（漫画分镜 vs 商业精致渲染） |
 
 #### Style Priority
 
@@ -407,7 +440,8 @@ Composer 产出 Shot Plan 后，进入 Prompt 工程层。
 
 ### 风格锚定
 
-`core/style-anchor.md` 提供赛璐璐锚定语（中英双版），必须贯穿所有镜头。
+`core/style-anchor.md` 提供 7 套 2D base style 的锚定语（中英双版），
+默认 `modern-cel`；选定 base 后锚定与专属禁止项必须贯穿所有镜头，全片不可切换 base。
 
 ### H3 输出格式
 
@@ -564,3 +598,5 @@ Character Identity > Commercial Goal > Visual Effect > Complex Action
 | `schema/` | 数据协议 + H3 输出格式规范 |
 | `examples/` | 示例输出 |
 | `release/` | 发布信息 |
+
+
