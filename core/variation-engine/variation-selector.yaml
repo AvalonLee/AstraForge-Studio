@@ -1,0 +1,32 @@
+variation_selector:
+  keyword_mapping:
+    - keywords: [皮肤, 时装, 新造型, skin, outfit]
+      goal: cosmetic_conversion
+      variation: skin.showcase.v1
+    - keywords: [五星, 限定, 抽卡, gacha, SSR]
+      goal: rarity_conversion
+      variation: gacha.legendary.v1
+    - keywords: [剧情, 故事, 情感, story]
+      goal: character_attachment
+      variation: story.emotional.v1
+    - keywords: [战斗, 技能, 强度, combat]
+      goal: power_demonstration
+      variation: combat.showcase.v1
+    - keywords: [上线, 新角色, release, 介绍]
+      goal: character_acquisition
+      variation: release.standard.v1
+
+  default: release.standard.v1
+
+  relationship: >
+    Theme -> Variation -> Style Stack -> Composer
+
+  example:
+    theme: dark-witch-release
+    variation_a:
+      id: gacha.legendary.v1
+      result: 华丽、稀有
+    variation_b:
+      id: story.emotional.v1
+      result: 神秘、悲伤
+    note: 角色不变，商业表达变化

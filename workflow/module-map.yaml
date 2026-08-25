@@ -1,0 +1,40 @@
+tasks:
+  CREATE_PV:
+    required:
+      - character-analyzer
+      - character-dna-lock
+      - pv-composer
+      - shot-planner
+      - quality-check
+    optional:
+      - reference-case
+      - style-anchor
+      - variation-engine
+
+  OPTIMIZE_PROMPT:
+    required:
+      - prompt-architecture
+      - h3-generation-rules
+      - quality-check
+
+  CONVERT_H3:
+    required:
+      - prompt-architecture
+      - h3-generation-rules
+
+  ANALYZE_REFERENCE:
+    required:
+      - reference-analysis
+      - extracted-rules
+
+  CHARACTER_PROFILE:
+    required:
+      - character-analyzer
+      - character-dna-lock
+
+load_strategy:
+  entry: SKILL.md
+  on_demand: true
+  forbidden:
+    - load entire library at once
+    - load entire references at once

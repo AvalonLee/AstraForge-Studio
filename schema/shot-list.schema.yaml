@@ -1,0 +1,13 @@
+shot_list:
+  duration:
+  shots:
+    - id:
+      time:
+      purpose:
+      character_state:
+      camera:
+      action:
+      expression:
+      effect:
+      transition:
+      risk_level:

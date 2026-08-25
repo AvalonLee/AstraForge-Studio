@@ -1,3 +1,26 @@
 skill:
   name: AstraForge Studio
   version: 1.0.0
+  release: Production Foundation Release
+  type: director
+  domain: 
+    - anime
+    - game_PV
+    - character_trailer
+  capabilities:
+    - character_analysis
+    - character_dna_lock
+    - pv_director
+    - variation_engine
+    - style_stack
+    - quality_engine
+    - benchmark_suite
+  supported_pv_modes:
+    - 5s_advertisement
+    - 15s_character_release
+    - 30s_story_character
+  entry: SKILL.md
+  load_strategy: on_demand
+  languages:
+    - zh
+    - en

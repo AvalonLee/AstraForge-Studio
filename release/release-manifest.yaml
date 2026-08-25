@@ -1,5 +1,24 @@
 release:
-  project: AstraForge Studio
-  version: 1.0.0
-  codename: Foundation
-  edition: Hybrid
+  project:
+    name: AstraForge Studio
+    version: 1.0.0
+    codename: Foundation
+    release_type: Hybrid
+    target:
+      - GitHub Repository
+      - AI Skill Deployment
+    status: Release Candidate
+  included_modules:
+    documentation: enabled
+    skill_layer: enabled
+    character_dna: enabled
+    style_engine: enabled
+    variation_engine: enabled
+    quality_engine: enabled
+    benchmark_suite: enabled
+    visual_library: enabled
+  quality_audit:
+    score: 95
+    decision: APPROVED
+    recommendation: READY_FOR_GITHUB_RELEASE
+  git_tag: v1.0.0

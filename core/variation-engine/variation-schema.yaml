@@ -1,0 +1,23 @@
+variation:
+  id:
+  version:
+  commercial_goal:
+  name:
+  description:
+  character_constraints:
+    dna_lock: enabled
+  creative_direction:
+    emotion:
+    tone:
+    visual_focus:
+  component_preference:
+    camera:
+    action:
+    expression:
+    transition:
+  style_override:
+    allowed:
+    forbidden:
+  quality_target:
+    stability_priority:
+    impact_priority:

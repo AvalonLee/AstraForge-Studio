@@ -1,0 +1,128 @@
+# AstraForge Visual Component Library — Expression
+# 两种风格覆盖：冷系（cool / elegant / villain）与甜系（sweet / idol / shy）
+
+components:
+  - id: expression.cool.gaze.v1
+    name: Cool Gaze
+    purpose: establish character attitude
+    emotion: [cold, confident]
+    face: [sharp eyes, neutral mouth]
+    best_for: [cool female, warrior, queen]
+    prompt_block: >
+      anime female character cool sharp gaze,
+      confident cold expression,
+      direct eye contact
+    risk: low
+    stability_score: 10
+    impact_score: 9
+
+  - id: expression.confident.smirk.v1
+    name: Confident Smirk
+    purpose: personality moment
+    emotion: [confident, teasing]
+    face: [slight smirk, narrowed eyes]
+    best_for: [cool female, cyber female, punk girl]
+    prompt_block: >
+      anime female character confident smirk,
+      subtle teasing expression
+    risk: low
+    stability_score: 9
+    impact_score: 9
+
+  - id: expression.elegant.smile.v1
+    name: Elegant Smile
+    purpose: premium fantasy charm
+    emotion: [graceful, calm]
+    face: [soft eyes, gentle smile]
+    best_for: [fantasy female, noble, magic girl]
+    prompt_block: >
+      anime noble female elegant smile,
+      graceful calm expression,
+      premium fantasy character
+    risk: low
+    stability_score: 10
+    impact_score: 8
+
+  - id: expression.villain.pressure.v1
+    name: Villain Pressure
+    purpose: create intimidation
+    emotion: [dominant, mysterious]
+    face: [intense eyes, faint smile]
+    best_for: [boss, dark witch, antagonist]
+    prompt_block: >
+      anime villain female intense gaze,
+      dominant mysterious aura,
+      dramatic shadow lighting
+    risk: low
+    stability_score: 9
+    impact_score: 10
+
+  - id: expression.sweet.smile.v1
+    name: Sweet Character Smile
+    purpose: increase emotional appeal
+    emotion: [warm, friendly]
+    face: [bright eyes, soft smile]
+    best_for: [cute girl, idol, academy]
+    prompt_block: >
+      cute anime girl smiling,
+      bright expressive eyes,
+      warm character charm
+    risk: low
+    stability_score: 10
+    impact_score: 8
+
+  - id: expression.playful.wink.v1
+    name: Playful Wink
+    purpose: create viewer interaction
+    emotion: [cute, confident, teasing]
+    face: [one eye closed, small smile]
+    best_for: [y2k, idol, fashion girl]
+    prompt_block: >
+      anime girl wink,
+      playful confident smile,
+      direct camera interaction
+    risk: low
+    stability_score: 9
+    impact_score: 9
+
+  - id: expression.shy.v1
+    name: Shy Expression
+    purpose: emotional contrast
+    emotion: [soft, gentle]
+    face: [slightly lowered eyes, small smile]
+    best_for: [romance, academy, daily life]
+    prompt_block: >
+      anime girl shy expression,
+      soft eyes,
+      gentle emotional moment
+    risk: low
+    stability_score: 10
+    impact_score: 7
+
+  - id: expression.idol.bright.v1
+    name: Idol Bright Expression
+    purpose: high energy charm
+    emotion: [happy, radiant]
+    face: [sparkling eyes, bright smile]
+    best_for: [idol, gacha, promotional PV]
+    prompt_block: >
+      anime idol girl bright smile,
+      sparkling eyes,
+      energetic character charm
+    risk: low
+    stability_score: 9
+    impact_score: 9
+
+  - id: expression.reflective.look.v1
+    name: Reflective Look
+    purpose: story emotional beat
+    emotion: [melancholy, memory]
+    face: [distant eyes, subtle expression]
+    best_for: [story PV, 30s emotional]
+    prompt_block: >
+      anime character reflective distant gaze,
+      subtle melancholy emotion,
+      cinematic soft lighting
+    risk: low
+    stability_score: 10
+    impact_score: 8

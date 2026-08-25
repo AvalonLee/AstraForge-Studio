@@ -1,0 +1,100 @@
+# AstraForge Visual Component Library — Style
+# Style 解决「这个 PV 应该长什么样？」
+# 采用 Style Stack：base + premium + special
+
+components:
+  - id: style.modern.cel.v1
+    name: Modern Anime Cel Style
+    layer: base
+    category: animation_style
+    description: 现代手游赛璐璐风，默认基础风格
+    keywords: [clean cel shading, hard shadow, crisp lineart, vibrant flat color]
+    animation: 2D cel animation
+    line: medium clean outline
+    lighting: flat cel lighting with graphic highlight
+    prompt_block: >
+      modern anime cel shading style,
+      clean crisp lineart,
+      vibrant flat colors,
+      hard shadow,
+      pure 2D animation
+    forbidden: [realistic photography, PBR material, 3D character rendering]
+    risk: low
+
+  - id: style.mobile.game.premium.v1
+    name: Mobile Game Premium
+    layer: premium
+    description: 高级手游 PV 质感（米哈游式）
+    keywords: [premium polish, cinematic lighting, refined particle, UI integration]
+    prompt_block: >
+      premium mobile game character trailer quality,
+      cinematic lighting,
+      refined effects,
+      high production value anime PV
+    risk: low
+
+  - id: style.retro.cel.v1
+    name: Retro Cel Style
+    layer: base
+    description: 90 年代赛璐璐动画风
+    keywords: [90s cel animation, film grain, halftone, limited palette]
+    animation: 12fps limited animation
+    prompt_block: >
+      90s retro anime cel animation,
+      film grain texture,
+      halftone shading,
+      limited animation feel
+    forbidden: [modern motion blur, digital gloss]
+    conflicts_with: [mobile-game-premium]
+    risk: low
+
+  - id: style.y2k.graphic.v1
+    name: Y2K Graphic Style
+    layer: special
+    description: Y2K 潮流图形风
+    keywords: [pink palette, sticker graphics, chrome type, playful layout]
+    prompt_block: >
+      Y2K graphic anime style,
+      pink and chrome palette,
+      playful sticker graphics,
+      trendy fashion editing
+    balance_rule: { character_priority: 70%, graphic_element: 30% }
+    conflicts_with: [dark-cinematic-cel]
+    risk: low
+
+  - id: style.fantasy.anime.v1
+    name: Fantasy Anime Style
+    layer: special
+    description: 幻想动画风
+    keywords: [ornate detail, magical glow, noble palette, ethereal light]
+    prompt_block: >
+      fantasy anime style,
+      ornate magical detail,
+      ethereal glowing light,
+      noble color palette
+    risk: low
+
+  - id: style.dark.cinematic.cel.v1
+    name: Dark Cinematic Cel
+    layer: special
+    description: 暗黑电影感赛璐璐
+    keywords: [high contrast, deep shadow, dramatic rim light, desaturated base]
+    prompt_block: >
+      dark cinematic anime cel style,
+      high contrast deep shadows,
+      dramatic rim lighting,
+      moody atmosphere
+    conflicts_with: [y2k-graphic]
+    risk: low
+
+style_stack_default:
+  base: modern-cel
+  premium: mobile-game-premium
+  special: null
+
+roadmap_v1_1:
+  planned:
+    - fantasy-luxury
+    - sci-fi-anime
+    - urban-neon
+    - historical-anime

@@ -1,5 +1,34 @@
 execution:
   pipeline:
-    - analysis
-    - composition
+    - task_orchestration
+    - character_intelligence
+    - character_dna_lock
+    - commercial_director
+    - theme_engine
+    - variation_engine
+    - style_stack
+    - composer
+    - library_matching
+    - shot_planning
+    - h3_prompt_engine
     - quality_check
+    - auto_revision
+    - output_package
+  fallback:
+    missing_style: modern-cel
+    missing_duration: 15s
+    missing_pv_mode: 15s_release
+    style_conflict_resolution: remove_conflicting_style
+  quality_first:
+    generation_stability: 35
+    character_consistency: 25
+    shot_feasibility: 15
+    visual_impact: 10
+    commercial_value: 10
+    art_direction: 5
+  risk_limits:
+    max_action_level_15s: 2
+    max_action_level_30s: 3
+    max_effect_level_15s: 2
+    max_effect_level_legendary: 3
+    max_camera_transition_15s: 4

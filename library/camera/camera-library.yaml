@@ -1,0 +1,145 @@
+# AstraForge Visual Component Library — Camera
+# Camera 决定「像不像手游角色 PV」
+
+components:
+  - id: camera.reveal.closeup.v1
+    name: Character Reveal Close-up
+    category: camera
+    purpose: opening hook
+    commercial_value: high
+    best_for: [new character reveal, gacha opening, female hero introduction]
+    shot: extreme close-up
+    focus: [face, eyes, signature feature]
+    camera_motion: slow push-in
+    composition: face dominates frame
+    emotion: [mysterious, memorable]
+    prompt_block: >
+      extreme close-up anime female character reveal,
+      focus on eyes and facial expression,
+      slow camera push-in,
+      high quality mobile game character trailer
+    compatible_action: [eye_reveal, head_turn]
+    risk: low
+    stability_score: 9
+    impact_score: 8
+
+  - id: camera.eye.reveal.v1
+    name: Eye Reveal Shot
+    category: camera
+    purpose: instant character recognition
+    focus: [eye design, emotion]
+    shot: macro close-up
+    movement: slow reveal from shadow
+    prompt_block: >
+      anime female character eye reveal,
+      sharp detailed eyes,
+      dramatic lighting,
+      slow cinematic reveal
+    best_for: [cool female, mysterious female, boss]
+    risk: low
+    stability_score: 9
+    impact_score: 9
+
+  - id: camera.beauty.showcase.v1
+    name: Character Beauty Showcase
+    category: camera
+    purpose: show character design
+    shot: medium close-up
+    focus: [hairstyle, outfit, accessory, face]
+    movement: slow horizontal pan
+    commercial_goal: increase character appeal
+    prompt_block: >
+      anime game character beauty showcase,
+      slow camera pan,
+      showing hairstyle costume and accessories,
+      premium character trailer style
+    best_for: [gacha character, skin showcase]
+    risk: low
+    stability_score: 9
+    impact_score: 9
+
+  - id: camera.detail.macro.v1
+    name: Signature Detail Macro
+    category: camera
+    purpose: highlight character asset
+    focus: [jewelry, weapon, emblem, accessory]
+    shot: macro close-up
+    duration: 0.5-1.5s
+    prompt_block: >
+      macro anime detail shot,
+      focus on character accessory, weapon, symbolic item,
+      stylized game trailer
+    best_for: [premium character, limited skin]
+    risk: low
+    stability_score: 9
+    impact_score: 7
+
+  - id: camera.hand.camera.v1
+    name: Hand To Camera Perspective
+    category: camera
+    purpose: create viewer interaction
+    shot: dynamic close perspective
+    movement: character reaches toward lens
+    focus: [foreground hand, face behind]
+    prompt_block: >
+      anime girl reaching hand toward camera,
+      strong perspective,
+      dynamic interaction,
+      stylized 2D game PV
+    best_for: [cute girl, idol, punk girl]
+    risk: medium
+    stability_score: 6
+    impact_score: 9
+    note: 同一 Shot 不可与 hair-flip 叠加，易出现手部异常
+
+  - id: camera.hero.low_angle.v1
+    name: Hero Low Angle
+    category: camera
+    purpose: final power shot
+    shot: full body
+    angle: low angle
+    composition: strong silhouette
+    movement: slow push forward
+    prompt_block: >
+      low angle anime hero shot,
+      female character standing confidently,
+      strong silhouette,
+      dramatic game trailer ending
+    best_for: [warrior, boss, legendary character]
+    risk: low
+    stability_score: 9
+    impact_score: 9
+
+  - id: camera.action.tracking.v1
+    name: Action Tracking Shot
+    category: camera
+    purpose: ability showcase
+    shot: medium full shot
+    movement: tracking camera
+    focus: character motion
+    prompt_block: >
+      anime character action tracking shot,
+      dynamic movement,
+      clean 2D animation,
+      game skill showcase
+    best_for: [combat, ability]
+    risk: medium
+    stability_score: 6
+    impact_score: 9
+
+  - id: camera.final.pose.v1
+    name: Final Character Card Shot
+    category: camera
+    purpose: commercial ending
+    shot: hero portrait
+    composition: character centered
+    space: title area reserved
+    prompt_block: >
+      anime character final pose,
+      hero portrait,
+      title reveal space,
+      mobile game trailer ending
+    best_for: [all character PV]
+    risk: low
+    stability_score: 10
+    impact_score: 8

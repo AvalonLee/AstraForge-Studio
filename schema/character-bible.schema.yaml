@@ -1,0 +1,19 @@
+character_bible:
+  identity:
+    name:
+    archetype:
+    rarity:
+    role:
+  visual_identity:
+    face:
+    hair:
+    eyes:
+    outfit:
+    color_palette:
+    signature_item:
+  personality:
+    traits:
+    emotion_range:
+  commercial_hook:
+    main_selling_point:
+    memory_points:

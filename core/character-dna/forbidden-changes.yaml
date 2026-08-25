@@ -1,0 +1,12 @@
+forbidden_changes:
+  critical:
+    - face_change
+    - hair_color_change
+    - costume_change
+    - eye_color_change
+  high:
+    - weapon_change
+    - body_shape_change
+  medium:
+    - expression_shift
+    - personality_shift

@@ -1,0 +1,139 @@
+# AstraForge Visual Component Library — Theme
+# Theme 解决「这个角色应该以什么商业身份出现？」
+
+components:
+  - id: theme.character.release.v1
+    name: Mobile Game Character Release
+    category: mobile_character_pv
+    purpose: new character launch
+    commercial_goal: make audience remember character
+    target_duration: 15s
+    structure:
+      shot1: { purpose: hook, content: [eye reveal, signature feature] }
+      shot2: { purpose: identity, content: [face, hair, outfit, accessory] }
+      shot3: { purpose: showcase, content: [personality action, signature ability] }
+      shot4: { purpose: climax, content: [hero pose, visual effect] }
+      shot5: { purpose: ending, content: [character title, final frame] }
+    recommended_camera: [reveal_closeup, beauty_showcase, hero_low_angle]
+    recommended_action: [signature_gesture, ability_release, signature_pose]
+    recommended_expression: [cool_gaze, sweet_smile]
+    recommended_transition: [anime_flash_cut, ui_card, title_reveal]
+    risk: low
+
+  - id: theme.gacha.legendary.v1
+    name: Legendary Character Reveal
+    purpose: create rarity feeling
+    commercial_goal: increase collection desire
+    visual_keywords: [premium, legendary, exclusive, rare]
+    structure:
+      opening: silhouette reveal
+      middle: character beauty showcase
+      climax: signature ability
+      ending: character card reveal
+    recommended_camera: [eye_reveal, detail_macro, final_pose]
+    recommended_action: [transformation, ability_release, signature_pose]
+    recommended_transition: [particle_reveal, ui_card, title_reveal]
+    best_for: [limited character, SSR character, special banner]
+    risk: medium
+
+  - id: theme.cool.female.jrpg.v1
+    name: Cool Female JRPG Hero
+    character_type: cool_female
+    commercial_position: [power, elegance, confidence]
+    visual_keywords: [silver hair, sharp eyes, elegant weapon, strong silhouette]
+    structure:
+      opening: eye reveal
+      middle: [weapon, outfit, character attitude]
+      climax: ability display
+      ending: hero pose
+    camera: [eye_reveal, beauty_showcase, hero_low_angle]
+    action: [confident_walk, weapon_reveal, ability_release]
+    expression: [cool_gaze, confident_smirk]
+    transition: [flash_cut, anime_impact, title_reveal]
+    risk: low
+
+  - id: theme.sweet.y2k.v1
+    name: Sweet Y2K Character
+    character_type: cute_fashion
+    commercial_position: [charm, fashion, personality]
+    visual_keywords: [pink, trendy, playful, energetic]
+    structure:
+      opening: face interaction
+      middle: fashion showcase
+      climax: signature gesture
+      ending: cute hero frame
+    camera: [hand_to_camera, beauty_showcase]
+    action: [hair_flip, hand_gesture]
+    expression: [playful_wink, sweet_smile]
+    transition: [graphic_panel, ui_card]
+    balance_rule: { character_priority: 70%, graphic_element: 30% }
+    risk: low
+
+  - id: theme.academy.character.v1
+    name: Academy Character Introduction
+    commercial_position: [personality, emotion, daily charm]
+    visual_keywords: [school, character profile, youth]
+    structure:
+      opening: character file reveal
+      middle: daily life detail
+      climax: personality moment
+      ending: character card
+    camera: [beauty_showcase, detail_macro]
+    action: [head_turn, hand_gesture]
+    expression: [shy_expression, sweet_smile]
+    transition: [graphic_panel, ui_card]
+    risk: low
+
+  - id: theme.magic.girl.v1
+    name: Magic Girl Release
+    commercial_position: [fantasy, wonder, special ability]
+    visual_keywords: [magical energy, transformation, particles]
+    structure:
+      opening: symbol reveal
+      middle: character beauty
+      climax: magic ability
+      ending: hero title
+    camera: [eye_reveal, hero_low_angle]
+    action: [transformation, ability_release]
+    expression: [elegant_smile]
+    transition: [particle_reveal, title_reveal]
+    risk: medium
+
+  - id: theme.cyberpunk.girl.v1
+    name: Cyberpunk Female Character
+    commercial_position: [technology, coolness, future identity]
+    visual_keywords: [neon, hacker, digital]
+    structure:
+      opening: data scan
+      middle: character reveal
+      climax: ability activation
+      ending: digital title
+    camera: [detail_macro, hand_to_camera, hero_low_angle]
+    action: [hand_gesture, ability_release]
+    expression: [confident_smirk]
+    transition: [glitch_data, ui_card]
+    risk: medium
+
+  - id: theme.dark.witch.release.v1
+    name: Dark Witch Release
+    commercial_position: [mystery, fantasy appeal, elegance]
+    visual_keywords: [black, purple, crimson, ancient magic]
+    structure:
+      opening: eye reveal in shadow
+      middle: beauty showcase
+      climax: controlled dark magic
+      ending: hero title
+    camera: [eye_reveal, beauty_showcase, hero_low_angle]
+    action: [ability_preparation, ability_release]
+    expression: [villain_pressure, elegant_smile]
+    transition: [particle_reveal, title_reveal]
+    risk: medium
+
+roadmap_v1_1:
+  planned:
+    - male-character-release
+    - female-idol-release
+    - villain-release
+    - collaboration-event
+    - anniversary-character
+    - seasonal-event

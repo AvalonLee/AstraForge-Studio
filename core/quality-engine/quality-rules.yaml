@@ -1,0 +1,29 @@
+quality_system:
+  version: 1.0
+  priority:
+    1: generation_stability
+    2: character_consistency
+    3: shot_feasibility
+    4: visual_impact
+    5: commercial_value
+    6: art_direction
+
+  score_weight:
+    generation_stability: 35
+    character_consistency: 25
+    shot_feasibility: 15
+    visual_impact: 10
+    commercial_value: 10
+    art_direction: 5
+
+  decision:
+    pass: ">=90"
+    good: "75-89"
+    revision: "60-74"
+    rebuild: "<60"
+
+  art_direction_score:
+    premium_feel:
+    composition:
+    color_harmony:
+    note: auxiliary indicator, does not override stability

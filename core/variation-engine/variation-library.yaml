@@ -1,0 +1,52 @@
+# 五大默认 Variation
+# 核心设计原则：Variation 不改变角色，只改变展示角度 / 镜头语言 / 情绪方向 / 商业目标。
+# Character DNA 保持 100% 锁定。
+
+variations:
+  - id: release.standard.v1
+    name: New Character Release
+    commercial_goal: character_acquisition
+    emotion: first_impression
+    visual_focus: [face, costume, identity]
+    camera: [eye-reveal, beauty-showcase]
+    action: [head-turn, signature-pose]
+    expression: [default-character-expression]
+    ending: title-reveal
+
+  - id: gacha.legendary.v1
+    name: Legendary Gacha Showcase
+    commercial_goal: rarity_conversion
+    emotion: awe
+    visual_focus: [rarity, signature_power]
+    camera: [macro-detail, hero-low-angle]
+    action: [ability-release]
+    transition: [particle-reveal, ui-card]
+    style_boost:
+      premium_mobile_game: enabled
+
+  - id: combat.showcase.v1
+    name: Combat Showcase
+    commercial_goal: power_demonstration
+    emotion: excitement
+    visual_focus: [weapon, ability]
+    camera: [action-tracking, hero-low-angle]
+    action: [weapon-reveal, ability-release]
+    risk_control:
+      max_action_level: 2
+
+  - id: story.emotional.v1
+    name: Story Emotional PV
+    commercial_goal: character_attachment
+    emotion: [memory, connection]
+    visual_focus: [eyes, expression, environment]
+    camera: [environment-reveal, closeup]
+    expression: [reflective-look]
+    style: fantasy-anime
+
+  - id: skin.showcase.v1
+    name: Skin / Fashion Showcase
+    commercial_goal: cosmetic_conversion
+    visual_focus: [outfit, accessory, movement]
+    camera: [beauty-showcase, detail-macro]
+    action: [confident-walk, pose]
+    expression: [elegant-smile]

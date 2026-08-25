@@ -1,0 +1,15 @@
+quality_report:
+  scores:
+    generation_stability:
+    character_consistency:
+    shot_feasibility:
+    visual_impact:
+    commercial_value:
+    art_direction:
+  risk_analysis:
+    character_drift:
+    action_complexity:
+    camera_risk:
+    effect_risk:
+  final_score:
+  decision:

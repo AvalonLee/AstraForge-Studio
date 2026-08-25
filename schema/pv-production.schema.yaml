@@ -1,0 +1,31 @@
+production:
+  version: 1.0
+  project:
+    title:
+    pv_type:
+    duration:
+    commercial_goal:
+  character_bible:
+    reference:
+  theme:
+  style_stack:
+  shot_plan:
+  h3_prompts:
+  quality_report:
+  revision_log:
+
+production_state:
+  - ANALYSIS
+  - THEME_SELECTED
+  - STYLE_LOCKED
+  - SHOT_DESIGNED
+  - PROMPT_GENERATED
+  - QUALITY_CHECKED
+  - FINALIZED
+
+production_meta:
+  version:
+  author:
+  engine: AstraForge Studio
+  created_time:
+  status:

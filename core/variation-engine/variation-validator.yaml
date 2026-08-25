@@ -1,0 +1,15 @@
+variation_validator:
+  rule_01:
+    title: DNA 不可破坏
+    character_dna:
+      must_equal: 100%
+  rule_02:
+    title: Variation 必须符合角色
+    example_error: 黑暗魔女 + 甜偶像皮肤 PV
+    detection:
+      compatibility: LOW
+    action: auto_adjust
+  rule_03:
+    title: 商业目标一致
+    example_error: 目标为抽卡转化，却输出纯剧情慢镜头
+    action: reselect_variation
