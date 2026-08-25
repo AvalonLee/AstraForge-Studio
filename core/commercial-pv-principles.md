@@ -78,3 +78,29 @@ y2k_balance_rule:
   character_priority: 70%
   graphic_element: 30%
 ```
+
+---
+
+## Rule 08 — 快切节奏与英雄镜头
+
+```yaml
+default_rhythm:
+  5s: 4-5 shots
+  10s: 6-7 shots
+  15s: 8-10 shots
+  30s: 14-16 shots
+  note: 单镜头平均 1.5-2s，禁止长镜头站桩
+
+hero_shot_quota:
+  5s: 1
+  15s: 2
+  30s: 3
+  positions: [hook, climax, ending]
+  camera: [hero-low-angle, hero-orbit, final-pose]
+  note: 英雄镜头 = 低机位仰拍 + 力量定格，是 PV 的记忆点
+
+multi_angle_rule:
+  no_consecutive_same_camera: true
+  highlight_min_angles: 3
+  note: 每段动作高潮至少 3 个不同机位快切
+```
