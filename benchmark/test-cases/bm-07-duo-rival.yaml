@@ -90,7 +90,7 @@ cast_risk_assertions:
 risk_budget:
   max_action_level: 2
   max_effect_level: 2
-  max_camera_transition: 4
+  max_camera_transition: 9
 
 scores:
   generation_stability: 30

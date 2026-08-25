@@ -32,7 +32,7 @@ expected_components:
 risk_budget:
   max_action_level: 3
   max_effect_level: 3
-  max_camera_transition: 8
+  max_camera_transition: 15
 
 scores:
   generation_stability: 31

@@ -463,9 +463,9 @@ max_action_level:
 
 **Risk 03 — Camera 复杂度**
 
-稳定：slow push / pan / closeup / hero shot / 2.5D parallax
-风险：360 orbit / 高速追踪 / 复杂运镜
-15s PV 最多 4 次镜头切换。
+稳定：slow push / pan / closeup / hero shot / 2.5D parallax / fast partial orbit / quick whip pan / snap zoom
+风险：完整 360 orbit / 长时间高速追踪 / 复杂运镜
+15s PV 默认 8-10 个镜头（快切优先），全片镜头切换 7-9 次。
 
 **Risk 04 — Effect 复杂度**
 
@@ -486,7 +486,7 @@ effect_level:
 
 - **Rule 01** — 优先降低动作，不降低角色展示
 - **Rule 02** — 优先减少特效，不减少技能表达
-- **Rule 03** — 优先固定镜头，不增加镜头数量
+- **Rule 03** — 保留快切节奏，降低单镜头复杂度（不砍镜头数量）
 
 ### Auto Revision
 

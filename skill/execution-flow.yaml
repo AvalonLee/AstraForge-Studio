@@ -80,7 +80,13 @@ execution:
     max_action_level_30s: 3
     max_effect_level_15s: 2
     max_effect_level_legendary: 3
-    max_camera_transition_15s: 4
+    max_camera_transition_5s: 4
+    max_camera_transition_10s: 6
+    max_camera_transition_15s: 9
+    max_camera_transition_30s: 15
+    hero_shot_min_5s: 1
+    hero_shot_min_15s: 2
+    hero_shot_min_30s: 3
 
   genre_action_limits:
     action: 2
@@ -97,8 +103,8 @@ execution:
       shake: 8-12px / 0.2-0.5s on hit only
       bpm: 140-160
     daily:
-      shot_duration: 1-2.5s
-      push_speed: 0.2/s
+      shot_duration: 0.8-1.5s
+      push_speed: 0.2/s (max 1 per PV)
       pan_speed: "<=0.25deg/s"
       shake: none
       bpm: 100-120

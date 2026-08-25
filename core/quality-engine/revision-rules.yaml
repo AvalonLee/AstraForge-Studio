@@ -8,16 +8,16 @@ stability_rules:
     wrong: giant explosion
     right: energy gathering + character pose + signature effect
   rule_03:
-    title: 优先固定镜头，不增加镜头
-    wrong: add more cuts
-    right: strengthen one hero shot
+    title: 优先保留镜头节奏，降低单镜头复杂度
+    wrong: 砍掉快切、拉长单镜头、退回固定机位
+    right: 保留镜头数量与快切节奏，降低单镜头内的动作 / 特效 / 运镜复杂度
 
 auto_revision:
   - trigger: generation_stability < 40
     actions:
       - reduce action complexity
       - reduce effect level
-      - reduce camera movement
+      - reduce within-shot camera movement, keep cut rhythm
   - trigger: character_consistency < 20
     actions:
       - add character lock

@@ -27,10 +27,16 @@ risk_analyzer:
       30s: 3
 
   camera_stability:
-    stable: [slow push, pan, closeup, hero shot, 2.5D parallax]
-    risky: [360 orbit, high speed tracking, complex movement]
+    stable: [slow push, pan, closeup, hero shot, 2.5D parallax, fast partial orbit, quick whip pan, snap zoom]
+    risky: [full 360 orbit, high speed tracking, complex movement]
+    note: >
+      快速部分环绕（90-180°）与快速甩镜、急推急拉属于稳定项，
+      是快切节奏的首选运镜；完整 360° 环绕与长时间高速追踪仍为高风险。
     max_camera_transition:
-      15s: 4
+      5s: 4
+      10s: 6
+      15s: 9
+      30s: 15
 
   effect_level:
     0: none

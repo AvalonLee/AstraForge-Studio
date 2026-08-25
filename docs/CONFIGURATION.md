@@ -67,7 +67,10 @@ limits:
     15s_character_pv: 2
     legendary: 3
   max_camera_transition:
-    15s: 4
+    5s: 4
+    10s: 6
+    15s: 9
+    30s: 15
 ```
 
 ---
