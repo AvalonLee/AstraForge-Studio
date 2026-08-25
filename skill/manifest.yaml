@@ -1,13 +1,17 @@
 skill:
   name: AstraForge Studio
-  version: 1.0.0
-  release: Production Foundation Release
+  name_zh: 星铸工坊
+  tagline_zh: AI 二次元游戏角色 PV 智能导演系统
+  version: 1.1.0
+  release: Character Universe Expansion
   type: director
   domain: 
     - anime
     - game_PV
     - character_trailer
   capabilities:
+    - multi_character_direction
+    - event_pv_direction
     - genre_selection
     - prompt_structure_10_section
     - h3_format_conversion
@@ -28,6 +32,15 @@ skill:
     - FL2VA
     - L2VA
     - Ref2VA
+  cast_modes:
+    - single
+    - duo
+    - trio
+    - squad
+  event_types:
+    - anniversary
+    - collaboration
+    - seasonal
   supported_pv_modes:
     - 5s_advertisement
     - 15s_character_release

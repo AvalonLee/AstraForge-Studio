@@ -19,7 +19,9 @@ benchmark/test-cases/
 ├── bm-03-dark-witch.yaml
 ├── bm-04-male-knight-action.yaml       ← 首个男性角色 + Genre=action
 ├── bm-05-academy-daily.yaml            ← Genre=daily
-└── bm-06-magic-girl-transform.yaml     ← Genre=magic + 风险预算压测
+├── bm-06-magic-girl-transform.yaml     ← Genre=magic + 风险预算压测
+├── bm-07-duo-rival.yaml                ← 首个多角色（duo）
+└── bm-08-anniversary-trio.yaml         ← 首个活动 PV（trio + 周年）
 ```
 
 字段约定：
@@ -33,6 +35,10 @@ benchmark/test-cases/
 | `risk_budget` | 断言风险预算上限 |
 | `scores` | 六维评分与判定 |
 | `issues_found` | 该用例暴露的问题及修复位置 |
+| `cast` | 多角色阵容（成员/权重/关系/锚位） |
+| `contrast_check` | 阵容成员对比度校验 |
+| `cast_risk_assertions` | 同框动作等级放大与身份串味风险 |
+| `event_assertions` | 活动 PV 的 CTA 与情绪曲线 |
 
 校验：`python tools/validate_benchmarks.py`
 
@@ -62,6 +68,8 @@ Task Orchestrator → Character Analyzer → Reference Retrieval
 | 04 | Male Knight Combat | **Genre+性别** | action | 男角色 / 战斗 | ✅ PASS | 91 | Expression 性别硬编码 -> 已修复 |
 | 05 | Academy Tsundere Daily | **Genre** | daily | 学院 / 日常 | ✅ PASS | 98 | 技术验证：角色稳定+背景高速运动 |
 | 06 | Magic Girl Transform | **Genre** | magic | 魔法 / 变身 | ✅ PASS | 92 | Transform 超限 -> Risk Budget Gate 已修复 |
+| 07 | Duo Rival Showcase | **Cast** | action | 双人 / 宿敌 | ✅ PASS | 90 | 同框动作等级放大 |
+| 08 | Anniversary Trio | **Event** | daily | 三人 / 周年 | ✅ GOOD | 84 | 3 人同框逼近上限 |
 
 > 加入生成稳定性权重后，战斗与魔法角色分数下调 —— 视觉强但生成风险更高。
 
@@ -83,12 +91,19 @@ Task Orchestrator → Character Analyzer → Reference Retrieval
 | **性别维度** | | |
 | 女性 | BM-01, BM-02, BM-03, BM-05, BM-06 | ✅ |
 | 男性 | BM-04 | ✅ |
+| **阵容维度** | | |
+| 单角色 | BM-01..06 | ✅ |
+| 双人 duo | BM-07 | ✅ |
+| 三人 trio | BM-08 | ✅ |
+| 四人 squad | — | ⬜ v1.2（仅 30s） |
+| **活动维度** | | |
+| 周年 anniversary | BM-08 | ✅ |
+| 联动 collaboration | — | ⬜ v1.2 |
+| 季节 seasonal | — | ⬜ v1.2 |
 | **待补** | | |
-| 多角色 / 群像 | — | ⬜ v1.1 |
-| 活动 PV | — | ⬜ v1.1 |
-| 男角色 Theme 覆盖 | — | ⬜ v1.1 |
+| 男角色 Theme 覆盖 | — | ⬜ v1.2 |
 
-当前评分：**90 / 100**（6 例覆盖 3 Genre × 4 Theme × 2 性别；多角色/群像/活动 PV 待 v1.1 补齐）
+当前评分：**93 / 100**（8 例覆盖 3 Genre × 4 Theme × 2 性别 × 3 阵容 × 1 活动类型）
 
 ---
 

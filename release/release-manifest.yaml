@@ -1,14 +1,17 @@
 release:
   project:
     name: AstraForge Studio
-    version: 1.0.0
-    codename: Foundation
+    name_zh: 星铸工坊
+    version: 1.1.0
+    codename: Character Universe Expansion
     release_type: Hybrid
     target:
       - GitHub Repository
       - AI Skill Deployment
     status: Release Candidate
   included_modules:
+    cast_engine: enabled
+    event_engine: enabled
     documentation: enabled
     skill_layer: enabled
     character_dna: enabled
@@ -21,4 +24,4 @@ release:
     score: 95
     decision: APPROVED
     recommendation: READY_FOR_GITHUB_RELEASE
-  git_tag: v1.0.0
+  git_tag: v1.1.0

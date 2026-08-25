@@ -26,6 +26,9 @@ jobs:
       - name: Check naming migration
         run: python tools/check_naming.py
 
+      - name: Check version and brand consistency
+        run: python tools/check_version.py
+
       - name: Validate genre templates
         run: python tools/validate_templates.py
 

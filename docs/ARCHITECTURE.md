@@ -1,6 +1,6 @@
 # Architecture
 
-**AstraForge Studio v1.0.0 — 系统架构文档**
+**AstraForge Studio · 星铸工坊 v1.1.0 — 系统架构文档**
 
 ---
 
@@ -169,6 +169,36 @@ result:
 
 ---
 
+### Cast Resolution（多角色）
+
+单角色用 `character_dna`（单一 identity）；多角色必须改用 `cast`，
+因为需要表达「角色间关系」与「画面权重」，这两者单角色 schema 无法承载。
+
+```
+character_dna  → 1 人
+cast           → 2-4 人 + relationship + screen_weight
+```
+
+三道闸门（任一不通过即拒绝进入 Composer）：
+
+| 闸门 | 规则 |
+|---|---|
+| contrast_requirement | 任意两成员至少 2 维强对比（发色/剪影/服装色/身形/标志物） |
+| weight_rule | `sum(screen_weight) == 70` 且 `lead >= second × 1.5` |
+| action_amplification | 同框有效等级 = 组件等级 + (同框人数 − 1) |
+
+稳定性上限按阵容规模封顶，避免多角色方案获得虚高评分：
+
+```yaml
+stability_cap: { 1: 35, 2: 32, 3: 28, 4: 24 }
+```
+
+**身份串味（identity_bleed）** 是多角色最致命的失败模式：AI 会把 A 的特征
+混到 B 身上，或生成介于两人之间的第三张脸。风险随同框人数与外观相似度上升。
+详见 `core/multi-character/cast-risk-rules.yaml`。
+
+---
+
 ## Layer 3 — Commercial Director
 
 负责商业目标定位：
@@ -257,6 +287,24 @@ Genre × Theme × Variation × Style = Final PV Direction
 | 魔法幻想 | 蓄力 1.5-2.5s / 爆发 0.3-0.8s | 匀速环绕 30-45° | 5-8px（爆发） | 120-140 |
 
 **不可混用镜头节奏**。详见 `library/genre/genre-library.md`。
+
+### Event Engine（活动 PV）
+
+活动 PV 与角色 PV 的成功标准不同：角色 PV 求「记住角色」，活动 PV 求「产生行动」。
+
+| 类型 | 情绪曲线 | CTA |
+|---|---|---|
+| anniversary | 回顾 → 感谢 → 展望 | 必须含活动时间 |
+| collaboration | 意外 → 融合 → 期待 | 必须含限时标识 |
+| seasonal | 氛围 → 惊喜 → 号召 | 必须含活动时间 |
+
+季节 PV 是**唯一**允许开场弱化角色的类型（0-3s 角色占比可降至 30%），
+但全片平均仍须回到 Rule 01 的 70%。这是受控例外。
+
+限定造型（季节/联动）本质是换装，与 DNA Lock 的 `costume_change: critical`
+冲突，通过 `costume_variant_exception` 受控放行。
+
+---
 
 ### Style Stack
 

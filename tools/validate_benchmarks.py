@@ -48,6 +48,11 @@ def effective_action_limit(genre: str, duration: str, rarity: str | None) -> int
     return base
 EFFECT_LIMIT_BY_DURATION = {"5s": 1, "10s": 2, "15s": 2, "30s": 3}
 
+# Screen weight budget from core/multi-character/weight-rules.yaml
+CHARACTER_BUDGET = 70
+STABILITY_CAP_BY_CAST = {1: 35, 2: 32, 3: 28, 4: 24}
+CONTRAST_DIMENSIONS_REQUIRED = 2
+
 SCORE_KEYS = (
     "generation_stability",
     "character_consistency",
@@ -180,6 +185,89 @@ def main() -> int:
                     f"effective limit {allowed_effect} (duration={duration}, rarity={rarity})"
                 )
 
+        # ---- Multi-character (cast) assertions ----
+        cast = data.get("cast") or {}
+        if cast:
+            members = cast.get("members") or []
+            size = cast.get("size")
+
+            if size is not None and len(members) != size:
+                problems.append(
+                    f"{rel}: cast.size is {size} but {len(members)} member(s) listed"
+                )
+
+            weights = [
+                m.get("screen_weight")
+                for m in members
+                if isinstance(m, dict) and m.get("screen_weight") is not None
+            ]
+            if weights:
+                total_weight = sum(weights)
+                if total_weight != CHARACTER_BUDGET:
+                    problems.append(
+                        f"{rel}: screen_weight sums to {total_weight}, "
+                        f"expected {CHARACTER_BUDGET}"
+                    )
+
+            by_role = {
+                m.get("role"): m
+                for m in members
+                if isinstance(m, dict)
+            }
+            lead, second = by_role.get("lead"), by_role.get("second")
+            if lead is None:
+                problems.append(f"{rel}: cast has no 'lead' member")
+            if lead and second:
+                lw, sw = lead.get("screen_weight"), second.get("screen_weight")
+                if isinstance(lw, (int, float)) and isinstance(sw, (int, float)):
+                    if lw < sw * 1.5:
+                        problems.append(
+                            f"{rel}: lead weight {lw} must be >= 1.5x second {sw}"
+                        )
+
+            # anchor sides must be unique to keep composition stable
+            anchors = [
+                m.get("anchor_side") for m in members
+                if isinstance(m, dict) and m.get("anchor_side")
+            ]
+            if len(anchors) != len(set(anchors)):
+                problems.append(
+                    f"{rel}: duplicate anchor_side; each member needs a distinct anchor"
+                )
+
+            # contrast requirement
+            contrast = data.get("contrast_check") or {}
+            cnt = contrast.get("count")
+            if isinstance(cnt, int) and cnt < CONTRAST_DIMENSIONS_REQUIRED:
+                problems.append(
+                    f"{rel}: contrast_check count {cnt} below required "
+                    f"{CONTRAST_DIMENSIONS_REQUIRED}"
+                )
+
+            # stability cap by cast size
+            declared_cast = (data.get("benchmark") or {}).get("cast_size") or size
+            cap = STABILITY_CAP_BY_CAST.get(declared_cast)
+            stability = (data.get("scores") or {}).get("generation_stability")
+            if cap is not None and isinstance(stability, (int, float)):
+                if stability > cap:
+                    problems.append(
+                        f"{rel}: generation_stability {stability} exceeds cap {cap} "
+                        f"for cast_size {declared_cast}"
+                    )
+
+        # ---- Event PV assertions ----
+        if (data.get("benchmark") or {}).get("dimension") == "event":
+            ev = data.get("event_assertions") or {}
+            if not ev:
+                problems.append(f"{rel}: event benchmark missing event_assertions")
+            else:
+                if ev.get("cta_required") and not ev.get("cta_present"):
+                    problems.append(
+                        f"{rel}: event PV requires a CTA but cta_present is not set"
+                    )
+                if not ev.get("emotion_arc"):
+                    problems.append(f"{rel}: event PV missing emotion_arc")
+
         # Scores must add up
         scores = data.get("scores") or {}
         final = scores.get("final_score")
@@ -195,8 +283,11 @@ def main() -> int:
     for required_genre in ("action", "daily", "magic"):
         if required_genre not in genres_seen:
             problems.append(f"coverage gap: no benchmark exercises genre '{required_genre}'")
-    if "genre" not in dimensions_seen:
-        problems.append("coverage gap: no benchmark declares dimension 'genre'")
+    for required_dim in ("genre", "cast", "event"):
+        if required_dim not in dimensions_seen:
+            problems.append(
+                f"coverage gap: no benchmark declares dimension '{required_dim}'"
+            )
 
     for item in problems:
         print(f"BENCHMARK FAIL {item}")

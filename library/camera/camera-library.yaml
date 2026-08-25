@@ -185,3 +185,158 @@ components:
     note: >
       30s 剧情 PV 的 Act 1 常用开场。角色占比低，
       因此不适用于 15s 角色上线 PV（违反角色优先原则）。
+
+  # ---- 多角色同框镜头 ----
+  # 由 core/multi-character/ 引入。所有同框镜头的有效动作等级
+  # = 组件 action_level + (同框人数 - 1)，见 cast-risk-rules.yaml。
+  # 因此这些组件本身刻意保持低动作等级。
+
+  - id: camera.duo.standoff.v1
+    slug: duo-standoff
+    name: Duo Standoff
+    category: camera
+    purpose: rival tension between two characters
+    commercial_value: high
+    best_for: [rival, opposing, boss confrontation, 30s story]
+    shot: medium two-shot
+    focus: [both faces in profile, gaze line between them]
+    camera_motion: slow lateral dolly along the gaze axis
+    composition: 两人分居画面左右，中央留出张力空白
+    emotion: [tension, confrontation]
+    cast_size: 2
+    prompt_block: >
+      anime two-shot standoff,
+      two characters facing each other in profile,
+      strong gaze line, tension gap in center,
+      slow lateral camera, flat cel shading
+    negative_addon: >
+      no character feature swapping, no merged faces,
+      keep each character design distinct and separate
+    risk: medium
+    stability_score: 7
+    impact_score: 9
+
+  - id: camera.back.to.back.v1
+    slug: back-to-back
+    name: Back To Back
+    category: camera
+    purpose: allied or rival duo silhouette
+    commercial_value: high
+    best_for: [ally, rival, duo_unit, poster frame]
+    shot: medium full two-shot
+    focus: [dual silhouette, opposing gaze directions]
+    camera_motion: slow push-in or static
+    composition: 背对背，两人视线朝相反方向
+    emotion: [trust, mutual resolve]
+    cast_size: 2
+    prompt_block: >
+      anime duo standing back to back,
+      looking in opposite directions,
+      strong combined silhouette,
+      slow push-in, flat cel shading
+    negative_addon: >
+      no character feature swapping, no overlapping limbs,
+      keep both character designs distinct
+    risk: low
+    stability_score: 8
+    impact_score: 9
+    note: 背对背构图无手部交叠，是同框中最稳定的选择
+
+  - id: camera.shoulder.to.shoulder.v1
+    slug: shoulder-to-shoulder
+    name: Shoulder To Shoulder
+    category: camera
+    purpose: allied duo advancing together
+    best_for: [ally, duo_unit, team formation]
+    shot: medium two-shot
+    focus: [both faces, aligned forward motion]
+    camera_motion: slow forward tracking
+    composition: 并肩前行，两人同向
+    emotion: [solidarity, momentum]
+    cast_size: 2
+    prompt_block: >
+      anime duo walking shoulder to shoulder toward camera,
+      aligned forward motion, confident posture,
+      slow tracking shot, flat cel shading
+    negative_addon: >
+      no character feature swapping, no hand overlap in foreground,
+      keep both character designs distinct
+    risk: medium
+    stability_score: 7
+    impact_score: 8
+
+  - id: camera.split.frame.duo.v1
+    slug: split-frame-duo
+    name: Split Frame Duo
+    category: camera
+    purpose: show two characters without true co-framing
+    best_for: [opposing, rival, low-risk duo presentation]
+    shot: graphic split composition
+    focus: [each character isolated in own panel]
+    camera_motion: static with graphic panel slide
+    composition: 画面被图形分割，每人独占一格
+    emotion: [contrast, opposition]
+    cast_size: 2
+    prompt_block: >
+      anime split screen composition,
+      two characters each isolated in separate graphic panel,
+      hard dividing line, flat cel shading, poster layout
+    negative_addon: >
+      characters must not cross the dividing line,
+      no feature blending between panels
+    risk: low
+    stability_score: 10
+    impact_score: 8
+    note: >
+      技术上是两个单人镜头拼合，因此不受同框动作等级放大影响。
+      多角色 PV 降低风险的首选手段。
+
+  - id: camera.duo.formation.v1
+    slug: duo-formation
+    name: Group Formation
+    category: camera
+    purpose: cast lineup for team or event PV
+    best_for: [trio, squad, anniversary, collaboration event]
+    shot: wide group shot
+    focus: [full cast silhouette, depth staggering]
+    camera_motion: slow pull-back revealing full cast
+    composition: 前后错位列队，避免并排站桩；高低差建立层次
+    emotion: [scale, celebration]
+    cast_size: 3
+    prompt_block: >
+      anime group formation wide shot,
+      characters staggered in depth with height variation,
+      slow pull-back reveal,
+      flat cel shading, premium game key visual
+    negative_addon: >
+      no character feature swapping between members,
+      keep each character design distinct,
+      no crowd, no duplicated faces
+    risk: high
+    stability_score: 6
+    impact_score: 10
+    note: 必须搭配 action_level 1 组件使用
+
+  - id: camera.mirrored.pose.v1
+    slug: mirrored-pose
+    name: Mirrored Pose
+    category: camera
+    purpose: express paired identity through symmetry
+    best_for: [siblings, duo_unit, twin characters]
+    shot: symmetric two-shot
+    focus: [mirrored body lines]
+    camera_motion: static or slow symmetric push
+    composition: 左右镜像对称姿态
+    emotion: [paired identity, harmony]
+    cast_size: 2
+    prompt_block: >
+      anime symmetric mirrored duo pose,
+      left-right mirrored body lines,
+      static symmetric composition,
+      flat cel shading
+    negative_addon: >
+      mirrored pose must not mean identical faces,
+      keep each character design distinct
+    risk: medium
+    stability_score: 7
+    impact_score: 8

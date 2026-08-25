@@ -32,3 +32,23 @@ transformation_exception:
   validation:
     compare_frames: [pre_transform, post_transform]
     required_identity_score: ">=90"
+
+# costume_variant_exception
+# 由活动 PV（季节/联动限定造型）引入。
+# 限定造型本质是换装，与 costume_change (critical) 冲突。
+# 处理方式与 transformation_exception 一致：受控例外，而非放宽 DNA Lock。
+costume_variant_exception:
+  applies_to: [theme.seasonal.event.v1, theme.collaboration.event.v1]
+  must_remain_identical:
+    - face
+    - hair_color
+    - eye_color
+    - signature_asset
+  may_change:
+    - costume_form
+    - accessory_theme
+  constraints:
+    - 造型变化须全片一致，不得在片中切换回原造型
+    - 限定造型仍须保留角色标志色，避免失去识别度
+  validation:
+    required_identity_score: ">=90"

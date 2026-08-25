@@ -1,6 +1,6 @@
 # Installation Guide
 
-**AstraForge Studio v1.0.0**
+**AstraForge Studio · 星铸工坊 v1.1.0**
 
 ---
 
