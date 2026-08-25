@@ -109,12 +109,21 @@ Modify → Benchmark → Quality Check → Release
 
 ## GitHub 开发流程
 
-| 分支 | 用途 |
-|---|---|
-| `main` | 稳定版本 |
-| `develop` | 开发版本 |
-| `feature/*` | 功能分支 |
-| `hotfix/*` | 紧急修复 |
+> ⚠️ **红线：禁止直接推送到 `main`。** 所有推送先进 `dev`，再通过 PR 合入 `main`。
+> 详见 [BRANCH_POLICY.md](BRANCH_POLICY.md)。
+
+| 分支 | 用途 | 可否直接推送 |
+|---|---|---|
+| `main` | 稳定版本 | ❌ 仅通过 PR |
+| `dev` | 集成开发分支，日常推送目标 | ✅ |
+| `feature/*` | 功能分支 | ✅ |
+| `hotfix/*` | 紧急修复 | ✅ |
+
+克隆后需启用本地推送守卫：
+
+```bash
+git config core.hooksPath .githooks
+```
 
 发布流程：
 
