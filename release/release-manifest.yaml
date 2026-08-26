@@ -2,8 +2,8 @@ release:
   project:
     name: AstraForge Studio
     name_zh: 星铸工坊
-    version: 1.2.0
-    codename: 2D Style Expansion
+    version: 1.2.2
+    codename: Poster-MG Methodology
     release_type: Hybrid
     target:
       - GitHub Repository
@@ -25,4 +25,4 @@ release:
     score: 95
     decision: APPROVED
     recommendation: READY_FOR_GITHUB_RELEASE
-  git_tag: v1.2.0
+  git_tag: v1.2.2
