@@ -2,8 +2,8 @@ skill:
   name: AstraForge Studio
   name_zh: 星铸工坊
   tagline_zh: AI 二次元游戏角色 PV 智能导演系统
-  version: 1.1.0
-  release: Character Universe Expansion
+  version: 1.2.2
+  release: Poster-MG Methodology
   type: director
   domain: 
     - anime
@@ -22,10 +22,22 @@ skill:
     - style_stack
     - quality_engine
     - benchmark_suite
+    - editorial_mg_poster_style
   genres:
     - action
     - daily
     - magic
+  base_2d_styles:
+    - modern-cel
+    - retro-cel
+    - painterly-anime
+    - watercolor-ink
+    - vector-flat
+    - korean-manhwa
+    - western-comic
+  visual_approaches:
+    - cel_animation        # 赛璐璐动作/文戏/魔法基线（连续动作叙事）
+    - editorial_mg_poster  # 平面海报式 / Editorial MG / 剪影符号化（图形匹配转场，非连续动作）
   h3_modes:
     - T2VA
     - I2VA

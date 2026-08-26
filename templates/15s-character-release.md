@@ -15,6 +15,10 @@ Template ID: template.character.release.15s.v1
 | Style | mobile-game-premium |
 | Animation | modern-cel |
 
+> Animation 可从 P0 7 个 2D base style 中选择：
+> `modern-cel` / `retro-cel` / `painterly-anime` / `watercolor-ink` /
+> `vector-flat` / `korean-manhwa` / `western-comic`，锚定见 [core/style-anchor.md](../core/style-anchor.md)。
+
 ## Structure
 
 ```
@@ -49,3 +53,5 @@ Transition: flash-cut / title-reveal / whip-pan
 - ✓ 机位角度变化 ≥ 6 次，禁止连续同机位
 - ✓ 有最终记忆画面
 - ✓ 角色 DNA 未变化
+
+

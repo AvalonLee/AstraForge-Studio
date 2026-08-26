@@ -1,6 +1,6 @@
 # Developer Guide
 
-**AstraForge Studio · 星铸工坊 v1.1.0**
+**AstraForge Studio · 星铸工坊 v1.2.0**
 
 ---
 
@@ -141,7 +141,7 @@ GitHub Actions
     ↓
 Release Candidate
     ↓
-Tag v1.1.0
+Tag v1.2.0
     ↓
 GitHub Release
     ↓
@@ -156,8 +156,7 @@ Archive Package
 |---|---|
 | `v1.0.0` | Initial Production Release |
 | `v1.1.0` | Character Universe Expansion（多角色 + 活动 PV） |
-| `v1.1.0` | 新增组件 |
-| `v1.2.0` | 新增 PV 模板 |
+| `v1.2.0` | 2D Style Expansion（7 套 2D 画风 + 男性角色主题） |
 | `v2.0.0` | 重大架构升级 |
 
 ---
@@ -199,3 +198,4 @@ python tools/check_naming.py    # 历史名称回流检查
 ```
 
 详见 [tools/README.md](../tools/README.md)。
+

@@ -4,6 +4,130 @@ All notable changes to AstraForge Studio（星铸工坊）are documented in this
 
 ---
 
+## v1.2.2 — Poster-MG Methodology
+
+将三份成功案例 PV（太刀城市 / 命运赌场 / 兔耳魔术师）的创作要点系统提炼为
+「平面海报式 / Editorial MG / 剪影符号化」方法论，融入案例库与 skill 能力层。
+
+### Added
+
+- **平面海报式实证案例** `references/cases/proven-editorial-mg-poster.yaml`
+  - 综合三份成功案例，沉淀可复用方法论：视觉基底（纯二维/平面化/剪影化/符号化）、
+    三色高反差 + 色彩语义系统（红=危险/白=规则/黑=未知）、世界符号库（每主题一套固定 2D 原语）、
+    剪影↔赛璐璐瞬时切换、图形匹配转场方法论、20s 分镜节奏结构、反派终场揭示模板、
+    动态负向约束清单范式、音乐/音效一等输入、同构不同皮变体（太刀/赌场/兔耳）
+- **规则层扩展** `references/extracted-rules.md` 由 11 类扩展至 16 类
+  - 十二、平面海报式 / Editorial MG 视觉规则
+  - 十三、剪影 ↔ 赛璐璐 瞬时切换手法
+  - 十四、反派终场揭示结构（Villain Reveal at End）
+  - 十五、符号化图形系统（每主题一套固定 2D 原语）
+  - 十六、动态负向限制清单范式（颗粒化枚举禁止项）
+  - 顶部来源署名补充三份成功案例 PV
+- **SKILL.md 接入**
+  - 知识系统生产资产表新增案例入口 + 规则层 16 类说明
+  - 最佳使用方式新增「方法 4：平面海报式 / Editorial MG PV」
+- **skill 能力声明** `skill/manifest.yaml`
+  - 新增能力 `editorial_mg_poster_style`
+  - 新增 `visual_approaches`（cel_animation / editorial_mg_poster 双构图模式）
+  - 版本升级至 1.2.2（Poster-MG Methodology）；SKILL.md / README 版本与徽章同步
+
+### Changed
+
+- `skill/execution-flow.yaml` 的 `genre_params` 新增 `poster_mg` 段，量化平面海报式镜头节奏：
+  蒙太奇窗口（9-15s）、蒙太奇密度（6s 窗口 8-20 切镜 / avg 0.3-0.8s / 关键姿态定格不连续动作）、
+  反相触发频率（每次鼓点 ≈ 每 0.4-0.5s 一次，类型 black-white-invert / single-frame-red-flash /
+  single-frame-white-flash / geometric-deconstruct）、剪影↔赛璐璐切换窗口（0-6s）、角色占比（~70% 静止）、
+  图形匹配转场硬约束、bpm 120-140
+- `SKILL.md` 知识系统资产表 + Genre→模板表新增 `templates/poster-mg-20s.md` 入口
+
+### Resolved (from prior Known Limitations)
+
+- ✅ 专项「海报式→分镜」自动导演模板 `templates/poster-mg-20s.md` 已补齐（局部开场→剪影↔赛璐璐揭示→
+  侧面平移→MG 蒙太奇 9-15s→反派终场→标题拼合，含平面海报式硬约束与 Validation）
+- ✅ MG 蒙太奇密度 / 反相触发频率已量化进 `execution-flow.yaml` 的 `genre_params`（见 `poster_mg` 段）
+
+---
+
+## v1.2.1 — Male Concept Breakdown
+
+将「男生角色设计提示词」的有效要点系统融入项目，新增角色概念分解图资产并固化男性主题分解矩阵。
+
+### Added
+
+- **角色概念分解图资产** `director/character-concept-sheet.md`
+  - 六维拆解框架：服装分层 / 私密内着拆解 / 表情集 / 材质特写 / 物品质感特写 / 生活切片（关联物品）
+  - 构图布局（中心立绘 + 环绕拆解 + 手绘引导线）、视觉规范（白底设计稿变体仍服从 Base Style 锁定）、执行逻辑（4 步对接 Step0→Step1）、可直接套用的文生图 Prompt 模板
+  - 与 `character-card-template.md` 互补，共享角色设定卡与 Base Style 锁定，不替换角色圣经
+- **男性主题分解矩阵** — `library/theme/theme-library.yaml` 的 `male-suit-release` / `male-samurai-release` / `male-knight-release` 各新增 `concept_sheet` 字段（服装分层 / 私密内着 / 表情集 / 材质特写 / 生活切片三桶），确保风格统一有数据支撑
+- **基准用例 BM-11** `benchmark/test-cases/bm-11-male-concept-sheet.yaml` — 校验概念分解图资产与男性西装 Theme 协同（dimension=concept-sheet 新资产回归）
+
+### Added (Female Extension)
+
+- **概念分解图女性向扩展** `director/character-concept-sheet.md`
+  - 性别化背景色：男性向纯白 / 浅灰稿纸；女性向米黄 / 羊皮纸 / 浅灰纹理背景（仅呈现层，不触发画风切换）
+  - 生活切片三桶命名跨性别统一为「随身包袋与内容物 / 个护与配饰 / 个性化物件」，补充女性向示例（手账本 / 常备药品 / 收藏品 / 化妆镜 / 香水 / 发饰）
+  - 材质特写新增「做旧痕迹」（磨损边 / 褪色 / 起球）以增强女性向生活厚度，并约定高奢 / 禁欲系角色应克制
+  - 私密内着术语对齐（打底衫 / 袜类），表情集补充女性情绪（甜笑 / 自信挑眉 / 走神 / 狡黠）
+- **女性主题分解矩阵** — `library/theme/theme-library.yaml` 的 `cool-female-jrpg` / `sweet-y2k-girl` / `academy-character` / `magic-girl` / `cyberpunk-girl` / `dark-witch-release` 各新增 `concept_sheet` 字段，与男性矩阵对称
+- **基准用例 BM-12** `benchmark/test-cases/bm-12-female-concept-sheet.yaml` — 校验概念分解图资产与女性甜系 Y2K Theme 协同（dimension=concept-sheet，与 BM-11 对称）
+
+### Added (Neutral Extension)
+
+- **概念分解图中性向扩展** `director/character-concept-sheet.md`
+  - 引言、生活切片三桶脚注、一致性约束补充中性 / 非二元指向（`character-release` / `gacha-legendary` 两个性别中立主题）
+  - 背景规则扩展：中性 / 非二元角色可在「纯白稿纸」与「羊皮纸纹理」间按气质二选一，均仅限呈现层
+  - 生活切片第三桶补充中性向示例（跨性别通用：徽章 / 盲盒 / 手账 / 明信片）
+- **中性主题分解矩阵** — `library/theme/theme-library.yaml` 的 `character-release` / `gacha-legendary` 各新增 `concept_sheet` 字段（跨性别通用示例，与男 / 女矩阵对称）
+- **基准用例 BM-13** `benchmark/test-cases/bm-13-neutral-concept-sheet.yaml` — 校验概念分解图资产与性别中立基础发布 Theme 协同（dimension=concept-sheet，与 BM-11 / BM-12 对称）
+
+### Changed
+
+- `SKILL.md` Step1 流程补充「角色概念分解图」产出说明，生产资产表新增该文档条目
+- `README.md` Benchmark 表新增 BM-11 / BM-12，`Current Release` 记录 v1.2.1 女性扩展
+
+### Known Limitations
+
+- 概念分解图目前为 Step1 设定稿资产，尚未提供专项「分解图→分镜」自动导演链路
+
+---
+
+## v1.2.0 — 2D Style Expansion
+
+视觉风格扩展：从单一赛璐璐扩展为 7 套 2D base style，同时补齐男性角色主题与角色图 Prompt Gate。
+
+### Added
+
+- **2D 多画风体系**
+  - 7 个 base style：`modern-cel` / `retro-cel` / `painterly-anime` / `watercolor-ink` / `vector-flat` / `korean-manhwa` / `western-comic`
+  - `core/style-anchor.md` 重写为 2D 风格锚定语模板库，每个 base 含中英锚定与专属禁止项
+  - `library/style/style-library.yaml` 新增 5 个 base 组件与 `motion-comic` 呈现层
+  - `core/style-engine/style-conflict-rules.yaml` 新增 conflict.004-007，防 2D base 中途互切与跨形态混搭
+  - `core/style-engine/style-priority-rules.md` 增加 Base Style 选择规则（按角色美术语言）
+  - H3 schema 与 `core/h3-generation-rules.md` 由「赛璐璐硬编码」改为「所选 base 锚定贯穿」
+  - PV 模板与角色卡模板参数化：默认 `modern-cel`，可替换为其他 2D base
+- **男性角色主题**
+  - `library/theme/theme-library.yaml` 新增 `male-suit-release` / `male-samurai-release` / `male-knight-release`
+  - 角色路由新增 `male_cool` / `male_hotblooded` / `male_mature`
+  - 表情组件 `composed-gaze` / `battle-resolve` / `detached-stare`
+  - Benchmark BM-09（Male Suit Elegance 97）、BM-10（Male Samurai Combat 93），BM-04 升级为骑士主题
+- **角色图 Prompt Gate**
+  - 交互协议 Step0-2 重构：先确认角色与风格、输出角色设定图 Prompt，再锚定 `SESSION_SPEC`
+  - `director/character-card-template.md` 支持按 base style 参数化
+
+### Changed
+
+- 默认 `modern-cel` 不变，未指定其他 base 时行为向后兼容
+- `core/prompt-structure.md` 与模板的默认禁止项补充欧美卡通反向排除（base = western-comic 时反转）
+- `docs/ARCHITECTURE.md`、`docs/USER_GUIDE.md`、`docs/CONFIGURATION.md` 同步多画风说明
+
+### Known Limitations
+
+- 尚未提供 2D 多画风专项 Benchmark 用例
+- 3D 形态（三渲二 / 写实 CG / 实拍 VFX）仅列入 roadmap，未进入 P0
+- 2D 内 planned 美术细节（fantasy-luxury / sci-fi-anime / urban-neon / historical-anime 等）待后续版本
+
+---
+
 ## v1.1.0 — Character Universe Expansion
 
 角色宇宙扩展。核心是把系统从「单角色 PV 导演」扩展为「角色宇宙导演」，
@@ -108,3 +232,7 @@ v1.0.0 起以 AstraForge Studio 名义重新起版，定位为 Production Founda
 
 - Benchmark 覆盖偏女性角色，缺少多角色 / 群像 / 活动 PV 用例
 - Theme 库仍在扩展中
+
+
+
+

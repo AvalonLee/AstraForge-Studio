@@ -42,10 +42,11 @@ summary:
 retention_analysis:
 - Must retain: <必须保留的参考元素，如角色外貌、服装、特定pose>
 - May adjust: <可调整元素，如背景、光影、运镜细节>
-- Style constraint: All outputs must maintain cel-shading anime style
-  (90s Japanese retro, clean black outlines, flat color blocks,
-  hard-edged shadows, 12fps limited animation,
-  NO realistic rendering, NO motion blur, NO fluid effects)
+- Style constraint: All outputs must maintain the selected 2D base style
+  (default modern-cel: cel shading, clean outlines, flat color blocks,
+  hard-edged shadows, 12fps limited animation;
+  see core/style-anchor.md for painterly / watercolor / vector /
+  manhwa / western-comic anchors and their forbidden lists)
 ```
 
 ### 字段 4：detailed_description
@@ -55,7 +56,7 @@ retention_analysis:
 
 每个镜头必须包含六要素：composition / subjects / environment / actions / camera / sound
 
-赛璐璐风格锚定语必须贯穿。
+所选 base style 的锚定语必须贯穿（默认 modern-cel；见 core/style-anchor.md）。
 
 ### 字段 5：overall_soundscape
 

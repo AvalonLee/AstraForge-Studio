@@ -35,7 +35,7 @@ integrated_multimodal_description:
 ...
 ```
 
-赛璐璐风格锚定语（见 core/style-anchor.md）必须贯穿所有镜头，可在时间线末尾统一声明。
+所选 base style 的锚定语（见 core/style-anchor.md，默认 modern-cel）必须贯穿所有镜头，可在时间线末尾统一声明。
 
 ### 字段 2：overall_soundscape
 
@@ -61,4 +61,4 @@ non_diegetic_music:
 2. 时长总和必须等于 `SESSION_SPEC.duration`
 3. 禁止未解析的参考标签、与请求时长不匹配的时间线
 4. I2VA/FL2VA/L2VA 模式必须在开头标注参考帧关系
-5. 赛璐璐禁止项必须明确写出（见 core/style-anchor.md）
+5. 所选 base style 的专属禁止项必须明确写出（见 core/style-anchor.md）

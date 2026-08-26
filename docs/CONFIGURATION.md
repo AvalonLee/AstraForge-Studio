@@ -1,6 +1,6 @@
 # Configuration Guide
 
-**AstraForge Studio · 星铸工坊 v1.1.0**
+**AstraForge Studio · 星铸工坊 v1.2.0**
 
 AstraForge 使用基于 YAML 的配置。
 
@@ -24,7 +24,7 @@ config/
 project:
   name: AstraForge Studio
   name_zh: 星铸工坊
-  version: 1.1.0
+  version: 1.2.0
 ```
 
 ---
@@ -80,6 +80,8 @@ limits:
 默认 Style Stack：
 
 ```yaml
+# base 可选 7 套 2D 画风：modern-cel / retro-cel / painterly-anime /
+# watercolor-ink / vector-flat / korean-manhwa / western-comic
 style_stack:
   base: modern-cel
   premium: mobile-game-premium
@@ -106,8 +108,9 @@ commercial_upgrade:
 library/style/custom-style.yaml
 ```
 
-添加后需在 `core/style-engine/style-compatibility.yaml` 中登记兼容性，
-否则 Style Validation Gate 会拒绝该组合。
+添加后需在 `core/style-engine/style-conflict-rules.yaml` 中登记兼容性，
+否则 Style Validation Gate 会拒绝该组合；新增 base style 还需补全
+`core/style-anchor.md` 的锚定与专属禁止项。
 
 ---
 
@@ -120,3 +123,5 @@ defaults:
   pv_mode: 15s_release
   variation: release.standard.v1
 ```
+
+

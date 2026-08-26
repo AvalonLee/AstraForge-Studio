@@ -10,8 +10,8 @@
 
 *Build Characters. Forge Worlds. Create PVs.*
 
-![Version](https://img.shields.io/badge/version-1.1.0-blue)
-![Codename](https://img.shields.io/badge/codename-Character%20Universe%20Expansion-8957e5)
+![Version](https://img.shields.io/badge/version-1.2.2-blue)
+![Codename](https://img.shields.io/badge/codename-2D%20Style%20Expansion-8957e5)
 ![AI Skill](https://img.shields.io/badge/AI-Skill-purple)
 ![Domain](https://img.shields.io/badge/domain-Anime%20PV-red)
 ![Status](https://img.shields.io/badge/status-production-green)
@@ -390,9 +390,10 @@ AstraForge 的评分权重刻意把「能不能稳定生成」放在第一位：
 - **Action** — Hair Flip / Weapon Reveal / Ability Preparation / Ability Release / Signature Pose
 - **Expression** — Cool Gaze / Sweet Smile / Elegant Smile / Playful Wink / Composed Gaze / Battle Resolve / Detached Stare
 - **Transition** — Title Reveal / UI Card / Particle Reveal / Character Freeze
-- **Theme** — Character Release / Gacha Legendary / Dark Witch / Sweet Y2K / Cool Warrior
+- **Theme** — Character Release / Gacha Legendary / Dark Witch / Sweet Y2K / Cool Warrior / Male Suit / Male Samurai / Male Knight
 - **Theme（活动）** — Anniversary Celebration / Collaboration Event / Seasonal Event
-- **Style** — Modern Cel / Mobile Game Premium / Fantasy Anime / Y2K Graphic / Dark Cinematic Cel
+- **Style（2D Base）** — Modern Cel / Retro Cel / Painterly Anime / Watercolor Ink / Vector Flat / Korean Manhwa / Western Comic
+- **Style（Premium / Special）** — Mobile Game Premium / Fantasy Anime / Y2K Graphic / Dark Cinematic Cel
 - **Genre** — 打斗 Action / 日常文戏 Daily / 魔法幻想 Magic（可量化参数）
 - **Persona** — 性感 / 可爱 / 帅气 / 冷酷 / 热血 / 呆萌（叠加于 Genre 之上）
 
@@ -458,8 +459,13 @@ Skill Update → Benchmark → Quality Check → Regression Test → Release
 | 06 | Magic Girl Transform | Genre | magic | ✅ 92 |
 | 07 | Duo Rival Showcase | **Cast** | action | ✅ 90 |
 | 08 | Anniversary Trio | **Event** | daily | ✅ 84 |
+| 09 | Male Suit Elegance | Theme | daily | ✅ 97 |
+| 10 | Male Samurai Combat | Theme | action | ✅ 93 |
+| 11 | Male Suit Concept Sheet | Concept-Sheet | daily | ✅ 97 |
+| 12 | Sweet Y2K Girl Concept Sheet | Concept-Sheet | daily | ✅ 98 |
+| 13 | Neutral Character Concept Sheet | Concept-Sheet | daily | ✅ 98 |
 
-覆盖 3 Genre × 4 Theme × 2 性别 × 3 阵容 × 1 活动类型，当前 **93 / 100**。
+覆盖 3 Genre × 2 性别 × 3 阵容 × 1 活动类型，含男性西装 / 武士 / 骑士 Theme、女性甜系 Y2K / 酷飒 JRPG / 学院 / 魔法少女 / 赛博 / 暗黑女巫 Theme、中性 / 非二元 character-release / gacha-legendary Theme 与「角色概念分解图」资产，当前 **93 / 100**（13 例）。
 用例以机器可校验 YAML 存放于 [benchmark/test-cases/](benchmark/test-cases/)，
 由 `tools/validate_benchmarks.py` 在 CI 中强制校验组件引用、风险预算与评分自洽。
 
@@ -500,9 +506,15 @@ cd AstraForge-Studio
 
 ## 📦 Current Release
 
-**AstraForge Studio v1.1.0** — 🟢 Character Universe Expansion
+**AstraForge Studio v1.2.2** — 🟢 Poster-MG Methodology
 
-包含：Character DNA System · PV Director Framework · Genre Engine · **Cast Engine（多角色）** · **Event Engine（活动 PV）** · Variation Engine · Style Engine · Prompt Engine（10 段规范 + H3 转换）· Quality Engine · Benchmark Suite · Visual Component Library
+包含：Character DNA System · PV Director Framework · Genre Engine · **Cast Engine（多角色）** · **Event Engine（活动 PV）** · Variation Engine · Style Engine · Prompt Engine（10 段规范 + H3 转换）· Quality Engine · Benchmark Suite · Visual Component Library · **平面海报式 / Editorial MG 方法**
+
+v1.2 新增：7 套 2D base style（现代赛璐璐 / 复古赛璐璐 / 厚涂动画 / 水彩国风 / 矢量潮流 / 韩漫 / 美漫）、男性角色主题（西装 / 武士 / 骑士）、角色设定图 Prompt Gate、BM-09 / BM-10 基准用例
+
+v1.2.1 新增：角色概念分解图资产（director/character-concept-sheet.md），将「服装分层 / 私密内着 / 表情集 / 材质特写 / 生活切片」六维框架固化为可复用设定稿规范；三套男性主题补充 `concept_sheet` 分解矩阵（服装分层 / 内着 / 表情集 / 材质特写 / 生活切片），新增 BM-11 回归用例。女性向扩展：概念分解图文档补齐性别化背景（羊皮纸纹理）、生活切片三桶统一命名与女性示例、做旧痕迹材质细节；六套女性主题（cool-female-jrpg / sweet-y2k-girl / academy-character / magic-girl / cyberpunk-girl / dark-witch-release）补充 `concept_sheet` 矩阵，新增 BM-12 女性回归用例。中性扩展：为性别中立的 `character-release` / `gacha-legendary` 主题补充 `concept_sheet` 矩阵（跨性别通用示例、背景白底/羊皮纸二选一），新增 BM-13 中性回归用例。
+
+v1.2.2 新增：平面海报式 / Editorial MG / 剪影符号化 PV 方法论。新增实证案例 `references/cases/proven-editorial-mg-poster.yaml`（综合太刀城市 / 命运赌场 / 兔耳魔术师三份成功案例），`references/extracted-rules.md` 由 11 类扩展至 16 类（新增平面海报式视觉、剪影↔赛璐璐切换、反派终场揭示、符号化图形系统、动态负向限制清单范式）。SKILL.md 新增「方法 4：平面海报式 PV」与案例库入口；manifest 新增 `editorial_mg_poster_style` 能力声明与 `visual_approaches`（cel_animation / editorial_mg_poster 双构图模式）。
 
 v1.1 新增：多角色 PV（duo / trio）、活动 PV（周年 / 联动 / 季节）、6 个同框镜头组件、双人 Prompt 模板
 
@@ -539,3 +551,6 @@ AI 二次元游戏角色 PV 智能导演系统
 **塑造角色，锻造世界，创造属于你的 PV。**
 
 </div>
+
+
+

@@ -41,6 +41,23 @@ style_stack:
   special_layer:   # 负责角色个性
 ```
 
+## Base Style 选择规则
+
+P0 支持 7 个 2D base style（`modern-cel` / `retro-cel` / `painterly-anime` /
+`watercolor-ink` / `vector-flat` / `korean-manhwa` / `western-comic`），
+选择依据是**角色美术语言**，而不是主题偏好：
+
+```
+日系动画脸 → modern-cel / retro-cel / painterly-anime / watercolor-ink
+韩系条漫脸 → korean-manhwa
+欧美漫画脸 → western-comic
+潮流海报感 → vector-flat
+```
+
+未指定时默认 `modern-cel`。base 一经选定全片锁定；
+Premium / Special 层只能微调，不得覆盖 base 的线条与渲染方式。
+base 的完整锚定与专属禁止项见 core/style-anchor.md。
+
 ## 自动组合规则
 
 ```yaml
@@ -58,7 +75,8 @@ style_composition:
 ## Style Lock
 
 生成过程中允许 camera change / pose change，
-禁止 style change（例：开始 2D cel anime，禁止中途变 realistic 3D CGI）。
+禁止 style change（例：开始 2D cel anime，禁止中途变 realistic 3D CGI；
+P0 内还禁止 2D base 中途互切：赛璐璐变厚涂 / 韩漫变美漫均不允许）。
 
 ---
 
@@ -67,3 +85,5 @@ style_composition:
 ```
 Character clarity > Visual impact > Background complexity
 ```
+
+

@@ -2,8 +2,8 @@ release:
   project:
     name: AstraForge Studio
     name_zh: 星铸工坊
-    version: 1.1.0
-    codename: Character Universe Expansion
+    version: 1.2.2
+    codename: Poster-MG Methodology
     release_type: Hybrid
     target:
       - GitHub Repository
@@ -20,8 +20,9 @@ release:
     quality_engine: enabled
     benchmark_suite: enabled
     visual_library: enabled
+    multi_style_2d: enabled
   quality_audit:
     score: 95
     decision: APPROVED
     recommendation: READY_FOR_GITHUB_RELEASE
-  git_tag: v1.1.0
+  git_tag: v1.2.2

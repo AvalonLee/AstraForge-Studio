@@ -1,13 +1,13 @@
 ---
 name: AstraForge Studio
-description: 星铸工坊（AstraForge Studio），二次元游戏角色PV智能导演系统。将角色设定转化为商业级PV制作方案：角色分析与DNA锁定、商业定位、Genre选择（打斗/日常文戏/魔法幻想）、镜头分镜设计、10段结构Prompt生成、以及Minimax H3格式转换（T2VA/I2VA/FL2VA/L2VA/Ref2VA）。当用户需要制作动漫角色PV、游戏角色上线预告、抽卡展示、皮肤宣传、剧情PV，或需要优化已有视频Prompt、拆解参考PV时使用。全程仅产出Prompt与参数，不主动调用图像/视频生成能力。
+description: 星铸工坊（AstraForge Studio），二次元游戏角色PV智能导演系统。将角色设定转化为商业级PV制作方案：角色分析与DNA锁定、商业定位、Genre选择（打斗/日常文戏/魔法幻想）、2D多画风风格选择（赛璐璐/厚涂/水彩国风/矢量潮流/韩漫/美漫）、镜头分镜设计、10段结构Prompt生成、以及Minimax H3格式转换（T2VA/I2VA/FL2VA/L2VA/Ref2VA）。当用户需要制作动漫角色PV、游戏角色上线预告、抽卡展示、皮肤宣传、剧情PV，或需要优化已有视频Prompt、拆解参考PV时使用。全程仅产出Prompt与参数，不主动调用图像/视频生成能力。
 ---
 # AstraForge Studio · 星铸工坊
 
 **AI 二次元游戏角色 PV 智能导演系统**
 *AI Anime Game Character PV Director System*
 
-Version: 1.1.0 — Character Universe Expansion
+Version: 1.2.2 — Poster-MG Methodology
 
 > 塑造角色，锻造世界，创造属于你的 PV。
 > *Build Characters. Forge Worlds. Create PVs.*
@@ -50,9 +50,22 @@ Style Stack 分三层控制：Base Style + Premium Layer + Character Style。
 
 AstraForge 采用**交互式生产流程**，不假设用户意图。
 
-### Step0 — 锚定 SESSION_SPEC
+### Step0 — 角色需求与风格分析
 
-每次新会话首先确认时长与比例，记为 `SESSION_SPEC`，后续步骤直接引用：
+每次新会话先完成角色信息充分性校验、Character DNA 提取与角色风格方向确认。
+视频时长和视频画幅此时只可作为 provisional 信息，不提前锁定 `SESSION_SPEC`。
+
+### Step1 — 角色设定与角色图 Prompt
+
+角色设定、Persona 与 Style 确认后，必须立即输出角色设定图 Prompt，供用户检查角色视觉方向。
+角色图 Prompt 不依赖视频时长、视频画幅或 PV Genre；使用独立的角色设定图比例建议。
+需要一次性呈现角色全貌（服装分层 / 表情区间 / 材质特写 / 生活切片）时，可进一步产出
+「角色概念分解图」（六维全景设定稿，见 [director/character-concept-sheet.md](director/character-concept-sheet.md)），
+该资产继承同一套角色设定卡与 Base Style 锁定，不替换角色圣经。
+
+### Step2 — 锚定 SESSION_SPEC
+
+角色设定与风格完成、角色图 Prompt 已输出后，再确认视频时长与比例，记为 `SESSION_SPEC`：
 
 ```yaml
 SESSION_SPEC:
@@ -99,16 +112,20 @@ Base Style + Premium Layer + Special Layer
 
 例：`Modern Cel + Mobile Game Premium + Dark Cinematic Cel`
 
+Base 可选 7 套 2D 画风：`modern-cel` / `retro-cel` / `painterly-anime` /
+`watercolor-ink` / `vector-flat` / `korean-manhwa` / `western-comic`，
+一经选定全片锁定；锚定与专属禁止项见 [core/style-anchor.md](core/style-anchor.md)。
+
 ---
 
 ## 5. 内置知识系统
 
 - **Camera Library** — Eye Reveal / Beauty Showcase / Hero Low Angle / Detail Macro / Hand To Camera / Action Tracking / Final Pose
 - **Action Library** — Hair Flip / Head Turn / Confident Walk / Hand Gesture / Weapon Reveal / Ability Release / Transformation / Signature Pose
-- **Expression Library** — Cool Gaze / Confident Smirk / Sweet Smile / Playful Wink / Shy Expression / Elegant Smile / Idol Bright / Villain Pressure
+- **Expression Library** — Cool Gaze / Confident Smirk / Sweet Smile / Playful Wink / Shy Expression / Elegant Smile / Idol Bright / Villain Pressure / Composed Gaze / Battle Resolve / Detached Stare
 - **Transition Library** — Flash Cut / Anime Impact / Graphic Panel / UI Card / Glitch Data / Particle Reveal / Title Reveal / Character Freeze
-- **Theme Library** — Character Release / Gacha Legendary / Cool Female JRPG / Sweet Y2K / Academy / Magic Girl / Cyberpunk
-- **Style Library** — Modern Cel / Retro Cel / Y2K Graphic / Fantasy Anime / Mobile Game Premium / Dark Cinematic Cel
+- **Theme Library** — Character Release / Gacha Legendary / Cool Female JRPG / Sweet Y2K / Academy / Magic Girl / Cyberpunk / Male Suit / Male Samurai / Male Knight
+- **Style Library** — 7 个 2D base style：Modern Cel / Retro Cel / Painterly Anime / Watercolor Ink / Vector Flat / Korean Manhwa / Western Comic；Premium：Mobile Game Premium；Special：Y2K Graphic / Fantasy Anime / Dark Cinematic Cel 等
 - **Genre Library** — 打斗 / 日常文戏 / 魔法幻想（含可量化帧率、运镜、转场、动态参数）
 - **Persona Tags** — 性感 / 可爱 / 帅气 / 冷酷 / 热血 / 呆萌（叠加于 Genre 之上）
 
@@ -117,15 +134,18 @@ Base Style + Premium Layer + Special Layer
 | 资产 | 说明 |
 |---|---|
 | [core/prompt-structure.md](core/prompt-structure.md) | 10 段结构规范 + 输出前自检清单（生成前必读） |
-| [core/style-anchor.md](core/style-anchor.md) | 赛璐璐风格锚定语（中英双版） |
+| [core/style-anchor.md](core/style-anchor.md) | 2D 风格锚定语模板库：7 个 base style（中英双版） |
 | [templates/genre-action-15s.md](templates/genre-action-15s.md) | 打斗 15s 完整可替换 Prompt |
 | [templates/genre-daily-15s.md](templates/genre-daily-15s.md) | 日常文戏 15s 完整可替换 Prompt |
 | [templates/genre-magic-15s.md](templates/genre-magic-15s.md) | 魔法幻想 15s 完整可替换 Prompt |
 | [templates/cast-duo-15s.md](templates/cast-duo-15s.md) | 双人 15s 完整可替换 Prompt |
+| [templates/poster-mg-20s.md](templates/poster-mg-20s.md) | 平面海报式 / Editorial MG 20s 专项分镜（剪影符号化） |
 | [director/storyboard-4shot.md](director/storyboard-4shot.md) | 4 镜头连贯分镜脚本 |
 | [director/character-card-template.md](director/character-card-template.md) | 角色设定卡 + 出图 Prompt |
+| [director/character-concept-sheet.md](director/character-concept-sheet.md) | 角色概念分解图（六维全景设定稿） |
 | [director/prompt-audit.md](director/prompt-audit.md) | 已有 Prompt 诊断 |
-| [references/extracted-rules.md](references/extracted-rules.md) | 从实证案例提取的 11 类规则 |
+| [references/extracted-rules.md](references/extracted-rules.md) | 从实证案例提取的 16 类规则（含平面海报式 / Editorial MG / 剪影符号化方法论） |
+| [references/cases/proven-editorial-mg-poster.yaml](references/cases/proven-editorial-mg-poster.yaml) | 平面海报式成功案例：太刀城市 / 命运赌场 / 兔耳魔术师三案例同构方法论 |
 
 ---
 
@@ -142,7 +162,13 @@ Base Style + Premium Layer + Special Layer
 视觉特点：
 武器/能力：
 目标：
+```
+
+角色风格确认并输出角色设定图 Prompt 后，再补充视频参数：
+
+```
 时长：
+比例：
 ```
 
 示例：
@@ -166,6 +192,23 @@ Base Style + Premium Layer + Special Layer
 优化这个 H3 Prompt，提高角色稳定性和商业感。
 ```
 
+### 方法 4：平面海报式 / Editorial MG PV（参考成功案例）
+
+当用户要做「纯二维、剪影符号化、图形匹配转场、像动态平面海报」的 PV 时，
+调用 `references/cases/proven-editorial-mg-poster.yaml` 与
+`references/extracted-rules.md` 第十二~十六类规则，按以下骨架产出：
+
+```
+1. 锁定三色高反差 + 色彩语义（红=危险/白=规则/黑=未知）
+2. 选定世界符号库（城市/赌场/魔术等固定 2D 原语）
+3. 开场：局部身体 + 剪影↔赛璐璐瞬时切换登场
+4. 中段：角色相对静止 + 背景 Graphic 高速反向运动 + 图形匹配转场
+5. 终场：反派私人空间揭示 + 标题由图形拼合 + 英文副标题
+6. 末尾必写「严格限制」负向约束清单（颗粒化枚举禁止项）
+```
+
+> 此方法与赛璐璐「动作/文戏/魔法」基线正交，是**构图与视觉方法层**，不新增 base style。
+
 ---
 
 ## 7. Genre：内容类型层
@@ -181,6 +224,7 @@ Genre × Theme × Variation × Style = Final PV Direction
 | 打斗 Action | 快切顿挫 | 0.3-0.8s | 140-160 | [genre-action-15s.md](templates/genre-action-15s.md) |
 | 日常文戏 Daily | 舒缓静谧 | 1-2.5s | 100-120 | [genre-daily-15s.md](templates/genre-daily-15s.md) |
 | 魔法幻想 Magic | 快慢结合 | 蓄力 1.5-2.5s / 爆发 0.3-0.8s | 120-140 | [genre-magic-15s.md](templates/genre-magic-15s.md) |
+| 平面海报式 Poster-MG | 高密度蒙太奇 | 0.3-0.8s（蒙太奇段） | 120-140 | [poster-mg-20s.md](templates/poster-mg-20s.md) |
 
 **不可混用镜头节奏**。详见 [library/genre/genre-library.md](library/genre/genre-library.md)。
 
@@ -229,13 +273,17 @@ Genre × Theme × Variation × Style = Final PV Direction
 ```
 USER REQUEST
     ↓
-STEP0 SESSION_SPEC     锚定时长 + 比例
-    ↓
 TASK ORCHESTRATOR      任务判断
     ↓
 CHARACTER ANALYZER     角色理解（信息不足先补全）
     ↓
 CHARACTER DNA LOCK     身份锁定
+    ↓
+STYLE DIRECTION        角色风格确认（日系动画 / 日系 JRPG 约束）
+    ↓
+CHARACTER IMAGE PROMPT 立即输出角色设定图 Prompt
+    ↓
+STEP2 SESSION_SPEC     确认视频时长 + 比例
     ↓
 COMMERCIAL DIRECTOR    商业定位
     ↓
@@ -312,10 +360,13 @@ AstraForge Studio：
 - ✅ 是 AI 角色 PV 导演
 - ✅ 是二次元游戏宣传制作系统
 - ✅ 是商业动画视觉规划工具
+- ✅ 是 2D 多画风 PV 制作系统（赛璐璐 / 厚涂 / 水彩国风 / 矢量潮流 / 韩漫 / 美漫）
 
 一句话：
 
 > AstraForge Studio 是一个面向二次元游戏与动画行业的 AI 角色 PV 导演系统，
 > 通过角色智能分析、商业 PV 导演流程、组件化视觉库和自动质量控制，
 > 将角色设定转化为可生产的视频方案。
+
+
 

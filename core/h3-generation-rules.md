@@ -52,12 +52,24 @@ Shot / Duration / Character / Action / Camera / Effect
 
 ## Animation Style Rule
 
-默认：Pure 2D anime animation
+默认 base style：modern-cel（Pure 2D Japanese anime animation with Japanese JRPG character-design language）
 
-推荐：cel shading / hard shadow / graphic motion / 2.5D movement / 12fps 有限动画
+P0 支持 7 个 2D base style：
+`modern-cel` / `retro-cel` / `painterly-anime` / `watercolor-ink` /
+`vector-flat` / `korean-manhwa` / `western-comic`。
 
-禁止：realistic photography / PBR material / 3D character rendering / live action camera /
-现代运动模糊
+选定 base 后必须使用 [core/style-anchor.md](style-anchor.md) 中对应锚定与专属禁止项，
+且**全片不可切换 base style**。
+
+默认推荐：Japanese anime facial proportions / Japanese JRPG key visual / cel shading / hard shadow /
+graphic motion / 2.5D movement / 12fps 有限动画
+
+默认禁止：western cartoon / American animation / Disney-like / Pixar-like / DreamWorks-like /
+western comic-book style / realistic photography / PBR material / 3D character rendering /
+live action camera / 现代运动模糊
+
+例外：base = `western-comic` 时禁止项反转（允许美漫风格，禁止日系/韩系混搭），
+详见 core/style-anchor.md。
 
 ---
 
@@ -75,5 +87,9 @@ composition / subjects / environment / actions / camera / sound
 
 ```
 realistic, 3D CGI, live action, PBR material,
+western cartoon, American animation, Disney-like, Pixar-like, DreamWorks-like,
+western comic-book style, superhero comic style, exaggerated western facial anatomy,
 character drift, extra weapons, different hairstyle, different outfit
 ```
+
+

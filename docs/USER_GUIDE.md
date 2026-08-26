@@ -1,6 +1,6 @@
 # AstraForge Studio · 星铸工坊 使用指南
 
-Version: 1.1.0 — Character Universe Expansion
+Version: 1.2.0 — 2D Style Expansion
 
 ---
 
@@ -11,7 +11,7 @@ AstraForge Studio（星铸工坊）是一个 AI 驱动的二次元游戏角色 P
 它帮助创作者把：
 
 ```
-角色设定 → 商业定位 → PV 方案 → 镜头设计 → 视频生成 Prompt
+角色设定 → 风格确认 → 角色设定图 Prompt → 视频规格确认 → 商业定位 → PV 方案 → 镜头设计 → 视频生成 Prompt
 ```
 
 转化为完整制作流程。
@@ -50,16 +50,11 @@ AstraForge Studio（星铸工坊）是一个 AI 驱动的二次元游戏角色 P
 
 ## 3. 推荐使用流程
 
-### Step 0 — 锚定时长与比例
+### Step 0 — 输入角色、补全设定并确认风格
 
-系统首先会确认两个全局参数（`SESSION_SPEC`），后续不再重复询问：
-
-| 参数 | 可选 |
-|---|---|
-| 时长 | 5s（短广告）/ 10s / 15s（标准角色PV，推荐）/ 30s（剧情PV） |
-| 比例 | 16:9（横版推荐）/ 9:16（竖版短视频）/ 1:1 |
-
-### Step 1 — 输入角色信息
+系统先分析角色设定，补全 Character DNA，并确认角色的 Persona 与视觉风格。
+角色风格确定后，立即输出角色设定图 Prompt，不等待视频时长、视频比例或 Genre。
+角色图 Prompt 默认使用独立的角色设定图比例（建议 4:5），不等同于视频画幅。
 
 推荐格式：
 
@@ -70,21 +65,34 @@ AstraForge Studio（星铸工坊）是一个 AI 驱动的二次元游戏角色 P
 性格：
 能力：
 目标：
-PV 长度：
 参考方向：
 ```
 
 示例：
 
 ```
-制作一个 15 秒五星角色上线 PV。
+制作一个五星角色上线 PV。
 角色：银发冰系女剑士。
 性格：冷静、高贵。
 能力：冰元素剑技。
 目标：手游角色上线宣传。
 ```
 
-### Step 2 — 选择 PV 模式
+### Step 1 — 输出角色设定图 Prompt
+
+角色设定与风格确认后，立即输出角色设定图 Prompt。
+角色图默认建议使用 4:5，不继承视频画幅；生成图片仍需经过 Generation Gate。
+
+### Step 2 — 确认视频时长与比例
+
+角色图 Prompt 输出后，再确认视频专用的 `SESSION_SPEC`，后续 PV 步骤直接引用：
+
+| 参数 | 可选 |
+|---|---|
+| 时长 | 5s（短广告）/ 10s / 15s（标准角色PV，推荐）/ 30s（剧情PV） |
+| 比例 | 16:9（横版推荐）/ 9:16（竖版短视频）/ 1:1 |
+
+### Step 3 — 选择 PV 模式
 
 | 模式 | 用途 |
 |---|---|
@@ -92,7 +100,7 @@ PV 长度：
 | **15 秒角色 PV** | 新角色上线（推荐模式） |
 | 30 秒剧情 PV | 角色故事展示 |
 
-### Step 2.5 — 选择内容 Genre
+### Step 3.5 — 选择内容 Genre
 
 Genre 决定镜头节奏，与 Theme（商业定位）正交：
 
@@ -106,7 +114,7 @@ Genre 决定镜头节奏，与 Theme（商业定位）正交：
 
 **注意**：不可混用镜头节奏 —— 日常文戏不叠加「激烈快速切」，打斗不叠加「极缓固定机位」。
 
-### Step 3 — 系统自动执行
+### Step 4 — 系统自动执行
 
 ```
 角色分析 → 商业定位 → Theme 选择 → Variation 选择 → Style 组合 → 镜头设计 → 质量检查
@@ -206,8 +214,21 @@ MiniMax H3 最容易失败的不是风格，而是「一个镜头塞 10 件事�
 
 ### 动画风格约束
 
-推荐：cel shading、hard shadow、graphic motion、2.5D movement
-禁止：realistic photography、PBR material、3D character rendering、live action camera
+Base Style 默认 `modern-cel`（日系赛璐璐），也可按角色美术语言选择其他 2D 画风：
+
+| Base Style | 适用 |
+|---|---|
+| modern-cel | 日系动画 / JRPG（默认） |
+| retro-cel | 90s 复古 TV 动画 |
+| painterly-anime | 半写实厚涂 / 动画电影质感 |
+| watercolor-ink | 水墨 / 淡彩国风 |
+| vector-flat | 矢量潮流 / 海报动效 |
+| korean-manhwa | 韩漫 / 条漫 / 韩系手游 |
+| western-comic | 美漫 / 夸张动态 |
+
+Base Style 一经选定全片锁定，锚定与专属禁止项见
+[core/style-anchor.md](../core/style-anchor.md)；所有 base 均默认禁止
+realistic photography、PBR material、3D character rendering、live action camera。
 
 ---
 
@@ -279,3 +300,5 @@ y2k_balance_rule:
 3. 先降低生成风险，再增加特效。
 4. 每个镜头只安排一个主要动作。
 5. 所有场景保持一致的视觉身份。
+
+

@@ -114,6 +114,24 @@ execution:
       orbit_angle: 30-45deg
       burst_shake: 5-8px
       bpm: 120-140
+    poster_mg:
+      duration: 20s
+      shot_duration: 0.3-0.8s              # 高密度蒙太奇切镜
+      character_screen_share: 0.7          # 角色占比约70%，相对稳定（定格+侧面平移）
+      bg_graphic_motion: high_speed_reverse_scroll   # 背景Graphic高速反向滚动
+      silhouette_cel_morph_window: 0-6s    # 剪影↔赛璐璐切换固定开场窗
+      montage_window: 9-15s                # MG蒙太奇段
+      montage_density:                    # 蒙太奇密度（量化）
+        total_cuts: 8-20                   # 6s窗口内总切镜数
+        avg_cut: 0.3-0.8s
+        rule: key_pose_hold_no_continuous_action   # 关键姿态定格，不连续动作
+      inversion_trigger: per_beat          # 每次鼓点/魔术触发→反相/单帧闪红闪白/几何拆解
+      inversion_frequency:                 # 反相触发频率（量化）
+        during_montage: 1 per 0.4-0.5s     # ≈每拍一次（bpm120-140 → 0.43-0.5s/拍）
+        types: [black_white_invert, single_frame_red_flash, single_frame_white_flash, geometric_deconstruct]
+      transition: graphic_match_only       # 禁止淡入淡出/空白过渡
+      bpm: 120-140
+      risk_control: character_static_bg_dynamic
 
   h3_output:
     base_modes: [T2VA, I2VA, FL2VA, L2VA]
