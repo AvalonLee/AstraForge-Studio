@@ -7,7 +7,7 @@ description: 星铸工坊（AstraForge Studio），二次元游戏角色PV智能
 **AI 二次元游戏角色 PV 智能导演系统**
 *AI Anime Game Character PV Director System*
 
-Version: 1.2.0 — 2D Style Expansion
+Version: 1.2.2 — Poster-MG Methodology
 
 > 塑造角色，锻造世界，创造属于你的 PV。
 > *Build Characters. Forge Worlds. Create PVs.*
@@ -59,6 +59,9 @@ AstraForge 采用**交互式生产流程**，不假设用户意图。
 
 角色设定、Persona 与 Style 确认后，必须立即输出角色设定图 Prompt，供用户检查角色视觉方向。
 角色图 Prompt 不依赖视频时长、视频画幅或 PV Genre；使用独立的角色设定图比例建议。
+需要一次性呈现角色全貌（服装分层 / 表情区间 / 材质特写 / 生活切片）时，可进一步产出
+「角色概念分解图」（六维全景设定稿，见 [director/character-concept-sheet.md](director/character-concept-sheet.md)），
+该资产继承同一套角色设定卡与 Base Style 锁定，不替换角色圣经。
 
 ### Step2 — 锚定 SESSION_SPEC
 
@@ -136,10 +139,13 @@ Base 可选 7 套 2D 画风：`modern-cel` / `retro-cel` / `painterly-anime` /
 | [templates/genre-daily-15s.md](templates/genre-daily-15s.md) | 日常文戏 15s 完整可替换 Prompt |
 | [templates/genre-magic-15s.md](templates/genre-magic-15s.md) | 魔法幻想 15s 完整可替换 Prompt |
 | [templates/cast-duo-15s.md](templates/cast-duo-15s.md) | 双人 15s 完整可替换 Prompt |
+| [templates/poster-mg-20s.md](templates/poster-mg-20s.md) | 平面海报式 / Editorial MG 20s 专项分镜（剪影符号化） |
 | [director/storyboard-4shot.md](director/storyboard-4shot.md) | 4 镜头连贯分镜脚本 |
 | [director/character-card-template.md](director/character-card-template.md) | 角色设定卡 + 出图 Prompt |
+| [director/character-concept-sheet.md](director/character-concept-sheet.md) | 角色概念分解图（六维全景设定稿） |
 | [director/prompt-audit.md](director/prompt-audit.md) | 已有 Prompt 诊断 |
-| [references/extracted-rules.md](references/extracted-rules.md) | 从实证案例提取的 11 类规则 |
+| [references/extracted-rules.md](references/extracted-rules.md) | 从实证案例提取的 16 类规则（含平面海报式 / Editorial MG / 剪影符号化方法论） |
+| [references/cases/proven-editorial-mg-poster.yaml](references/cases/proven-editorial-mg-poster.yaml) | 平面海报式成功案例：太刀城市 / 命运赌场 / 兔耳魔术师三案例同构方法论 |
 
 ---
 
@@ -186,6 +192,23 @@ Base 可选 7 套 2D 画风：`modern-cel` / `retro-cel` / `painterly-anime` /
 优化这个 H3 Prompt，提高角色稳定性和商业感。
 ```
 
+### 方法 4：平面海报式 / Editorial MG PV（参考成功案例）
+
+当用户要做「纯二维、剪影符号化、图形匹配转场、像动态平面海报」的 PV 时，
+调用 `references/cases/proven-editorial-mg-poster.yaml` 与
+`references/extracted-rules.md` 第十二~十六类规则，按以下骨架产出：
+
+```
+1. 锁定三色高反差 + 色彩语义（红=危险/白=规则/黑=未知）
+2. 选定世界符号库（城市/赌场/魔术等固定 2D 原语）
+3. 开场：局部身体 + 剪影↔赛璐璐瞬时切换登场
+4. 中段：角色相对静止 + 背景 Graphic 高速反向运动 + 图形匹配转场
+5. 终场：反派私人空间揭示 + 标题由图形拼合 + 英文副标题
+6. 末尾必写「严格限制」负向约束清单（颗粒化枚举禁止项）
+```
+
+> 此方法与赛璐璐「动作/文戏/魔法」基线正交，是**构图与视觉方法层**，不新增 base style。
+
 ---
 
 ## 7. Genre：内容类型层
@@ -201,6 +224,7 @@ Genre × Theme × Variation × Style = Final PV Direction
 | 打斗 Action | 快切顿挫 | 0.3-0.8s | 140-160 | [genre-action-15s.md](templates/genre-action-15s.md) |
 | 日常文戏 Daily | 舒缓静谧 | 1-2.5s | 100-120 | [genre-daily-15s.md](templates/genre-daily-15s.md) |
 | 魔法幻想 Magic | 快慢结合 | 蓄力 1.5-2.5s / 爆发 0.3-0.8s | 120-140 | [genre-magic-15s.md](templates/genre-magic-15s.md) |
+| 平面海报式 Poster-MG | 高密度蒙太奇 | 0.3-0.8s（蒙太奇段） | 120-140 | [poster-mg-20s.md](templates/poster-mg-20s.md) |
 
 **不可混用镜头节奏**。详见 [library/genre/genre-library.md](library/genre/genre-library.md)。
 

@@ -19,6 +19,18 @@ components:
     recommended_action: [signature_gesture, ability_release, signature_pose]
     recommended_expression: [cool_gaze, sweet_smile]
     recommended_transition: [anime_flash_cut, ui_card, title_reveal]
+    # 概念分解图规范矩阵（见 director/character-concept-sheet.md）
+    # 本主题为性别中立基础发布主题，用于非二元 / 中性角色；背景可在白底与羊皮纸间按气质二选一。
+    concept_sheet:
+      clothing_layers: [主外套, 内搭上衣, 下装（长裤/半身裙二选一）, 鞋履, 颈/腰饰, 随身包]
+      inner_layer_state: 脱去主外套展示内搭与下装层次
+      intimate_innerwear: [打底衫, 打底裤/打底裙, 袜类]
+      expression_set: [composed-gaze, elegant-smile, confident-smirk, sweet-smile]
+      material_closeups: [主面料肌理, 金属/皮质配饰反光, 标志纹样]
+      life_slice:
+        bags: 随身包袋：笔记本、充电宝、钢笔/口红二选一、钥匙、便签
+        care: [护手霜, 香水/发蜡, 首饰/发饰盒]
+        private: [手账本, 收藏徽章/盲盒, 常备药品, 明信片]
     risk: low
 
   - id: theme.gacha.legendary.v1
@@ -37,6 +49,18 @@ components:
     recommended_action: [transformation, ability_release, signature_pose]
     recommended_transition: [particle_reveal, ui_card, title_reveal]
     best_for: [limited character, SSR character, special banner]
+    # 概念分解图规范矩阵（见 director/character-concept-sheet.md）
+    # 本主题为性别中立传奇揭示主题，用于非二元 / 中性角色；背景可在白底与羊皮纸间按气质二选一。
+    concept_sheet:
+      clothing_layers: [华丽主衣, 披风/外罩, 战靴/礼靴, 贵金属配饰, 头冠/额饰, 武器挂链]
+      inner_layer_state: 解外罩展示主衣与内衬
+      intimate_innerwear: [打底衫, 打底裤/打底裙, 长袜]
+      expression_set: [confident-smirk, cool-gaze, elegant-smile, detached-stare]
+      material_closeups: [缎面/绒面流光, 宝石镶嵌, 金属法器反光]
+      life_slice:
+        bags: 宝匣/腰囊：符文卷、信物、星砂瓶
+        care: [香水, 护手霜, 银饰盒]
+        private: [收藏宝石, 手账本, 常备药品, 明信片]
     risk: medium
 
   - id: theme.cool.female.jrpg.v1
@@ -55,6 +79,17 @@ components:
     action: [confident_walk, weapon_reveal, ability_release]
     expression: [cool_gaze, confident_smirk]
     transition: [flash_cut, anime_impact, title_reveal]
+    # 概念分解图规范矩阵（见 director/character-concept-sheet.md）
+    concept_sheet:
+      clothing_layers: [修身战甲上衣, 长靴, 披风/短斗, 战裙/长裤, 护臂, 颈饰]
+      inner_layer_state: 解披风展示战甲上衣与内衬软甲
+      intimate_innerwear: [打底背心, 打底衫, 长袜]
+      expression_set: [cool-gaze, confident-smirk, elegant-smile, detached-stare]
+      material_closeups: [银甲冷光, 武器刃纹, 披风丝绸]
+      life_slice:
+        bags: 战术腰包 / 武器匣：地图卷、护手油、信物
+        care: [护甲布, 发油, 香水]
+        private: [家族徽章, 旧照片, 收藏刃饰]
     risk: low
 
   - id: theme.sweet.y2k.v1
@@ -74,6 +109,17 @@ components:
     expression: [playful_wink, sweet_smile]
     transition: [graphic_panel, ui_card]
     balance_rule: { character_priority: 70%, graphic_element: 30% }
+    # 概念分解图规范矩阵（见 director/character-concept-sheet.md）
+    concept_sheet:
+      clothing_layers: [粉系短上衣, 低腰裤/迷你裙, 厚底鞋, 荧光配饰, 渔网袜/腿环, 斜挎小包]
+      inner_layer_state: 解外套展示内搭吊带与叠穿
+      intimate_innerwear: [打底吊带, 打底衫, 堆堆袜]
+      expression_set: [playful-wink, sweet-smile, confident-smirk, shy-expression]
+      material_closeups: [亮面PU反光, Y2K镭射布, 金属戒链]
+      life_slice:
+        bags: 迷你斜挎 / 透明果冻包：口红、粉饼、贴纸、挂件、便签
+        care: [化妆镜, 香水, 发饰]
+        private: [手账本, 收藏盲盒, 常备药品, 明信片]
     risk: low
 
   - id: theme.academy.character.v1
@@ -91,6 +137,17 @@ components:
     action: [head_turn, hand_gesture]
     expression: [shy_expression, sweet_smile]
     transition: [graphic_panel, ui_card]
+    # 概念分解图规范矩阵（见 director/character-concept-sheet.md）
+    concept_sheet:
+      clothing_layers: [校服外套, 衬衫, 百褶裙/长裤, 领结, 书包, 短袜/制服鞋]
+      inner_layer_state: 解校服外套展示衬衫与针织背心
+      intimate_innerwear: [打底衫, 袜类]
+      expression_set: [shy-expression, sweet-smile, playful-wink, confident-smirk]
+      material_closeups: [校服呢料, 领结绸面, 书包帆布]
+      life_slice:
+        bags: 双肩书包：笔记本、笔袋、便当盒、充电宝
+        care: [护手霜, 发饰, 小镜子]
+        private: [手账本, 社团徽章, 收藏橡皮, 常备药品]
     risk: low
 
   - id: theme.magic.girl.v1
@@ -108,6 +165,17 @@ components:
     action: [transformation, ability_release]
     expression: [elegant_smile]
     transition: [particle_reveal, title_reveal]
+    # 概念分解图规范矩阵（见 director/character-concept-sheet.md）
+    concept_sheet:
+      clothing_layers: [魔法裙装, 长靴, 星纹披肩, 魔杖挂饰, 过膝袜, 头饰]
+      inner_layer_state: 解披肩展示裙装与内搭
+      intimate_innerwear: [打底吊带, 打底衫, 过膝袜]
+      expression_set: [elegant-smile, confident-smirk, sweet-smile, shy-expression]
+      material_closeups: [魔法缎面流光, 宝石镶嵌, 星纹刺绣]
+      life_slice:
+        bags: 魔法小包 / 道具袋：符文书、星砂瓶、发饰
+        care: [香水, 护手霜, 首饰盒]
+        private: [手账本, 收藏宝石, 常备药品, 明信片]
     risk: medium
 
   - id: theme.cyberpunk.girl.v1
@@ -125,6 +193,17 @@ components:
     action: [hand_gesture, ability_release]
     expression: [confident_smirk]
     transition: [glitch_data, ui_card]
+    # 概念分解图规范矩阵（见 director/character-concept-sheet.md）
+    concept_sheet:
+      clothing_layers: [机能外套, 战术背心, 工装裤, 作战靴, 全息护目镜, 数据手套]
+      inner_layer_state: 解机能外套展示战术背心与内搭
+      intimate_innerwear: [打底衫, 运动内衣, 袜类]
+      expression_set: [confident-smirk, cool-gaze, detached-stare, playful-wink]
+      material_closeups: [反光防水布, 霓虹导光条, 金属接口]
+      life_slice:
+        bags: 机能腰包 / 解码箱：U盘、数据线、工具钳、能量棒
+        care: [便携消毒, 发蜡, 墨镜]
+        private: [收藏芯片, 手写便签, 旧照片, 挂件]
     risk: medium
 
   - id: theme.dark.witch.release.v1
@@ -142,6 +221,17 @@ components:
     action: [ability_preparation, ability_release]
     expression: [villain_pressure, elegant_smile]
     transition: [particle_reveal, title_reveal]
+    # 概念分解图规范矩阵（见 director/character-concept-sheet.md）
+    concept_sheet:
+      clothing_layers: [暗纹长袍, 尖头靴, 兜帽披风, 皮质束腰, 长手套, 魔导书挂链]
+      inner_layer_state: 解兜帽披风展示长袍与内衬
+      intimate_innerwear: [打底裙/打底衫, 长袜]
+      expression_set: [villain-pressure, elegant-smile, confident-smirk, detached-stare]
+      material_closeups: [暗纹绒面, 金属法器, 皮革束腰]
+      life_slice:
+        bags: 魔导书囊：符文卷、药瓶、骨雕
+        care: [香水, 护手霜, 银饰盒]
+        private: [收藏宝石, 手账本, 常备药品, 明信片]
     risk: medium
 
   # ---- 男性角色 Theme ----
@@ -168,6 +258,17 @@ components:
     recommended_expression: [composed-gaze, detached-stare]
     recommended_transition: [graphic-panel, ui-card, title-reveal]
     style_hint: 深色电影感布光，克制光影，突出剪裁轮廓
+    # 概念分解图规范矩阵（见 director/character-concept-sheet.md）
+    concept_sheet:
+      clothing_layers: [西装外套, 马甲, 衬衫, 平角内搭, 西裤, 牛津皮鞋]
+      inner_layer_state: 脱去西装外套后展示马甲 + 衬衫（解领口、松领带）
+      intimate_innerwear: [平角内裤, 袜子, 背心]
+      expression_set: [composed-gaze, detached-stare, confident-smirk, impatient]
+      material_closeups: [羊毛西装纹理, 袖扣金属反光, 皮鞋皮质]
+      life_slice:
+        bags: 公文包 / 邮差包打开：钢笔、名片夹、钱包、交通卡、充电宝
+        care: [电动剃须刀, 发蜡, 古龙水]
+        private: [复古机械表, 限量打火机, 雪茄剪]
     risk: low
 
   - id: theme.male.samurai.release.v1
@@ -189,6 +290,17 @@ components:
     recommended_expression: [composed-gaze, battle-resolve]
     recommended_transition: [flash-cut, anime-impact, title-reveal]
     style_hint: 高对比赛璐璐，暖色高光与冷色阴影并存，刀光用速度线
+    # 概念分解图规范矩阵（见 director/character-concept-sheet.md）
+    concept_sheet:
+      clothing_layers: [羽织, 白上衣, 袴, 足袋, 草履, 腰带]
+      inner_layer_state: 解羽织展示白上衣与袴的层叠
+      intimate_innerwear: [兜裆布, 足袋, 肌襦袢]
+      expression_set: [composed-gaze, battle-resolve, focused]
+      material_closeups: [刀镡金属, 羽织织物肌理, 皮革刀鞘]
+      life_slice:
+        bags: 包袱 / 卷物：卷轴、干粮、钱袋
+        care: [发油, 刀油, 手巾]
+        private: [木梳, 护身符, 茶具]
     risk: medium
 
   - id: theme.male.knight.release.v1
@@ -210,6 +322,17 @@ components:
     recommended_expression: [composed-gaze, battle-resolve]
     recommended_transition: [flash-cut, anime-impact, title-reveal]
     style_hint: 电影感重甲质感，轮廓光强化，保持赛璐璐硬边
+    # 概念分解图规范矩阵（见 director/character-concept-sheet.md）
+    concept_sheet:
+      clothing_layers: [全身板甲, 内衬链甲, 披风, 战靴, 护手]
+      inner_layer_state: 解披风与胸甲展示内衬链甲与底衣
+      intimate_innerwear: [锁子甲内衬衣, 战靴长袜]
+      expression_set: [composed-gaze, battle-resolve]
+      material_closeups: [钢板锤纹, 披风织物, 大剑刃纹]
+      life_slice:
+        bags: 行囊：地图、水囊、口粮、火石
+        care: [盔甲油, 磨刀石, 软布]
+        private: [家徽旗, 祈祷书, 旧战友信物]
     risk: medium
 
   # ---- 活动 PV 主题 ----
